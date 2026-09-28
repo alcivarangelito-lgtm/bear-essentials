@@ -154,21 +154,69 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <header class="relative py-16 md:py-24 border-b border-gold-500/15 overflow-hidden text-center">
+  <!-- HERO SECTION WITH VIDEOS -->
+  <header class="relative py-12 md:py-20 border-b border-gold-500/15 overflow-hidden text-center">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <span class="inline-block py-1.5 px-4 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">
+      <span class="inline-block py-1.5 px-4 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-bold uppercase tracking-widest mb-3">
         Edición Limitada & Aromas Selectos
       </span>
-      <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-white max-w-4xl mx-auto uppercase leading-tight">
-        Eleva tu presencia urbana con el aroma perfecto<span class="text-gold-400">.</span>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-wider text-white uppercase leading-none drop-shadow-md">
+        BE A BEAR
       </h1>
-      <p class="mt-4 text-gray-400 text-sm md:text-base max-w-2xl mx-auto font-normal">
-        Decants de diseñador y nicho originales, combinados con gorras premium con la mejor presencia.
+      <p class="mt-3 text-gold-400 text-lg sm:text-xl font-medium tracking-wide font-luxury">
+        Tu estilo , tu esencia
       </p>
 
+      <!-- 3 VIDEO SHOWCASE COLUMNS -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- Video 1: West -->
+        <div onclick="window.openProductModal('p_west_drop1')" class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-onyx-950 border border-gold-500/30 group cursor-pointer shadow-xl">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <source src="w-video.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
+            <span class="text-gold-400 text-xs font-black uppercase tracking-widest mb-1">Drop 1 • $27.00</span>
+            <h3 class="text-white font-display font-bold text-xl leading-snug">Gorra West – Black Edition</h3>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-4 py-2 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
+              Ver detalles ➔
+            </span>
+          </div>
+        </div>
+
+        <!-- Video 2: Japon / Dodgers -->
+        <div onclick="window.openProductModal('p_dodgers_jp')" class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-onyx-950 border border-gold-500/30 group cursor-pointer shadow-xl">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <source src="japon-video.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
+            <span class="text-gold-400 text-xs font-black uppercase tracking-widest mb-1">Japanese Drop • $22.00</span>
+            <h3 class="text-white font-display font-bold text-xl leading-snug">Dodgers Japanese Edition</h3>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-4 py-2 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
+              Ver detalles ➔
+            </span>
+          </div>
+        </div>
+
+        <!-- Video 3: California -->
+        <div onclick="window.openProductModal('p_california')" class="relative rounded-2xl overflow-hidden aspect-[4/5] bg-onyx-950 border border-gold-500/30 group cursor-pointer shadow-xl">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <source src="california-video.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
+            <span class="text-gold-400 text-xs font-black uppercase tracking-widest mb-1">Special Edition • $22.00</span>
+            <h3 class="text-white font-display font-bold text-xl leading-snug">California Black Denim</h3>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-4 py-2 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
+              Ver detalles ➔
+            </span>
+          </div>
+        </div>
+      </div>
+
       <!-- FILTERS -->
-      <div class="mt-8 flex flex-wrap justify-center gap-2.5" id="filter-buttons">
+      <div class="mt-12 flex flex-wrap justify-center gap-2.5" id="filter-buttons">
         <button data-category="all" class="filter-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-black shadow-lg shadow-gold-500/25 transition-all cursor-pointer">Todos</button>
         <button data-category="caps" class="filter-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-onyx-900 text-gray-400 hover:text-gold-300 border border-gold-500/20 hover:border-gold-500/50 transition-all cursor-pointer">Gorras Exclusivas</button>
         <button data-category="decants" class="filter-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-onyx-900 text-gray-400 hover:text-gold-300 border border-gold-500/20 hover:border-gold-500/50 transition-all cursor-pointer">Perfume Decants</button>
@@ -341,7 +389,7 @@
         ],
         options: [
           { label: 'Solo Gorra', sub: 'En solitario', price: 27.00 },
-          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 30.00 }
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
         ]
       },
       {
@@ -905,4 +953,3 @@
   </script>
 </body>
 </html>
-
