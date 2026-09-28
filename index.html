@@ -135,7 +135,7 @@
   <nav class="sticky top-0 z-40 glass-nav">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <a href="#" class="flex items-center gap-3.5 group">
-        <div class="w-11 h-11 rounded-xl bg-onyx-900 border border-gold-500/40 flex items-center justify-center text-gold-400 group-hover:border-gold-500 group-hover:scale-105 transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-onyx-900 border border-gold-500/40 flex items-center justify-center overflow-hidden text-gold-400 group-hover:border-gold-500 group-hover:scale-105 transition-all duration-300 shadow-md">
           <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C8.5 2 6 4.5 6 7.5c0 1.2.4 2.3 1 3.2C4.5 11.8 3 14.2 3 17c0 3.3 2.7 6 6 6h6c3.3 0 6-2.7 6-6 0-2.8-1.5-5.2-4-6.3.6-.9 1-2 1-3.2C18 4.5 15.5 2 12 2zm-5 5.5C7 5.6 8.6 4 10.5 4h3C15.4 4 17 5.6 17 7.5c0 .9-.4 1.8-1 2.4-.7.7-1.7 1.1-2.7 1.1h-2.6c-1 0-2-.4-2.7-1.1-.6-.6-1-1.5-1-2.4zm10 9.5c0 2.2-1.8 4-4 4H9c-2.2 0-4-1.8-4-4 0-2.2 1.8-4 4-4h6c2.2 0 4 1.8 4 4z"/>
           </svg>
@@ -183,6 +183,7 @@
     <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
   </main>
 
+  
   <!-- PRODUCT DETAIL MODAL (VISTA EN GRANDE) -->
   <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
     <!-- Backdrop -->
@@ -218,7 +219,9 @@
             </div>
 
             <!-- Thumbnails Row -->
-            <div id="modal-thumbs" class="flex items-center justify-center gap-3 mt-4 overflow-x-auto py-1"></div>
+            <div id="modal-thumbs" class="flex items-center justify-center gap-3 mt-4 overflow-x-auto py-1">
+              <!-- Dynamically populated -->
+            </div>
           </div>
 
           <!-- Product Details Right Side -->
@@ -244,7 +247,9 @@
                 <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
                   Selecciona tu opción / tamaño:
                 </label>
-                <div id="modal-options-container" class="flex gap-2.5"></div>
+                <div id="modal-options-container" class="flex gap-2.5">
+                  <!-- Dynamically populated options -->
+                </div>
               </div>
 
               <!-- Price & CTA -->
@@ -338,7 +343,7 @@
         ],
         options: [
           { label: 'Solo Gorra', sub: 'En solitario', price: 27.00 },
-          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 30.00 }
         ]
       },
       {
@@ -719,7 +724,8 @@
       window.open(url, '_blank');
     });
 
-    // MODAL STATE & FUNCTIONS
+    
+    // MODAL STATE
     let currentModalProductId = null;
     let currentModalImageIndex = 0;
 
@@ -743,6 +749,7 @@
       badgeEl.textContent = p.badge || (p.category === 'caps' ? 'Gorra Exclusiva' : 'Decant Original');
       categoryEl.textContent = p.category === 'caps' ? 'Streetwear Headwear • Colección Exclusiva' : 'Perfumería Original • Decant Seleccionado';
 
+      // Setup Options
       if (selectedOptions[p.id] === undefined) selectedOptions[p.id] = 0;
       const currentOptIdx = selectedOptions[p.id];
 
@@ -759,6 +766,7 @@
       updateModalPrice(p);
       updateModalGallery(p);
 
+      // Open Animation
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
       setTimeout(() => {
@@ -865,6 +873,7 @@
       }
     };
 
+    // Modal Events Setup
     document.getElementById('modal-close-btn').addEventListener('click', window.closeProductModal);
     document.getElementById('modal-backdrop').addEventListener('click', window.closeProductModal);
     document.getElementById('modal-next-btn').addEventListener('click', window.modalNextImage);
