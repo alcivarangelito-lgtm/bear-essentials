@@ -1,3 +1,638 @@
+         <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bear Essential | Luxury Streetwear & Decants</title>
+  <!-- Google Fonts & Tailwind CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#FDF0CD',
+              400: '#F3D27A',
+              500: '#D4AF37',
+              600: '#B8860B',
+              glow: 'rgba(212, 175, 55, 0.35)',
+              glowStrong: 'rgba(212, 175, 55, 0.65)'
+            },
+            onyx: {
+              950: '#030303',
+              900: '#080808',
+              850: '#0F0F11',
+              800: '#141416',
+              border: '#2A2518',
+              borderBright: '#4A3E20'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            luxury: ['Cinzel', 'serif']
+          },
+          keyframes: {
+            pricePop: {
+              '0%': { transform: 'scale(0.85)', opacity: '0.4' },
+              '60%': { transform: 'scale(1.15)', opacity: '1' },
+              '100%': { transform: 'scale(1)', opacity: '1' }
+            },
+            badgePulse: {
+              '0%, 100%': { transform: 'scale(1)' },
+              '50%': { transform: 'scale(1.2)' }
+            }
+          },
+          animation: {
+            pricePop: 'pricePop 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+            badgePulse: 'badgePulse 0.35s ease-in-out'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #050505;
+      color: #EAE6DF;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+        linear-gradient(rgba(212, 175, 55, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 40px 40px, 40px 40px;
+    }
+
+    .glass-nav {
+      background: rgba(5, 5, 5, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+    }
+
+    .luxury-card {
+      background: #0B0B0C;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .luxury-card:hover {
+      border-color: rgba(212, 175, 55, 0.65);
+      box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .option-pill {
+      transition: all 0.25s ease;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      background: #0E0E10;
+      color: #A39E93;
+      cursor: pointer;
+    }
+    .option-pill:hover {
+      border-color: rgba(212, 175, 55, 0.6);
+      color: #FFFFFF;
+    }
+    .option-pill.active {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.08));
+      border-color: #D4AF37;
+      color: #FDF0CD;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #F3D27A 0%, #D4AF37 50%, #B8860B 100%);
+      color: #050505;
+      font-weight: 800;
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.3);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
+      transform: translateY(-1px);
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb { background: #352B18; border-radius: 9999px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-gold-500 selection:text-black">
+
+  <!-- TOP BANNER -->
+  <div class="border-b border-gold-500/20 bg-gradient-to-r from-onyx-950 via-onyx-850 to-onyx-950 py-2 px-4 text-center text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 text-gold-400">
+    <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-400 animate-ping"></span>
+    <span>🔥 Decants 100% Originales & Gorras Exclusivas | Envíos a todo el país</span>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-40 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-onyx-900 border border-gold-500/40 flex items-center justify-center overflow-hidden text-gold-400 group-hover:border-gold-500 group-hover:scale-105 transition-all duration-300 shadow-md">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAADaCAIAAAAHaYMlAABecElEQVR4nO19Z3xVxfP37q1pNwECJCQhQBIIhBJ6NUAoQhARkKYCooAg0qT4syCIIqAoSlEpgqAgRSDUgCAlFAGlKyUYSsDQISE9t+3zYv53n5Nzzt17bklIcL8v8knOzs7O7tkzmZ2dncWoZIExdoqeEOJsRagC9MqrU0qHcFYS5TyFkkv/ZPB0eVSl1dkyy8rpUDxZJgx60QhIa9mTweHgiOaDkgFncFYCBjdni5SI5NpnUlaACVY9aRk4ODg4lELxpAIQOKASDPbCYvGic/DwcHBwVBuw57unK8f/7K374786Oq/k3D39u2wP7eYy14L4y20iYh65w99j8o8cPBwfHC0Y/gK1Ljw72XyHwA=" alt="Bear Essential Logo" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <span class="font-display font-black text-xl tracking-wider text-white block">BEAR ESSENTIAL</span>
+          <span class="text-[10px] tracking-[0.25em] text-gold-400 uppercase font-semibold">Streetwear & Decants</span>
+        </div>
+      </a>
+
+      <!-- CART TRIGGER -->
+      <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-onyx-900 hover:bg-onyx-850 border border-gold-500/30 hover:border-gold-500 text-gold-300 transition-all active:scale-95 cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span id="cart-counter" class="absolute -top-1.5 -right-1.5 bg-gradient-to-r from-gold-400 to-gold-600 text-black text-xs font-black rounded-full h-5 min-w-[20px] px-1 flex items-center justify-center shadow-lg shadow-gold-500/30">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <header class="relative py-16 md:py-24 border-b border-gold-500/15 overflow-hidden text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <span class="inline-block py-1.5 px-4 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-bold uppercase tracking-widest mb-4">
+        Edición Limitada & Aromas Selectos
+      </span>
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-white max-w-4xl mx-auto uppercase leading-tight">
+        Eleva tu presencia urbana con el aroma perfecto<span class="text-gold-400">.</span>
+      </h1>
+      <p class="mt-4 text-gray-400 text-sm md:text-base max-w-2xl mx-auto font-normal">
+        Decants de diseñador y nicho originales, combinados con gorras premium con la mejor presencia.
+      </p>
+
+      <!-- FILTERS -->
+      <div class="mt-8 flex flex-wrap justify-center gap-2.5" id="filter-buttons">
+        <button data-category="all" class="filter-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-black shadow-lg shadow-gold-500/25 transition-all cursor-pointer">Todos</button>
+        <button data-category="caps" class="filter-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-onyx-900 text-gray-400 hover:text-gold-300 border border-gold-500/20 hover:border-gold-500/50 transition-all cursor-pointer">Gorras Exclusivas</button>
+        <button data-category="decants" class="filter-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-onyx-900 text-gray-400 hover:text-gold-300 border border-gold-500/20 hover:border-gold-500/50 transition-all cursor-pointer">Perfume Decants</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATALOG GRID -->
+  <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+  </main>
+
+  
+  <!-- PRODUCT DETAIL MODAL (VISTA EN GRANDE) -->
+  <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/90 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Modal Dialog Center Container -->
+    <div class="min-h-full flex items-center justify-center p-3 sm:p-6 relative z-10">
+      <div id="modal-card" class="relative w-full max-w-4xl bg-onyx-950 border border-gold-500/40 rounded-3xl shadow-[0_0_50px_rgba(212,175,55,0.25)] overflow-hidden transform transition-all duration-300 scale-95 opacity-0">
+        
+        <!-- Close Button -->
+        <button id="modal-close-btn" type="button" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/80 border border-gold-500/40 text-gold-300 hover:text-white hover:border-gold-400 flex items-center justify-center text-lg transition-all cursor-pointer shadow-lg backdrop-blur-md">
+          ✕
+        </button>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+          <!-- Gallery Left Side -->
+          <div class="p-5 sm:p-7 flex flex-col justify-between bg-onyx-900/60 border-b md:border-b-0 md:border-r border-gold-500/20">
+            <!-- Main Large Image Container -->
+            <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-onyx-950 border border-gold-500/30 flex items-center justify-center group">
+              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              
+              <span id="modal-badge" class="absolute top-3 left-3 bg-black/85 border border-gold-500/40 text-[10px] px-3 py-1 rounded-full text-gold-400 uppercase font-black tracking-wider backdrop-blur-md shadow-md">
+                EDICIÓN ESPECIAL
+              </span>
+
+              <!-- Prev / Next arrows -->
+              <button id="modal-prev-btn" type="button" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/75 border border-gold-500/30 text-gold-300 hover:text-white hover:scale-110 flex items-center justify-center transition-all cursor-pointer backdrop-blur-md">
+                &#10094;
+              </button>
+              <button id="modal-next-btn" type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/75 border border-gold-500/30 text-gold-300 hover:text-white hover:scale-110 flex items-center justify-center transition-all cursor-pointer backdrop-blur-md">
+                &#10095;
+              </button>
+            </div>
+
+            <!-- Thumbnails Row -->
+            <div id="modal-thumbs" class="flex items-center justify-center gap-3 mt-4 overflow-x-auto py-1">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Product Details Right Side -->
+          <div class="p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span id="modal-category" class="text-[11px] font-bold uppercase tracking-widest text-gold-400/90">
+                  COLECCIÓN EXCLUSIVA
+                </span>
+              </div>
+              <h2 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white leading-tight">
+                Título del Producto
+              </h2>
+              <div class="h-0.5 w-16 bg-gradient-to-r from-gold-400 to-transparent my-3.5"></div>
+              <p id="modal-desc" class="text-sm text-gray-300/90 leading-relaxed font-normal">
+                Descripción detallada del producto.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-gold-500/20 space-y-5">
+              <!-- Options Selector -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                  Selecciona tu opción / tamaño:
+                </label>
+                <div id="modal-options-container" class="flex gap-2.5">
+                  <!-- Dynamically populated options -->
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-baseline justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider block">Precio Final:</span>
+                  <span id="modal-price" class="font-display font-black text-3xl text-gold-400">$0.00</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                  Agregar al Carrito
+                </button>
+                <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-onyx-900 border border-gold-500/40 text-gold-300 hover:text-white hover:border-gold-400 font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">
+                  Pedir por WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-onyx-900 border border-gold-500/60 rounded-xl p-4 shadow-2xl flex items-center gap-3 backdrop-blur-xl">
+      <div class="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold">✓</div>
+      <div>
+        <p id="toast-title" class="text-sm font-bold text-white leading-tight">Producto agregado</p>
+        <p class="text-xs text-gold-400/90 mt-0.5">Listo en tu carrito</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART SLIDE-OVER DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-opacity duration-300">
+    <div id="cart-backdrop" class="absolute inset-0 bg-black/85 backdrop-blur-md"></div>
+
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div id="cart-panel" class="w-screen max-w-md bg-onyx-950 border-l border-gold-500/30 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl z-10">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-gold-500/20 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <h2 class="font-display font-bold text-lg text-white uppercase tracking-wider">Tu Carrito</h2>
+            <span id="drawer-count" class="text-xs font-bold px-2 py-0.5 rounded-full bg-onyx-850 text-gold-400 border border-gold-500/30">0</span>
+          </div>
+          <button id="close-cart-btn" class="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-onyx-850 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Cart Items -->
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-3.5"></div>
+
+        <!-- Drawer Footer -->
+        <div class="p-6 border-t border-gold-500/20 bg-black/60 space-y-4">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-400 uppercase tracking-wider text-xs font-bold">Subtotal:</span>
+            <span id="cart-subtotal" class="font-display font-extrabold text-2xl text-gold-400">$0.00</span>
+          </div>
+          
+          <button id="whatsapp-checkout-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-black font-extrabold flex items-center justify-center gap-2.5 transition-transform active:scale-[0.98] shadow-lg shadow-gold-500/20 uppercase tracking-wider text-xs cursor-pointer">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Finalizar Pedido por WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT TIENDA -->
+  <script>
+    const WHATSAPP_PHONE = '593999999999';
+
+    const products = [
+      {
+        id: 'p_west_drop1',
+        title: "Gorra West – Black Edition (Drop 1)",
+        category: 'caps',
+        badge: 'DROP 1',
+        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual. Destaca por su emblema frontal en forma de "W" con incrustaciones estilo pedrería y apliques tonales en la visera para un look streetwear premium y elegante.',
+        images: [
+          'data:image/jpeg;base64,...',
+          'data:image/jpeg;base64,...',
+          'data:image/jpeg;base64,...'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 27.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
+        ]
+      },
+      {
+        id: 'p_dodgers_jp',
+        title: "Gorra '47 Captain Snapback – Dodgers Japanese Edition",
+        category: 'caps',
+        badge: 'JAPANESE DROP',
+        description: 'Gorra de estilo urbano estructurada con diseño bicoloreado, inspirada en la cultura deportiva y el streetwear japonés. Presenta un llamativo bordado frontal en relieve con caracteres en katakana (ドジャース - Dodgers), combinando silueta clásica y estética oriental moderna.',
+        images: [
+          'data:image/jpeg;base64,...',
+          'data:image/jpeg;base64,...'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 25.00 }
+        ]
+      },
+      {
+        id: 'p_california',
+        title: 'Gorra California Special Edition – Black Denim',
+        category: 'caps',
+        badge: 'SPECIAL EDITION',
+        description: 'Gorra de estilo urbano estructurada en acabado tipo denim negro, con costuras doradas en contraste y parche frontal de cuero grabado en relieve. Diseñada para brindar comodidad, durabilidad y presencia en el uso diario.',
+        images: [
+          'data:image/jpeg;base64,...',
+          'data:image/jpeg;base64,...'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 25.00 }
+        ]
+      },
+      {
+        id: 'p1',
+        title: 'JPG Le Male Le Parfum',
+        category: 'decants',
+        description: 'Decants de diseñador y nicho originales. Vainilla negra, cardamomo y lavanda seductora.',
+        image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
+        options: [
+          { label: '5 ml', sub: '~70 atomizaciones', price: 9.00 },
+          { label: '10 ml', sub: '~140 atomizaciones', price: 16.50 }
+        ]
+      },
+      {
+        id: 'p2',
+        title: 'Rasasi Hawas Ice',
+        category: 'decants',
+        description: 'Decants de diseñador y nicho originales. Manzana helada, bergamota y ciruela marina.',
+        image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80',
+        options: [
+          { label: '5 ml', sub: 'Prueba esencial', price: 7.50 },
+          { label: '10 ml', sub: 'Máxima duración', price: 13.00 }
+        ]
+      },
+      {
+        id: 'p3',
+        title: 'Armaf Odyssey Mandarin Sky',
+        category: 'decants',
+        description: 'Decants de diseñador y nicho originales. Mandarina acaramelada y haba tonka dulce.',
+        image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80',
+        options: [
+          { label: '5 ml', sub: 'Decant vidrio', price: 6.50 },
+          { label: '10 ml', sub: 'Atomizador pro', price: 11.50 }
+        ]
+      }
+    ];
+
+    let selectedOptions = {};
+    let activeImages = { p_west_drop1: 0, p_dodgers_jp: 0, p_california: 0 };
+    let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
+
+    const grid = document.getElementById('product-grid');
+
+    function renderProducts(filter = 'all') {
+      grid.innerHTML = '';
+      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+      filtered.forEach(p => {
+        if (selectedOptions[p.id] === undefined) {
+          selectedOptions[p.id] = 0;
+        }
+
+        const currentOptIndex = selectedOptions[p.id];
+        const currentOpt = p.options[currentOptIndex];
+
+        const card = document.createElement('div');
+        card.className = "luxury-card rounded-2xl overflow-hidden flex flex-col p-4 group";
+
+        const optionsHtml = p.options.map((opt, i) => `
+          <button 
+            type="button"
+            onclick="event.stopPropagation(); window.selectProductOption('${p.id}', ${i})"
+            class="option-pill flex-1 py-1.5 px-2 rounded-xl text-center text-xs font-semibold ${i === currentOptIndex ? 'active' : ''}">
+            <span class="block font-bold text-[12px]">${opt.label}</span>
+            <span class="block text-[9px] opacity-70">${opt.sub}</span>
+          </button>
+        `).join('');
+
+        let mediaHtml = '';
+        if (p.images && p.images.length > 1) {
+          const currImg = p.images[activeImages[p.id] || 0];
+          const dotsHtml = p.images.map((_, idx) => `
+            <button type="button" onclick="event.stopPropagation(); window.switchImage('${p.id}', ${idx})" class="w-2.5 h-2.5 rounded-full ${ (activeImages[p.id] || 0) === idx ? 'bg-gold-400' : 'bg-gray-600' }"></button>
+          `).join('');
+
+          mediaHtml = `
+            <div onclick="window.openProductModal('${p.id}')" class="relative aspect-square overflow-hidden rounded-xl bg-onyx-950 border border-gold-500/20 cursor-pointer group/img">
+              <img id="img-${p.id}" src="${currImg}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105">
+              <span class="absolute top-2.5 left-2.5 bg-black/85 border border-gold-500/40 text-[10px] px-2.5 py-0.5 rounded-full text-gold-400 uppercase font-black tracking-wider">
+                ${p.badge || 'Gorra'}
+              </span>
+              <div class="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-3 py-1.5 rounded-full bg-black/85 border border-gold-400/80 text-[11px] font-bold text-gold-300 shadow-xl flex items-center gap-1.5 backdrop-blur-md transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Ver en grande
+                </span>
+              </div>
+              <div class="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 bg-black/80 border border-gold-500/30 px-2 py-1 rounded-full z-10" onclick="event.stopPropagation()">
+                ${dotsHtml}
+              </div>
+            </div>
+          `;
+        } else {
+          mediaHtml = `
+            <div onclick="window.openProductModal('${p.id}')" class="relative aspect-square overflow-hidden rounded-xl bg-onyx-950 border border-gold-500/20 cursor-pointer group/img">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105">
+              <span class="absolute top-2.5 left-2.5 bg-black/80 border border-gold-500/30 text-[10px] px-2.5 py-0.5 rounded-full text-gold-400 uppercase font-black tracking-wider">
+                ${p.category === 'decants' ? 'Decant' : 'Headwear'}
+              </span>
+              <div class="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-3 py-1.5 rounded-full bg-black/85 border border-gold-400/80 text-[11px] font-bold text-gold-300 shadow-xl flex items-center gap-1.5 backdrop-blur-md transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Ver en grande
+                </span>
+              </div>
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          ${mediaHtml}
+          <div class="mt-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 onclick="window.openProductModal('${p.id}')" class="font-display font-bold text-base text-white hover:text-gold-400 transition-colors cursor-pointer">${p.title}</h3>
+              <p class="text-xs text-gray-400 mt-1.5 leading-relaxed line-clamp-2">${p.description}</p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-gold-500/15 space-y-3">
+              <div class="flex gap-2" id="options-container-${p.id}">
+                ${optionsHtml}
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span id="price-display-${p.id}" class="font-display font-extrabold text-xl text-gold-400">
+                    $${currentOpt.price.toFixed(2)}
+                  </span>
+                </div>
+                <button type="button" onclick="event.stopPropagation(); window.addToCart('${p.id}', event)" class="btn-gold px-4 py-2 rounded-xl text-xs uppercase tracking-wider flex items-center gap-1.5 active:scale-95">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    window.switchImage = function(productId, index) {
+      activeImages[productId] = index;
+      const p = products.find(prod => prod.id === productId);
+      if (p && p.images) {
+        const imgEl = document.getElementById(`img-${productId}`);
+        if (imgEl) imgEl.src = p.images[index];
+        renderProducts(document.querySelector('.filter-btn.bg-gold-500')?.dataset?.category || 'all');
+      }
+    };
+
+    window.selectProductOption = function(productId, index) {
+      selectedOptions[productId] = index;
+      const product = products.find(p => p.id === productId);
+      const chosen = product.options[index];
+
+      const container = document.getElementById(`options-container-${productId}`);
+      if (container) {
+        const buttons = container.querySelectorAll('.option-pill');
+        buttons.forEach((btn, i) => {
+          if (i === index) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+      }
+
+      const priceEl = document.getElementById(`price-display-${productId}`);
+      if (priceEl) {
+        priceEl.textContent = `$${chosen.price.toFixed(2)}`;
+        priceEl.classList.remove('animate-pricePop');
+        void priceEl.offsetWidth;
+        priceEl.classList.add('animate-pricePop');
+      }
+    };
+
+    window.addToCart = function(productId, event) {
+      const p = products.find(prod => prod.id === productId);
+      const optIndex = selectedOptions[productId] || 0;
+      const selectedOption = p.options[optIndex];
+
+      const itemKey = `${p.id}_${optIndex}`;
+      const existing = cart.find(item => item.key === itemKey);
+      const cartThumb = p.images ? p.images[0] : p.image;
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          key: itemKey,
+          id: p.id,
+          title: p.title,
+          image: cartThumb,
+          optionLabel: selectedOption.label,
+          price: selectedOption.price,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      updateCartUI();
+      triggerConfetti(event);
+      showToast(p.title);
+    };
+
+    function triggerConfetti(e) {
+      if (window.confetti) {
+        const x = e ? e.clientX / window.innerWidth : 0.8;
+        const y = e ? e.clientY / window.innerHeight : 0.8;
+        confetti({
+          particleCount: 25,
+          spread: 50,
+          origin: { x, y },
+          colors: ['#D4AF37', '#FFFFFF', '#F3D27A']
+        });
+      }
+    }
+
+    function showToast(title) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-title').textContent = `✓ ¡${title} agregado!`;
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-32', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2000);
+    }
+
+    function saveCart() {
+      localStorage.setItem('bear_cart', JSON.stringify(cart));
+    }
+
+    function updateCartUI() {
+      const counter = document.getElementById('cart-counter');
+      const drawerCount = document.getElementById('drawer-count');
+      const itemsContainer = document.getElementById('cart-items');
+      const subtotalEl = document.getElementById('cart-subtotal');
+
+      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+      counter.textContent = totalItems;
+      drawerCount.textContent = totalItems;
+
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = `
+          <div class="text-center py-16 text-gray-500">
+            <p class="font-bold text-white text-sm">Tu carrito está vacío</p>
+            <p class="text-xs mt-1 text-gray-500">Agrega un decant o gorra para iniciar tu pedido.</p>
+          </div>
+        `;
+        subtotalEl.textContent = '$0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      itemsContainer.innerHTML = '';
+
+      cart.forEach(item => {
+        subtotal += item.price * item.qty;
+        const div = document.createElement('div');
+        div.className = "p-3 bg-onyx-900 border border-gold-500/25 rounded-xl flex gap-3 items-center";
+        div.innerHTML = `
+          <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover bg-onyx-950 border border-gold-500/20 flex-shrink-0">
           <div class="flex-1 min-w-0">
             <h4 class="font-bold text-white text-xs truncate">${item.title}</h4>
             <p class="text-[11px] text-gold-400 truncate">${item.optionLabel}</p>
