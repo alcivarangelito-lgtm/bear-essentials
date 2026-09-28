@@ -180,8 +180,96 @@
 
   <!-- CATALOG GRID -->
   <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
   </main>
+
+  <!-- PRODUCT DETAIL MODAL (VISTA EN GRANDE) -->
+  <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/90 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Modal Dialog Center Container -->
+    <div class="min-h-full flex items-center justify-center p-3 sm:p-6 relative z-10">
+      <div id="modal-card" class="relative w-full max-w-4xl bg-onyx-950 border border-gold-500/40 rounded-3xl shadow-[0_0_50px_rgba(212,175,55,0.25)] overflow-hidden transform transition-all duration-300 scale-95 opacity-0">
+        
+        <!-- Close Button -->
+        <button id="modal-close-btn" type="button" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/80 border border-gold-500/40 text-gold-300 hover:text-white hover:border-gold-400 flex items-center justify-center text-lg transition-all cursor-pointer shadow-lg backdrop-blur-md">
+          ✕
+        </button>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+          <!-- Gallery Left Side -->
+          <div class="p-5 sm:p-7 flex flex-col justify-between bg-onyx-900/60 border-b md:border-b-0 md:border-r border-gold-500/20">
+            <!-- Main Large Image Container -->
+            <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-onyx-950 border border-gold-500/30 flex items-center justify-center group">
+              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              
+              <span id="modal-badge" class="absolute top-3 left-3 bg-black/85 border border-gold-500/40 text-[10px] px-3 py-1 rounded-full text-gold-400 uppercase font-black tracking-wider backdrop-blur-md shadow-md">
+                EDICIÓN ESPECIAL
+              </span>
+
+              <!-- Prev / Next arrows -->
+              <button id="modal-prev-btn" type="button" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/75 border border-gold-500/30 text-gold-300 hover:text-white hover:scale-110 flex items-center justify-center transition-all cursor-pointer backdrop-blur-md">
+                &#10094;
+              </button>
+              <button id="modal-next-btn" type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/75 border border-gold-500/30 text-gold-300 hover:text-white hover:scale-110 flex items-center justify-center transition-all cursor-pointer backdrop-blur-md">
+                &#10095;
+              </button>
+            </div>
+
+            <!-- Thumbnails Row -->
+            <div id="modal-thumbs" class="flex items-center justify-center gap-3 mt-4 overflow-x-auto py-1"></div>
+          </div>
+
+          <!-- Product Details Right Side -->
+          <div class="p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span id="modal-category" class="text-[11px] font-bold uppercase tracking-widest text-gold-400/90">
+                  COLECCIÓN EXCLUSIVA
+                </span>
+              </div>
+              <h2 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-white leading-tight">
+                Título del Producto
+              </h2>
+              <div class="h-0.5 w-16 bg-gradient-to-r from-gold-400 to-transparent my-3.5"></div>
+              <p id="modal-desc" class="text-sm text-gray-300/90 leading-relaxed font-normal">
+                Descripción detallada del producto.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-gold-500/20 space-y-5">
+              <!-- Options Selector -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">
+                  Selecciona tu opción / tamaño:
+                </label>
+                <div id="modal-options-container" class="flex gap-2.5"></div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-baseline justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider block">Precio Final:</span>
+                  <span id="modal-price" class="font-display font-black text-3xl text-gold-400">$0.00</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                  Agregar al Carrito
+                </button>
+                <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-onyx-900 border border-gold-500/40 text-gold-300 hover:text-white hover:border-gold-400 font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">
+                  Pedir por WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- TOAST NOTIFICATION -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 pointer-events-none transition-all duration-300">
@@ -194,7 +282,7 @@
     </div>
   </div>
 
-  <!-- CART SLIDE-OVER DRAWER (HIDDEN BY DEFAULT WITH DISPLAY:NONE) -->
+  <!-- CART SLIDE-OVER DRAWER -->
   <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-opacity duration-300">
     <div id="cart-backdrop" class="absolute inset-0 bg-black/85 backdrop-blur-md"></div>
 
@@ -238,14 +326,45 @@
 
     const products = [
       {
+        id: 'p_west_drop1',
+        title: "Gorra West – Black Edition (Drop 1)",
+        category: 'caps',
+        badge: 'DROP 1',
+        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual. Destaca por su emblema frontal en forma de "W" con incrustaciones estilo pedrería y apliques tonales en la visera para un look streetwear premium y elegante.',
+        images: [
+          'west gorra drop 1.jpeg',
+          'west gorra 2.jpeg',
+          'west gorra 3.jpeg'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 27.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
+        ]
+      },
+      {
+        id: 'p_dodgers_jp',
+        title: "Gorra '47 Captain Snapback – Dodgers Japanese Edition",
+        category: 'caps',
+        badge: 'JAPANESE DROP',
+        description: 'Gorra de estilo urbano estructurada con diseño bicoloreado, inspirada en la cultura deportiva y el streetwear japonés. Presenta un llamativo bordado frontal en relieve con caracteres en katakana (ドジャース - Dodgers), combinando silueta clásica y estética oriental moderna.',
+        images: [
+          'dodgers 1.jpeg',
+          'dodgers 2.jpeg'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 25.00 }
+        ]
+      },
+      {
         id: 'p_california',
         title: 'Gorra California Special Edition – Black Denim',
         category: 'caps',
         badge: 'SPECIAL EDITION',
-        description: 'Gorra de estilo urbano estructurada en acabado tipo denim negro, con costuras doradas en contraste y parche frontal de cuero grabado en relieve.',
+        description: 'Gorra de estilo urbano estructurada en acabado tipo denim negro, con costuras doradas en contraste y parche frontal de cuero grabado en relieve. Diseñada para brindar comodidad, durabilidad y presencia en el uso diario.',
         images: [
-          'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80',
-          'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=700&q=80'
+          'california 1.jpeg',
+          'california 2.jpeg'
         ],
         options: [
           { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
@@ -288,7 +407,7 @@
     ];
 
     let selectedOptions = {};
-    let activeImages = { p_california: 0 };
+    let activeImages = { p_west_drop1: 0, p_dodgers_jp: 0, p_california: 0 };
     let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
 
     const grid = document.getElementById('product-grid');
@@ -311,7 +430,7 @@
         const optionsHtml = p.options.map((opt, i) => `
           <button 
             type="button"
-            onclick="window.selectProductOption('${p.id}', ${i})"
+            onclick="event.stopPropagation(); window.selectProductOption('${p.id}', ${i})"
             class="option-pill flex-1 py-1.5 px-2 rounded-xl text-center text-xs font-semibold ${i === currentOptIndex ? 'active' : ''}">
             <span class="block font-bold text-[12px]">${opt.label}</span>
             <span class="block text-[9px] opacity-70">${opt.sub}</span>
@@ -321,25 +440,40 @@
         let mediaHtml = '';
         if (p.images && p.images.length > 1) {
           const currImg = p.images[activeImages[p.id] || 0];
+          const dotsHtml = p.images.map((_, idx) => `
+            <button type="button" onclick="event.stopPropagation(); window.switchImage('${p.id}', ${idx})" class="w-2.5 h-2.5 rounded-full ${ (activeImages[p.id] || 0) === idx ? 'bg-gold-400' : 'bg-gray-600' }"></button>
+          `).join('');
+
           mediaHtml = `
-            <div class="relative aspect-square overflow-hidden rounded-xl bg-onyx-950 border border-gold-500/20">
-              <img id="img-${p.id}" src="${currImg}" alt="${p.title}" class="w-full h-full object-cover">
+            <div onclick="window.openProductModal('${p.id}')" class="relative aspect-square overflow-hidden rounded-xl bg-onyx-950 border border-gold-500/20 cursor-pointer group/img">
+              <img id="img-${p.id}" src="${currImg}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105">
               <span class="absolute top-2.5 left-2.5 bg-black/85 border border-gold-500/40 text-[10px] px-2.5 py-0.5 rounded-full text-gold-400 uppercase font-black tracking-wider">
                 ${p.badge || 'Gorra'}
               </span>
-              <div class="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 bg-black/80 border border-gold-500/30 px-2 py-1 rounded-full">
-                <button type="button" onclick="window.switchImage('${p.id}', 0)" class="w-2.5 h-2.5 rounded-full ${ (activeImages[p.id] || 0) === 0 ? 'bg-gold-400' : 'bg-gray-600' }"></button>
-                <button type="button" onclick="window.switchImage('${p.id}', 1)" class="w-2.5 h-2.5 rounded-full ${ (activeImages[p.id] || 0) === 1 ? 'bg-gold-400' : 'bg-gray-600' }"></button>
+              <div class="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-3 py-1.5 rounded-full bg-black/85 border border-gold-400/80 text-[11px] font-bold text-gold-300 shadow-xl flex items-center gap-1.5 backdrop-blur-md transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Ver en grande
+                </span>
+              </div>
+              <div class="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 bg-black/80 border border-gold-500/30 px-2 py-1 rounded-full z-10" onclick="event.stopPropagation()">
+                ${dotsHtml}
               </div>
             </div>
           `;
         } else {
           mediaHtml = `
-            <div class="relative aspect-square overflow-hidden rounded-xl bg-onyx-950 border border-gold-500/20">
-              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
-              <span class="absolute top-2.5 left-2.5 bg-black/80 border border-gold-500/30 text-[10px] px-2 py-0.5 rounded-full text-gold-400 uppercase font-black tracking-wider">
+            <div onclick="window.openProductModal('${p.id}')" class="relative aspect-square overflow-hidden rounded-xl bg-onyx-950 border border-gold-500/20 cursor-pointer group/img">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105">
+              <span class="absolute top-2.5 left-2.5 bg-black/80 border border-gold-500/30 text-[10px] px-2.5 py-0.5 rounded-full text-gold-400 uppercase font-black tracking-wider">
                 ${p.category === 'decants' ? 'Decant' : 'Headwear'}
               </span>
+              <div class="absolute inset-0 bg-black/35 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-3 py-1.5 rounded-full bg-black/85 border border-gold-400/80 text-[11px] font-bold text-gold-300 shadow-xl flex items-center gap-1.5 backdrop-blur-md transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Ver en grande
+                </span>
+              </div>
             </div>
           `;
         }
@@ -348,7 +482,7 @@
           ${mediaHtml}
           <div class="mt-4 flex-1 flex flex-col justify-between">
             <div>
-              <h3 class="font-display font-bold text-base text-white">${p.title}</h3>
+              <h3 onclick="window.openProductModal('${p.id}')" class="font-display font-bold text-base text-white hover:text-gold-400 transition-colors cursor-pointer">${p.title}</h3>
               <p class="text-xs text-gray-400 mt-1.5 leading-relaxed line-clamp-2">${p.description}</p>
             </div>
 
@@ -363,7 +497,7 @@
                     $${currentOpt.price.toFixed(2)}
                   </span>
                 </div>
-                <button type="button" onclick="window.addToCart('${p.id}', event)" class="btn-gold px-4 py-2 rounded-xl text-xs uppercase tracking-wider flex items-center gap-1.5 active:scale-95">
+                <button type="button" onclick="event.stopPropagation(); window.addToCart('${p.id}', event)" class="btn-gold px-4 py-2 rounded-xl text-xs uppercase tracking-wider flex items-center gap-1.5 active:scale-95">
                   <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                   Agregar
                 </button>
@@ -583,6 +717,180 @@
 
       const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
+    });
+
+    // MODAL STATE & FUNCTIONS
+    let currentModalProductId = null;
+    let currentModalImageIndex = 0;
+
+    window.openProductModal = function(productId, imageIndex = 0) {
+      const p = products.find(prod => prod.id === productId);
+      if (!p) return;
+
+      currentModalProductId = productId;
+      currentModalImageIndex = imageIndex;
+
+      const modal = document.getElementById('product-modal');
+      const card = document.getElementById('modal-card');
+      const titleEl = document.getElementById('modal-title');
+      const descEl = document.getElementById('modal-desc');
+      const badgeEl = document.getElementById('modal-badge');
+      const categoryEl = document.getElementById('modal-category');
+      const optionsContainer = document.getElementById('modal-options-container');
+
+      titleEl.textContent = p.title;
+      descEl.textContent = p.description;
+      badgeEl.textContent = p.badge || (p.category === 'caps' ? 'Gorra Exclusiva' : 'Decant Original');
+      categoryEl.textContent = p.category === 'caps' ? 'Streetwear Headwear • Colección Exclusiva' : 'Perfumería Original • Decant Seleccionado';
+
+      if (selectedOptions[p.id] === undefined) selectedOptions[p.id] = 0;
+      const currentOptIdx = selectedOptions[p.id];
+
+      optionsContainer.innerHTML = p.options.map((opt, i) => `
+        <button 
+          type="button" 
+          onclick="window.selectModalOption('${p.id}', ${i})"
+          class="option-pill flex-1 py-2 px-3 rounded-xl text-center text-xs font-semibold ${i === currentOptIdx ? 'active' : ''}">
+          <span class="block font-bold text-xs">${opt.label}</span>
+          <span class="block text-[10px] opacity-75">${opt.sub}</span>
+        </button>
+      `).join('');
+
+      updateModalPrice(p);
+      updateModalGallery(p);
+
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    };
+
+    window.closeProductModal = function() {
+      const modal = document.getElementById('product-modal');
+      const card = document.getElementById('modal-card');
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 250);
+    };
+
+    window.selectModalOption = function(productId, index) {
+      window.selectProductOption(productId, index);
+      const p = products.find(prod => prod.id === productId);
+      if (p) {
+        const container = document.getElementById('modal-options-container');
+        const btns = container.querySelectorAll('.option-pill');
+        btns.forEach((btn, i) => {
+          if (i === index) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+        updateModalPrice(p);
+      }
+    };
+
+    function updateModalPrice(product) {
+      const optIdx = selectedOptions[product.id] || 0;
+      const opt = product.options[optIdx];
+      const priceEl = document.getElementById('modal-price');
+      priceEl.textContent = `$${opt.price.toFixed(2)}`;
+      priceEl.classList.remove('animate-pricePop');
+      void priceEl.offsetWidth;
+      priceEl.classList.add('animate-pricePop');
+    }
+
+    function updateModalGallery(product) {
+      const mainImg = document.getElementById('modal-main-img');
+      const thumbsContainer = document.getElementById('modal-thumbs');
+      const prevBtn = document.getElementById('modal-prev-btn');
+      const nextBtn = document.getElementById('modal-next-btn');
+
+      const imgs = product.images || [product.image];
+
+      if (currentModalImageIndex >= imgs.length) currentModalImageIndex = 0;
+      if (currentModalImageIndex < 0) currentModalImageIndex = imgs.length - 1;
+
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = imgs[currentModalImageIndex];
+        mainImg.style.opacity = '1';
+      }, 80);
+
+      if (imgs.length > 1) {
+        prevBtn.classList.remove('hidden');
+        nextBtn.classList.remove('hidden');
+        thumbsContainer.classList.remove('hidden');
+
+        thumbsContainer.innerHTML = imgs.map((imgSrc, idx) => `
+          <button 
+            type="button" 
+            onclick="window.setModalImage(${idx})"
+            class="w-14 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer bg-onyx-950 flex-shrink-0 ${idx === currentModalImageIndex ? 'border-gold-400 shadow-[0_0_12px_rgba(212,175,55,0.5)] scale-105' : 'border-gold-500/25 opacity-60 hover:opacity-100'}">
+            <img src="${imgSrc}" class="w-full h-full object-cover">
+          </button>
+        `).join('');
+      } else {
+        prevBtn.classList.add('hidden');
+        nextBtn.classList.add('hidden');
+        thumbsContainer.classList.add('hidden');
+      }
+    }
+
+    window.setModalImage = function(index) {
+      const p = products.find(prod => prod.id === currentModalProductId);
+      if (p) {
+        currentModalImageIndex = index;
+        updateModalGallery(p);
+      }
+    };
+
+    window.modalNextImage = function() {
+      const p = products.find(prod => prod.id === currentModalProductId);
+      if (p) {
+        const imgs = p.images || [p.image];
+        currentModalImageIndex = (currentModalImageIndex + 1) % imgs.length;
+        updateModalGallery(p);
+      }
+    };
+
+    window.modalPrevImage = function() {
+      const p = products.find(prod => prod.id === currentModalProductId);
+      if (p) {
+        const imgs = p.images || [p.image];
+        currentModalImageIndex = (currentModalImageIndex - 1 + imgs.length) % imgs.length;
+        updateModalGallery(p);
+      }
+    };
+
+    document.getElementById('modal-close-btn').addEventListener('click', window.closeProductModal);
+    document.getElementById('modal-backdrop').addEventListener('click', window.closeProductModal);
+    document.getElementById('modal-next-btn').addEventListener('click', window.modalNextImage);
+    document.getElementById('modal-prev-btn').addEventListener('click', window.modalPrevImage);
+
+    document.getElementById('modal-add-btn').addEventListener('click', (e) => {
+      if (currentModalProductId) {
+        window.addToCart(currentModalProductId, e);
+      }
+    });
+
+    document.getElementById('modal-direct-whatsapp').addEventListener('click', () => {
+      if (!currentModalProductId) return;
+      const p = products.find(prod => prod.id === currentModalProductId);
+      const optIdx = selectedOptions[p.id] || 0;
+      const opt = p.options[optIdx];
+      const message = `👋 ¡Hola Bear Essential! Me interesa comprar directamente:\n\n*${p.title}*\n- Opción: ${opt.label} (${opt.sub})\n- Precio: $${opt.price.toFixed(2)}\n\n¿Tienen disponibilidad para coordinar el envío? ¡Muchas gracias!`;
+      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.closeProductModal();
+        closeCart();
+      }
     });
 
     renderProducts();
