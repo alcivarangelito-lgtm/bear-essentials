@@ -109,14 +109,14 @@
       transform: translateY(-2px);
     }
 
-    /* Línea de tiempo interactiva */
+    /* Línea de tiempo interactiva en modo oscuro */
     .timeline-line {
       position: absolute;
       left: 50%;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: linear-gradient(to bottom, #D4AF37, #E5E5E5);
+      background: linear-gradient(to bottom, #D4AF37, #333333);
       transform: translateX(-50%);
     }
     @media (max-width: 768px) {
@@ -136,7 +136,7 @@
     <span>🔥 Decants 100% Originales & Gorras Exclusivas | Envíos a todo el país</span>
   </div>
 
-  <!-- NAVBAR NEGRO CON DORADO (ESTILO REFERENCIA) -->
+  <!-- NAVBAR NEGRO CON DORADO -->
   <nav class="sticky top-0 z-40 glass-nav-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       
@@ -162,12 +162,10 @@
         </div>
       </div>
 
-      <!-- Logo Central -->
+      <!-- Logo Central (Usa tu imagen logo-bear.jpg) -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-black border border-gold-500/60 flex items-center justify-center overflow-hidden text-gold-400 shadow-md">
-          <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C8.5 2 6 4.5 6 7.5c0 1.2.4 2.3 1 3.2C4.5 11.8 3 14.2 3 17c0 3.3 2.7 6 6 6h6c3.3 0 6-2.7 6-6 0-2.8-1.5-5.2-4-6.3.6-.9 1-2 1-3.2C18 4.5 15.5 2 12 2zm-5 5.5C7 5.6 8.6 4 10.5 4h3C15.4 4 17 5.6 17 7.5c0 .9-.4 1.8-1 2.4-.7.7-1.7 1.1-2.7 1.1h-2.6c-1 0-2-.4-2.7-1.1-.6-.6-1-1.5-1-2.4zm10 9.5c0 2.2-1.8 4-4 4H9c-2.2 0-4-1.8-4-4 0-2.2 1.8-4 4-4h6c2.2 0 4 1.8 4 4z"/>
-          </svg>
+        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-black border border-gold-500/60 flex items-center justify-center overflow-hidden shadow-md">
+          <img src="logo-bear.jpg" alt="Logo Bear Essential" class="w-full h-full object-cover">
         </div>
       </a>
 
@@ -233,7 +231,7 @@
             Tu navegador no soporta videos.
           </video>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
-            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Drop 1 • $27.00</span>
+            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Drop 1 • Desde $28.00</span>
             <h3 class="text-white font-display font-bold text-xl leading-snug">Gorra West – Black Edition</h3>
             <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
               COMPRAR ➔
@@ -248,7 +246,7 @@
             Tu navegador no soporta videos.
           </video>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
-            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Japanese Drop • $22.00</span>
+            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Japanese Drop • Desde $22.00</span>
             <h3 class="text-white font-display font-bold text-xl leading-snug">Dodgers Japanese Edition</h3>
             <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
               COMPRAR ➔
@@ -263,7 +261,7 @@
             Tu navegador no soporta videos.
           </video>
           <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
-            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Special Edition • $22.00</span>
+            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Special Edition • Desde $22.00</span>
             <h3 class="text-white font-display font-bold text-xl leading-snug">California Black Denim</h3>
             <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
               COMPRAR ➔
@@ -286,49 +284,49 @@
     <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12"></div>
   </main>
 
-  <!-- SECCIÓN: NUESTRA HISTORIA (LÍNEA DE TIEMPO INTERACTIVA) -->
-  <section id="historia" class="py-20 bg-gray-50 border-t border-gray-200">
+  <!-- SECCIÓN: NUESTRA HISTORIA (LÍNEA DE TIEMPO INTERACTIVA EN NEGRO Y DORADO) -->
+  <section id="historia" class="py-24 bg-black border-t border-gold-500/30 text-white">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
-        <span class="text-xs font-bold text-gold-600 uppercase tracking-[0.3em]">Legado & Evolución</span>
-        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-gray-900 mt-2">NUESTRA HISTORIA</h2>
+        <span class="text-xs font-bold text-gold-400 uppercase tracking-[0.3em]">Legado & Evolución</span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white mt-2 uppercase tracking-wide">Nuestra Historia</h2>
         <div class="h-0.5 w-20 bg-gold-500 mx-auto mt-4"></div>
       </div>
 
       <div class="relative">
-        <!-- Línea central de tiempo -->
+        <!-- Línea central de tiempo dorada -->
         <div class="timeline-line"></div>
 
         <!-- Hito 1 (1/10/2026) -->
-        <div class="relative mb-12 md:flex items-center w-full">
+        <div class="relative mb-14 md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gold-600 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">1/10/2026</span>
-            <h3 class="font-display font-bold text-xl text-gray-900 mt-2">Nacimiento de Bear Essential</h3>
-            <p class="text-sm text-gray-600 mt-1">Nace Bear Essential con la misión de fusionar el streetwear de alta gama y la alta perfumería en Ecuador.</p>
+            <span class="text-xs font-bold text-black uppercase tracking-widest bg-gold-400 px-3.5 py-1 rounded-full">1/10/2026</span>
+            <h3 class="font-display font-bold text-xl text-white mt-2">Nacimiento de Bear Essential</h3>
+            <p class="text-sm text-gray-400 mt-1 leading-relaxed">Nace Bear Essential con la misión de fusionar el streetwear de alta gama y la alta perfumería en Ecuador.</p>
           </div>
-          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-white shadow"></div>
+          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-400 border-4 border-black shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
           <div class="md:w-1/2 md:pl-12"></div>
         </div>
 
         <!-- Hito 2 (Coming Soon) -->
-        <div class="relative mb-12 md:flex items-center w-full">
+        <div class="relative mb-14 md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12"></div>
-          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-white shadow"></div>
+          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-400 border-4 border-black shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
           <div class="md:w-1/2 md:pl-12 mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest bg-gray-200 px-3 py-1 rounded-full">Próximamente</span>
-            <h3 class="font-display font-bold text-xl text-gray-500 mt-2">Coming Soon</h3>
-            <p class="text-sm text-gray-400 mt-1">Nuevos lanzamientos y colecciones exclusivas en camino.</p>
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest bg-neutral-900 border border-gold-500/30 px-3.5 py-1 rounded-full">Próximamente</span>
+            <h3 class="font-display font-bold text-xl text-white mt-2">Coming Soon</h3>
+            <p class="text-sm text-gray-400 mt-1 leading-relaxed">Nuevos lanzamientos y colecciones exclusivas en camino.</p>
           </div>
         </div>
 
         <!-- Hito 3 (Coming Soon) -->
         <div class="relative md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest bg-gray-200 px-3 py-1 rounded-full">Próximamente</span>
-            <h3 class="font-display font-bold text-xl text-gray-500 mt-2">Coming Soon</h3>
-            <p class="text-sm text-gray-400 mt-1">Expansión internacional y alianzas de alta gama.</p>
+            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest bg-neutral-900 border border-gold-500/30 px-3.5 py-1 rounded-full">Próximamente</span>
+            <h3 class="font-display font-bold text-xl text-white mt-2">Coming Soon</h3>
+            <p class="text-sm text-gray-400 mt-1 leading-relaxed">Expansión internacional y alianzas de alta gama.</p>
           </div>
-          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-white shadow"></div>
+          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-400 border-4 border-black shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
           <div class="md:w-1/2 md:pl-12"></div>
         </div>
 
@@ -484,22 +482,22 @@
 
     const products = [
       {
-        id: 'p_california_main',
+        id: 'p_california',
         title: "Gorra California – Principal Edition",
         category: 'caps',
         badge: 'PRINCIPAL',
         description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
         images: [
-          'california-principal.jpg',
+          'california -principal.jpg',
           'california-1.jpg.jpg'
         ],
         options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 25.00 },
-          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
+          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
+          { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 25.00 }
         ]
       },
       {
-        id: 'p_dodgers_main',
+        id: 'p_dodgers_jp',
         title: "Gorra Dodgers – Principal Edition",
         category: 'caps',
         badge: 'PRINCIPAL',
@@ -509,13 +507,13 @@
           'dodgers-1.jpg.jpeg'
         ],
         options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 24.00 },
-          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 27.00 }
+          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
+          { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 25.00 }
         ]
       },
       {
         id: 'p_west_drop1',
-        title: "Gorra West – Black Edition (Drop 1)",
+        title: "Gorra Westcol – Black Edition",
         category: 'caps',
         badge: 'DROP 1',
         description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
@@ -525,8 +523,8 @@
           'west-3.jpg.jpeg'
         ],
         options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 27.00 },
-          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
+          { label: 'Solo Gorra', sub: 'En solitario', price: 28.00 },
+          { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 30.00 }
         ]
       },
       {
@@ -565,7 +563,7 @@
     ];
 
     let selectedOptions = {};
-    let activeImages = { p_california_main: 0, p_dodgers_main: 0, p_west_drop1: 0 };
+    let activeImages = { p_california: 0, p_dodgers_jp: 0, p_west_drop1: 0 };
     let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
 
     const grid = document.getElementById('product-grid');
@@ -993,6 +991,8 @@
       const optIdx = selectedOptions[p.id] || 0;
       const opt = p.options[optIdx];
       const message = `👋 ¡Hola Bear Essential! Me interesa comprar directamente:\n\n*${p.title}*\n- Opción: ${opt.label} (${opt.sub})\n- Precio: $${opt.price.toFixed(2)}\n\n¿Tienen disponibilidad para coordinar el envío? ¡Muchas gracias!`;
+      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
     });
 
     document.addEventListener('keydown', (e) => {
