@@ -47,10 +47,12 @@
       color: #111111;
     }
 
-    .glass-nav {
-      background: rgba(255, 255, 255, 0.95);
+    /* Barra de navegación en negro con dorado */
+    .glass-nav-dark {
+      background: rgba(10, 10, 10, 0.95);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid #E5E5E5;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      color: #FFFFFF;
     }
 
     @keyframes floatAnimation {
@@ -129,40 +131,40 @@
 <body class="min-h-screen flex flex-col font-sans antialiased selection:bg-gold-300 selection:text-black">
 
   <!-- TOP BANNER -->
-  <div class="border-b border-gold-500/20 bg-amber-50/60 py-2 px-4 text-center text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 text-amber-800">
-    <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-500 animate-ping"></span>
+  <div class="border-b border-gold-500/25 bg-black py-2 px-4 text-center text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 text-gold-400">
+    <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-400 animate-ping"></span>
     <span>🔥 Decants 100% Originales & Gorras Exclusivas | Envíos a todo el país</span>
   </div>
 
-  <!-- NAVBAR OPTIMIZADA CON MENÚ MÓVIL (HAMBURGUESA) -->
-  <nav class="sticky top-0 z-40 glass-nav">
+  <!-- NAVBAR NEGRO CON DORADO (ESTILO REFERENCIA) -->
+  <nav class="sticky top-0 z-40 glass-nav-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       
       <!-- Botón Menú Móvil (Hamburguesa) -->
-      <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-800 hover:text-gold-600 focus:outline-none cursor-pointer">
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-white hover:text-gold-400 focus:outline-none cursor-pointer">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
 
       <!-- Links Izquierda (Escritorio) -->
-      <div class="hidden lg:flex flex-col gap-1 text-[11px] font-bold tracking-widest uppercase text-gray-700">
+      <div class="hidden lg:flex flex-col gap-1 text-[11px] font-bold tracking-widest uppercase text-gray-300">
         <div class="flex gap-6">
-          <a href="#" class="hover:text-gold-600 transition-colors">FAMILIA</a>
-          <a href="#" class="hover:text-gold-600 transition-colors">EXCLUSIVIDAD</a>
-          <a href="#" class="hover:text-gold-600 transition-colors">CONTACTO</a>
-          <a href="#" class="hover:text-gold-600 transition-colors">INFO</a>
-          <a href="#catalogo" class="hover:text-gold-600 transition-colors">TODOS LOS PRODUCTOS</a>
+          <a href="#" class="hover:text-gold-400 transition-colors">FAMILIA</a>
+          <a href="#" class="hover:text-gold-400 transition-colors">EXCLUSIVIDAD</a>
+          <a href="#" class="hover:text-gold-400 transition-colors">CONTACTO</a>
+          <a href="#" class="hover:text-gold-400 transition-colors">INFO</a>
+          <a href="#catalogo" class="hover:text-gold-400 transition-colors">TODOS LOS PRODUCTOS</a>
         </div>
-        <div class="flex gap-6 text-[10px] text-gray-500 font-semibold items-center">
-          <a href="#historia" class="hover:text-gold-600 transition-colors">NUESTRA HISTORIA</a>
-          <a href="#" class="text-gold-600 hover:underline flex items-center gap-1">PRENDAS GRATIS ✦</a>
+        <div class="flex gap-6 text-[10px] text-gray-400 font-semibold items-center">
+          <a href="#historia" class="hover:text-gold-400 transition-colors">NUESTRA HISTORIA</a>
+          <a href="#" class="text-gold-400 hover:underline flex items-center gap-1">PRENDAS GRATIS ✦</a>
         </div>
       </div>
 
       <!-- Logo Central -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white border border-gold-500/40 flex items-center justify-center overflow-hidden text-gold-500 shadow-md">
+        <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-black border border-gold-500/60 flex items-center justify-center overflow-hidden text-gold-400 shadow-md">
           <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 2C8.5 2 6 4.5 6 7.5c0 1.2.4 2.3 1 3.2C4.5 11.8 3 14.2 3 17c0 3.3 2.7 6 6 6h6c3.3 0 6-2.7 6-6 0-2.8-1.5-5.2-4-6.3.6-.9 1-2 1-3.2C18 4.5 15.5 2 12 2zm-5 5.5C7 5.6 8.6 4 10.5 4h3C15.4 4 17 5.6 17 7.5c0 .9-.4 1.8-1 2.4-.7.7-1.7 1.1-2.7 1.1h-2.6c-1 0-2-.4-2.7-1.1-.6-.6-1-1.5-1-2.4zm10 9.5c0 2.2-1.8 4-4 4H9c-2.2 0-4-1.8-4-4 0-2.2 1.8-4 4-4h6c2.2 0 4 1.8 4 4z"/>
           </svg>
@@ -170,19 +172,19 @@
       </a>
 
       <!-- Controles Derecha -->
-      <div class="flex items-center gap-2 sm:gap-5 text-xs font-semibold text-gray-700">
+      <div class="flex items-center gap-2 sm:gap-5 text-xs font-semibold text-gray-300">
         <!-- Selector País -->
-        <div class="hidden md:flex items-center gap-1.5 cursor-pointer hover:text-gold-600 transition-colors">
+        <div class="hidden md:flex items-center gap-1.5 cursor-pointer hover:text-gold-400 transition-colors">
           <span>🇪🇨</span>
           <span class="tracking-wider">ECUADOR (USD $)</span>
         </div>
 
         <!-- Carrito Trigger -->
-        <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 border border-gold-500/30 text-gray-800 transition-all active:scale-95 cursor-pointer">
+        <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-gold-500/40 text-gold-400 transition-all active:scale-95 cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
-          <span id="cart-counter" class="absolute -top-1.5 -right-1.5 bg-gradient-to-r from-gold-400 to-gold-600 text-white text-xs font-black rounded-full h-5 min-w-[20px] px-1 flex items-center justify-center shadow-lg shadow-gold-500/30">0</span>
+          <span id="cart-counter" class="absolute -top-1.5 -right-1.5 bg-gradient-to-r from-gold-400 to-gold-600 text-black text-xs font-black rounded-full h-5 min-w-[20px] px-1 flex items-center justify-center shadow-lg shadow-gold-500/30">0</span>
         </button>
       </div>
 
@@ -190,7 +192,7 @@
   </nav>
 
   <!-- MENÚ MÓVIL DESPLEGABLE -->
-  <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex flex-col p-6 text-white lg:hidden">
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex flex-col p-6 text-white lg:hidden">
     <div class="flex justify-between items-center mb-8 border-b border-gold-500/30 pb-4">
       <span class="font-display font-black text-lg tracking-wider text-gold-400">BEAR ESSENTIAL</span>
       <button id="close-mobile-menu" class="text-2xl text-gray-300 hover:text-white cursor-pointer">✕</button>
@@ -297,34 +299,34 @@
         <!-- Línea central de tiempo -->
         <div class="timeline-line"></div>
 
-        <!-- Hito 1 -->
+        <!-- Hito 1 (1/10/2026) -->
         <div class="relative mb-12 md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gold-600 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Inicios</span>
-            <h3 class="font-display font-bold text-xl text-gray-900 mt-2">La visión en Manta</h3>
+            <span class="text-xs font-bold text-gold-600 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">1/10/2026</span>
+            <h3 class="font-display font-bold text-xl text-gray-900 mt-2">Nacimiento de Bear Essential</h3>
             <p class="text-sm text-gray-600 mt-1">Nace Bear Essential con la misión de fusionar el streetwear de alta gama y la alta perfumería en Ecuador.</p>
           </div>
           <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-white shadow"></div>
           <div class="md:w-1/2 md:pl-12"></div>
         </div>
 
-        <!-- Hito 2 -->
+        <!-- Hito 2 (Coming Soon) -->
         <div class="relative mb-12 md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12"></div>
           <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-white shadow"></div>
           <div class="md:w-1/2 md:pl-12 mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gold-600 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Primer Drop</span>
-            <h3 class="font-display font-bold text-xl text-gray-900 mt-2">Colección Headwear & Drops</h3>
-            <p class="text-sm text-gray-600 mt-1">Lanzamiento oficial de las gorras exclusivas con acabados nobuks y detalles en pedrería.</p>
+            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest bg-gray-200 px-3 py-1 rounded-full">Próximamente</span>
+            <h3 class="font-display font-bold text-xl text-gray-500 mt-2">Coming Soon</h3>
+            <p class="text-sm text-gray-400 mt-1">Nuevos lanzamientos y colecciones exclusivas en camino.</p>
           </div>
         </div>
 
-        <!-- Hito 3 -->
+        <!-- Hito 3 (Coming Soon) -->
         <div class="relative md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gold-600 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Expansión</span>
-            <h3 class="font-display font-bold text-xl text-gray-900 mt-2">Aromas Selectos & Decants</h3>
-            <p class="text-sm text-gray-600 mt-1">Incorporación de decants de diseñador y nicho originales, definiendo el concepto: "Tu estilo, tu esencia".</p>
+            <span class="text-xs font-bold text-gray-500 uppercase tracking-widest bg-gray-200 px-3 py-1 rounded-full">Próximamente</span>
+            <h3 class="font-display font-bold text-xl text-gray-500 mt-2">Coming Soon</h3>
+            <p class="text-sm text-gray-400 mt-1">Expansión internacional y alianzas de alta gama.</p>
           </div>
           <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-500 border-4 border-white shadow"></div>
           <div class="md:w-1/2 md:pl-12"></div>
@@ -482,11 +484,41 @@
 
     const products = [
       {
+        id: 'p_california_main',
+        title: "Gorra California – Principal Edition",
+        category: 'caps',
+        badge: 'PRINCIPAL',
+        description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
+        images: [
+          'california-principal.jpg',
+          'california-1.jpg.jpg'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 25.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
+        ]
+      },
+      {
+        id: 'p_dodgers_main',
+        title: "Gorra Dodgers – Principal Edition",
+        category: 'caps',
+        badge: 'PRINCIPAL',
+        description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable.',
+        images: [
+          'dodgers-principal.jpg',
+          'dodgers-1.jpg.jpeg'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 24.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 27.00 }
+        ]
+      },
+      {
         id: 'p_west_drop1',
         title: "Gorra West – Black Edition (Drop 1)",
         category: 'caps',
         badge: 'DROP 1',
-        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual. Destaca por su emblema frontal en forma de "W" con incrustaciones estilo pedrería y apliques tonales en la visera para un look streetwear premium y elegante.',
+        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
         images: [
           'west-1.jpg.jpg',
           'west-2.jpg.jpeg',
@@ -495,36 +527,6 @@
         options: [
           { label: 'Solo Gorra', sub: 'En solitario', price: 27.00 },
           { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
-        ]
-      },
-      {
-        id: 'p_dodgers_jp',
-        title: "Gorra '47 Captain Snapback – Dodgers Japanese Edition",
-        category: 'caps',
-        badge: 'JAPANESE DROP',
-        description: 'Gorra de estilo urbano estructurada con diseño bicoloreado, inspirada en la cultura deportiva y el streetwear japonés. Presenta un llamativo bordado frontal en relieve con caracteres en katakana (ドジャース - Dodgers), combinando silueta clásica y estética oriental moderna.',
-        images: [
-          'dodgers-1.jpg.jpeg',
-          'dodgers-2.jpg.jpeg'
-        ],
-        options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
-          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 25.00 }
-        ]
-      },
-      {
-        id: 'p_california',
-        title: 'Gorra California Special Edition – Black Denim',
-        category: 'caps',
-        badge: 'SPECIAL EDITION',
-        description: 'Gorra de estilo urbano estructurada en acabado tipo denim negro, con costuras doradas en contraste y parche frontal de cuero grabado en relieve. Diseñada para brindar comodidad, durabilidad y presencia en el uso diario.',
-        images: [
-          'california-1.jpg.jpg',
-          'california-2.jpg.jpg'
-        ],
-        options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
-          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 25.00 }
         ]
       },
       {
@@ -563,7 +565,7 @@
     ];
 
     let selectedOptions = {};
-    let activeImages = { p_west_drop1: 0, p_dodgers_jp: 0, p_california: 0 };
+    let activeImages = { p_california_main: 0, p_dodgers_main: 0, p_west_drop1: 0 };
     let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
 
     const grid = document.getElementById('product-grid');
@@ -587,7 +589,7 @@
         let mainImg = p.images ? p.images[0] : p.image;
 
         card.innerHTML = `
-          <div class="relative w-full aspect-[4/5] bg-[#F4F4F4] overflow-hidden mb-4 rounded-xl">
+          <div class="relative w-full aspect-[4/5] bg-[#F4F4F4] overflow-hidden mb-4 rounded-xl shadow-sm">
             <img src="${mainImg}" alt="${p.title}" class="product-img w-full h-full object-cover transition-transform duration-500">
             ${p.badge ? `<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">${p.badge}</span>` : ''}
           </div>
@@ -991,8 +993,6 @@
       const optIdx = selectedOptions[p.id] || 0;
       const opt = p.options[optIdx];
       const message = `👋 ¡Hola Bear Essential! Me interesa comprar directamente:\n\n*${p.title}*\n- Opción: ${opt.label} (${opt.sub})\n- Precio: $${opt.price.toFixed(2)}\n\n¿Tienen disponibilidad para coordinar el envío? ¡Muchas gracias!`;
-      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
     });
 
     document.addEventListener('keydown', (e) => {
