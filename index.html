@@ -1,156 +1,936 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bear Essential | Exclusividad</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bear Essential | Luxury Streetwear & Decants</title>
+  <!-- Google Fonts & Tailwind CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#D4AF37',
+              400: '#C5A028',
+              500: '#B8860B',
+              600: '#9A7007',
+              glow: 'rgba(212, 175, 55, 0.25)'
+            },
+            luxury: {
+              bg: '#FFFFFF',
+              card: '#FAFAFA',
+              text: '#111111',
+              muted: '#666666',
+              border: '#E5E5E5',
+              goldBorder: '#D4AF37'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            luxury: ['Cinzel', 'serif']
+          }
         }
-        body {
-            background-color: #ffffff;
-            color: #1a1a1a;
-        }
-        /* Navbar */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #f0f0f0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-links, .nav-icons {
-            display: flex;
-            gap: 25px;
-            font-size: 13px;
-            letter-spacing: 2px;
-            color: #333;
-        }
-        .logo {
-            font-weight: bold;
-            letter-spacing: 3px;
-            color: #d4af37; /* Dorado */
-        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FFFFFF;
+      color: #111111;
+    }
 
-        /* Hero Section de 3 columnas */
-        .hero-container {
-            display: flex;
-            height: 100vh;
-            padding-top: 70px; /* Espacio para el navbar fijo */
-        }
-        .hero-col {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            border-right: 2px solid #d4af37; /* Línea divisoria dorada */
-        }
-        .hero-col:last-child {
-            border-right: none;
-        }
-        .hero-col img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(0.9);
-            transition: transform 0.5s ease;
-        }
-        .hero-col:hover img {
-            transform: scale(1.03);
-        }
-        
-        /* Contenido superpuesto */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.25); /* Oscurece sutilmente para Resaltar el texto */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .hero-overlay h2 {
-            color: #ffffff;
-            font-size: 2.5rem;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .btn-gold {
-            background-color: transparent;
-            color: #ffffff;
-            border: 2px solid #d4af37;
-            padding: 12px 30px;
-            font-size: 12px;
-            letter-spacing: 3px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: uppercase;
-        }
-        .btn-gold:hover {
-            background-color: #d4af37;
-            color: #ffffff;
-        }
-    </style>
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid #E5E5E5;
+    }
+
+    .luxury-card {
+      background: #FAFAFA;
+      border: 1px solid #E5E5E5;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .luxury-card:hover {
+      border-color: #D4AF37;
+      box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.15);
+      transform: translateY(-3px);
+    }
+
+    .option-pill {
+      transition: all 0.25s ease;
+      border: 1px solid #E5E5E5;
+      background: #FFFFFF;
+      color: #666666;
+      cursor: pointer;
+    }
+    .option-pill:hover {
+      border-color: #D4AF37;
+      color: #111111;
+    }
+    .option-pill.active {
+      background: rgba(212, 175, 55, 0.1);
+      border-color: #D4AF37;
+      color: #9A7007;
+      font-weight: 700;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #F3D27A 0%, #D4AF37 50%, #B8860B 100%);
+      color: #FFFFFF;
+      font-weight: 800;
+      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.25);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+    .btn-gold:hover {
+      box-shadow: 0 6px 24px rgba(212, 175, 55, 0.4);
+      transform: translateY(-1px);
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #FFFFFF; }
+    ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 9999px; }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col font-sans antialiased selection:bg-gold-300 selection:text-black">
 
-    <!-- Barra de Navegación -->
-    <nav>
-        <div class="nav-links">
-            <span>INICIO</span>
-            <span>GORRAS</span>
-            <span>PERFUMES</span>
-        </div>
-        <div class="logo">BEAR ESSENTIAL</div>
-        <div class="nav-icons">
-            <span>ES</span>
-            <span>BUScar</span>
-            <span>CARRITO</span>
-        </div>
-    </nav>
+  <!-- TOP BANNER -->
+  <div class="border-b border-gold-500/20 bg-amber-50/60 py-2 px-4 text-center text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2 text-amber-800">
+    <span class="inline-block w-1.5 h-1.5 rounded-full bg-gold-500 animate-ping"></span>
+    <span>🔥 Decants 100% Originales & Gorras Exclusivas | Envíos a todo el país</span>
+  </div>
 
-    <!-- Sección Principal de 3 Columnas -->
-    <section class="hero-container">
-        <!-- Columna 1 -->
-        <div class="hero-col">
-            <img src="URL_IMAGEN_1.jpg" alt="Drop 1">
-            <div class="hero-overlay">
-                <h2>BEAR ESSENTIAL</h2>
-                <a href="#comprar" class="btn-gold">COMPRAR</a>
-            </div>
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-40 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-white border border-gold-500/40 flex items-center justify-center overflow-hidden text-gold-500 shadow-md">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C8.5 2 6 4.5 6 7.5c0 1.2.4 2.3 1 3.2C4.5 11.8 3 14.2 3 17c0 3.3 2.7 6 6 6h6c3.3 0 6-2.7 6-6 0-2.8-1.5-5.2-4-6.3.6-.9 1-2 1-3.2C18 4.5 15.5 2 12 2zm-5 5.5C7 5.6 8.6 4 10.5 4h3C15.4 4 17 5.6 17 7.5c0 .9-.4 1.8-1 2.4-.7.7-1.7 1.1-2.7 1.1h-2.6c-1 0-2-.4-2.7-1.1-.6-.6-1-1.5-1-2.4zm10 9.5c0 2.2-1.8 4-4 4H9c-2.2 0-4-1.8-4-4 0-2.2 1.8-4 4-4h6c2.2 0 4 1.8 4 4z"/>
+          </svg>
         </div>
-        <!-- Columna 2 -->
-        <div class="hero-col">
-            <img src="URL_IMAGEN_2.jpg" alt="Drop 2">
-            <div class="hero-overlay">
-                <h2>NEW DROP</h2>
-                <a href="#comprar" class="btn-gold">COMPRAR</a>
-            </div>
+        <div>
+          <span class="font-display font-black text-xl tracking-wider text-gray-900 block">BEAR ESSENTIAL</span>
+          <span class="text-[10px] tracking-[0.25em] text-gold-500 uppercase font-semibold">Streetwear & Decants</span>
         </div>
-        <!-- Columna 3 -->
-        <div class="hero-col">
-            <img src="URL_IMAGEN_3.jpg" alt="Drop 3">
-            <div class="hero-overlay">
-                <h2>EXCLUSIVIDAD</h2>
-                <a href="#comprar" class="btn-gold">COMPRAR</a>
-            </div>
-        </div>
-    </section>
+      </a>
 
+      <!-- CART TRIGGER -->
+      <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 border border-gold-500/30 text-gray-800 transition-all active:scale-95 cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span id="cart-counter" class="absolute -top-1.5 -right-1.5 bg-gradient-to-r from-gold-400 to-gold-600 text-white text-xs font-black rounded-full h-5 min-w-[20px] px-1 flex items-center justify-center shadow-lg shadow-gold-500/30">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION CON 3 COLUMNAS DE VIDEOS Y ESTILO LUJO BLANCO/DORADO -->
+  <header class="relative py-12 md:py-20 border-b border-gray-200 overflow-hidden text-center bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <span class="inline-block py-1.5 px-4 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-600 text-xs font-bold uppercase tracking-widest mb-3">
+        Edición Limitada & Aromas Selectos
+      </span>
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-wider text-gray-900 uppercase leading-none drop-shadow-sm">
+        BE A BEAR
+      </h1>
+      <p class="mt-3 text-gold-600 text-lg sm:text-xl font-medium tracking-wide font-luxury">
+        Tu estilo , tu esencia
+      </p>
+
+      <!-- 3 VIDEO SPLIT COLUMNS (ESTILO REFERENCIA) -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-0 max-w-6xl mx-auto border-2 border-gold-500/40 rounded-3xl overflow-hidden shadow-2xl bg-white">
+        <!-- Columna 1: West -->
+        <div onclick="window.openProductModal('p_west_drop1')" class="relative aspect-[3/4] bg-gray-100 group cursor-pointer border-r-0 md:border-r border-gold-500/30 overflow-hidden">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <source src="w-video.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
+            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Drop 1 • $27.00</span>
+            <h3 class="text-white font-display font-bold text-xl leading-snug">Gorra West – Black Edition</h3>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
+              COMPRAR ➔
+            </span>
+          </div>
+        </div>
+
+        <!-- Columna 2: Japón / Dodgers -->
+        <div onclick="window.openProductModal('p_dodgers_jp')" class="relative aspect-[3/4] bg-gray-100 group cursor-pointer border-r-0 md:border-r border-gold-500/30 overflow-hidden">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <source src="japon-video.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
+            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Japanese Drop • $22.00</span>
+            <h3 class="text-white font-display font-bold text-xl leading-snug">Dodgers Japanese Edition</h3>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
+              COMPRAR ➔
+            </span>
+          </div>
+        </div>
+
+        <!-- Columna 3: California -->
+        <div onclick="window.openProductModal('p_california')" class="relative aspect-[3/4] bg-gray-100 group cursor-pointer overflow-hidden">
+          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <source src="california-video.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+          </video>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
+            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Special Edition • $22.00</span>
+            <h3 class="text-white font-display font-bold text-xl leading-snug">California Black Denim</h3>
+            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
+              COMPRAR ➔
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FILTERS -->
+      <div class="mt-12 flex flex-wrap justify-center gap-2.5" id="filter-buttons">
+        <button data-category="all" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer">Todos</button>
+        <button data-category="caps" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Gorras Exclusivas</button>
+        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Perfume Decants</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CATALOG GRID -->
+  <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full bg-white">
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+  </main>
+
+  
+  <!-- PRODUCT DETAIL MODAL (VISTA EN GRANDE) -->
+  <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity"></div>
+
+    <!-- Modal Dialog Center Container -->
+    <div class="min-h-full flex items-center justify-center p-3 sm:p-6 relative z-10">
+      <div id="modal-card" class="relative w-full max-w-4xl bg-white border border-gold-500/40 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0">
+        
+        <!-- Close Button -->
+        <button id="modal-close-btn" type="button" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-gray-100 border border-gold-500/40 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center text-lg transition-all cursor-pointer shadow-lg">
+          ✕
+        </button>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+          <!-- Gallery Left Side -->
+          <div class="p-5 sm:p-7 flex flex-col justify-between bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200">
+            <!-- Main Large Image Container -->
+            <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-white border border-gold-500/30 flex items-center justify-center group shadow-sm">
+              <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              
+              <span id="modal-badge" class="absolute top-3 left-3 bg-white/90 border border-gold-500/40 text-[10px] px-3 py-1 rounded-full text-gold-600 uppercase font-black tracking-wider shadow-sm">
+                EDICIÓN ESPECIAL
+              </span>
+
+              <!-- Prev / Next arrows -->
+              <button id="modal-prev-btn" type="button" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">
+                &#10094;
+              </button>
+              <button id="modal-next-btn" type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">
+                &#10095;
+              </button>
+            </div>
+
+            <!-- Thumbnails Row -->
+            <div id="modal-thumbs" class="flex items-center justify-center gap-3 mt-4 overflow-x-auto py-1">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Product Details Right Side -->
+          <div class="p-6 sm:p-8 flex flex-col justify-between bg-white">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span id="modal-category" class="text-[11px] font-bold uppercase tracking-widest text-gold-600">
+                  COLECCIÓN EXCLUSIVA
+                </span>
+              </div>
+              <h2 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-gray-900 leading-tight">
+                Título del Producto
+              </h2>
+              <div class="h-0.5 w-16 bg-gradient-to-r from-gold-400 to-transparent my-3.5"></div>
+              <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed font-normal">
+                Descripción detallada del producto.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-5 border-t border-gray-200 space-y-5">
+              <!-- Options Selector -->
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
+                  Selecciona tu opción / tamaño:
+                </label>
+                <div id="modal-options-container" class="flex gap-2.5">
+                  <!-- Dynamically populated options -->
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-baseline justify-between pt-1">
+                <div>
+                  <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider block">Precio Final:</span>
+                  <span id="modal-price" class="font-display font-black text-3xl text-gold-600">$0.00</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                  Agregar al Carrito
+                </button>
+                <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-gray-100 border border-gold-500/40 text-gold-700 hover:bg-gold-500 hover:text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">
+                  Pedir por WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white border border-gold-500/60 rounded-xl p-4 shadow-2xl flex items-center gap-3 backdrop-blur-xl">
+      <div class="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-600 flex items-center justify-center font-bold">✓</div>
+      <div>
+        <p id="toast-title" class="text-sm font-bold text-gray-900 leading-tight">Producto agregado</p>
+        <p class="text-xs text-gold-600 mt-0.5">Listo en tu carrito</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART SLIDE-OVER DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-opacity duration-300">
+    <div id="cart-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div id="cart-panel" class="w-screen max-w-md bg-white border-l border-gray-200 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl z-10">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <h2 class="font-display font-bold text-lg text-gray-900 uppercase tracking-wider">Tu Carrito</h2>
+            <span id="drawer-count" class="text-xs font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gold-600 border border-gold-500/30">0</span>
+          </div>
+          <button id="close-cart-btn" class="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 cursor-pointer">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Cart Items -->
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-3.5"></div>
+
+        <!-- Drawer Footer -->
+        <div class="p-6 border-t border-gray-200 bg-gray-50 space-y-4">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-600 uppercase tracking-wider text-xs font-bold">Subtotal:</span>
+            <span id="cart-subtotal" class="font-display font-extrabold text-2xl text-gold-600">$0.00</span>
+          </div>
+          
+          <button id="whatsapp-checkout-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-white font-extrabold flex items-center justify-center gap-2.5 transition-transform active:scale-[0.98] shadow-lg shadow-gold-500/20 uppercase tracking-wider text-xs cursor-pointer">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Finalizar Pedido por WhatsApp
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT TIENDA -->
+  <script>
+    const WHATSAPP_PHONE = '593999999999';
+
+    const products = [
+      {
+        id: 'p_west_drop1',
+        title: "Gorra West – Black Edition (Drop 1)",
+        category: 'caps',
+        badge: 'DROP 1',
+        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual. Destaca por su emblema frontal en forma de "W" con incrustaciones estilo pedrería y apliques tonales en la visera para un look streetwear premium y elegante.',
+        images: [
+          'west-1.jpg.jpeg',
+          'west-2.jpg.jpeg',
+          'west-3.jpg.jpeg'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 27.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 28.00 }
+        ]
+      },
+      {
+        id: 'p_dodgers_jp',
+        title: "Gorra '47 Captain Snapback – Dodgers Japanese Edition",
+        category: 'caps',
+        badge: 'JAPANESE DROP',
+        description: 'Gorra de estilo urbano estructurada con diseño bicoloreado, inspirada en la cultura deportiva y el streetwear japonés. Presenta un llamativo bordado frontal en relieve con caracteres en katakana (ドジャース - Dodgers), combinando silueta clásica y estética oriental moderna.',
+        images: [
+          'dodgers-1.jpg.jpeg',
+          'dodgers-2.jpg.jpeg'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 25.00 }
+        ]
+      },
+      {
+        id: 'p_california',
+        title: 'Gorra California Special Edition – Black Denim',
+        category: 'caps',
+        badge: 'SPECIAL EDITION',
+        description: 'Gorra de estilo urbano estructurada en acabado tipo denim negro, con costuras doradas en contraste y parche frontal de cuero grabado en relieve. Diseñada para brindar comodidad, durabilidad y presencia en el uso diario.',
+        images: [
+          'california-1.jpg.jpg',
+          'california-2.jpg.jpg'
+        ],
+        options: [
+          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
+          { label: '+ Decant Árabe', sub: 'Sujeto a elección', price: 25.00 }
+        ]
+      },
+      {
+        id: 'p1',
+        title: 'JPG Le Male Le Parfum',
+        category: 'decants',
+        description: 'Decants de diseñador y nicho originales. Vainilla negra, cardamomo y lavanda seductora.',
+        image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
+        options: [
+          { label: '5 ml', sub: '~70 atomizaciones', price: 9.00 },
+          { label: '10 ml', sub: '~140 atomizaciones', price: 16.50 }
+        ]
+      },
+      {
+        id: 'p2',
+        title: 'Rasasi Hawas Ice',
+        category: 'decants',
+        description: 'Decants de diseñador y nicho originales. Manzana helada, bergamota y ciruela marina.',
+        image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80',
+        options: [
+          { label: '5 ml', sub: 'Prueba esencial', price: 7.50 },
+          { label: '10 ml', sub: 'Máxima duración', price: 13.00 }
+        ]
+      },
+      {
+        id: 'p3',
+        title: 'Armaf Odyssey Mandarin Sky',
+        category: 'decants',
+        description: 'Decants de diseñador y nicho originales. Mandarina acaramelada y haba tonka dulce.',
+        image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80',
+        options: [
+          { label: '5 ml', sub: 'Decant vidrio', price: 6.50 },
+          { label: '10 ml', sub: 'Atomizador pro', price: 11.50 }
+        ]
+      }
+    ];
+
+    let selectedOptions = {};
+    let activeImages = { p_west_drop1: 0, p_dodgers_jp: 0, p_california: 0 };
+    let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
+
+    const grid = document.getElementById('product-grid');
+
+    function renderProducts(filter = 'all') {
+      grid.innerHTML = '';
+      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+      filtered.forEach(p => {
+        if (selectedOptions[p.id] === undefined) {
+          selectedOptions[p.id] = 0;
+        }
+
+        const currentOptIndex = selectedOptions[p.id];
+        const currentOpt = p.options[currentOptIndex];
+
+        const card = document.createElement('div');
+        card.className = "luxury-card rounded-2xl overflow-hidden flex flex-col p-4 group";
+
+        const optionsHtml = p.options.map((opt, i) => `
+          <button 
+            type="button"
+            onclick="event.stopPropagation(); window.selectProductOption('${p.id}', ${i})"
+            class="option-pill flex-1 py-1.5 px-2 rounded-xl text-center text-xs font-semibold ${i === currentOptIndex ? 'active' : ''}">
+            <span class="block font-bold text-[12px]">${opt.label}</span>
+            <span class="block text-[9px] opacity-70">${opt.sub}</span>
+          </button>
+        `).join('');
+
+        let mediaHtml = '';
+        if (p.images && p.images.length > 1) {
+          const currImg = p.images[activeImages[p.id] || 0];
+          const dotsHtml = p.images.map((_, idx) => `
+            <button type="button" onclick="event.stopPropagation(); window.switchImage('${p.id}', ${idx})" class="w-2.5 h-2.5 rounded-full ${ (activeImages[p.id] || 0) === idx ? 'bg-gold-500' : 'bg-gray-300' }"></button>
+          `).join('');
+
+          mediaHtml = `
+            <div onclick="window.openProductModal('${p.id}')" class="relative aspect-square overflow-hidden rounded-xl bg-gray-50 border border-gray-200 cursor-pointer group/img">
+              <img id="img-${p.id}" src="${currImg}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105">
+              <span class="absolute top-2.5 left-2.5 bg-white/90 border border-gold-500/40 text-[10px] px-2.5 py-0.5 rounded-full text-gold-600 uppercase font-black tracking-wider shadow-sm">
+                ${p.badge || 'Gorra'}
+              </span>
+              <div class="absolute inset-0 bg-black/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-3 py-1.5 rounded-full bg-white/95 border border-gold-500 text-[11px] font-bold text-gold-700 shadow-xl flex items-center gap-1.5 backdrop-blur-md transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Ver en grande
+                </span>
+              </div>
+              <div class="absolute bottom-2.5 right-2.5 flex items-center gap-1.5 bg-white/90 border border-gray-200 px-2 py-1 rounded-full z-10 shadow-sm" onclick="event.stopPropagation()">
+                ${dotsHtml}
+              </div>
+            </div>
+          `;
+        } else {
+          mediaHtml = `
+            <div onclick="window.openProductModal('${p.id}')" class="relative aspect-square overflow-hidden rounded-xl bg-gray-50 border border-gray-200 cursor-pointer group/img">
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105">
+              <span class="absolute top-2.5 left-2.5 bg-white/90 border border-gold-500/40 text-[10px] px-2.5 py-0.5 rounded-full text-gold-600 uppercase font-black tracking-wider shadow-sm">
+                ${p.category === 'decants' ? 'Decant' : 'Headwear'}
+              </span>
+              <div class="absolute inset-0 bg-black/20 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-3 py-1.5 rounded-full bg-white/95 border border-gold-500 text-[11px] font-bold text-gold-700 shadow-xl flex items-center gap-1.5 backdrop-blur-md transform translate-y-2 group-hover/img:translate-y-0 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Ver en grande
+                </span>
+              </div>
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          ${mediaHtml}
+          <div class="mt-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 onclick="window.openProductModal('${p.id}')" class="font-display font-bold text-base text-gray-900 hover:text-gold-600 transition-colors cursor-pointer">${p.title}</h3>
+              <p class="text-xs text-gray-500 mt-1.5 leading-relaxed line-clamp-2">${p.description}</p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-gray-100 space-y-3">
+              <div class="flex gap-2" id="options-container-${p.id}">
+                ${optionsHtml}
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <div>
+                  <span id="price-display-${p.id}" class="font-display font-extrabold text-xl text-gold-600">
+                    $${currentOpt.price.toFixed(2)}
+                  </span>
+                </div>
+                <button type="button" onclick="event.stopPropagation(); window.addToCart('${p.id}', event)" class="btn-gold px-4 py-2 rounded-xl text-xs uppercase tracking-wider flex items-center gap-1.5 active:scale-95">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    window.switchImage = function(productId, index) {
+      activeImages[productId] = index;
+      const p = products.find(prod => prod.id === productId);
+      if (p && p.images) {
+        const imgEl = document.getElementById(`img-${productId}`);
+        if (imgEl) imgEl.src = p.images[index];
+        renderProducts(document.querySelector('.filter-btn.bg-gold-500')?.dataset?.category || 'all');
+      }
+    };
+
+    window.selectProductOption = function(productId, index) {
+      selectedOptions[productId] = index;
+      const product = products.find(p => p.id === productId);
+      const chosen = product.options[index];
+
+      const container = document.getElementById(`options-container-${productId}`);
+      if (container) {
+        const buttons = container.querySelectorAll('.option-pill');
+        buttons.forEach((btn, i) => {
+          if (i === index) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+      }
+
+      const priceEl = document.getElementById(`price-display-${productId}`);
+      if (priceEl) {
+        priceEl.textContent = `$${chosen.price.toFixed(2)}`;
+        priceEl.classList.remove('animate-pricePop');
+        void priceEl.offsetWidth;
+        priceEl.classList.add('animate-pricePop');
+      }
+    };
+
+    window.addToCart = function(productId, event) {
+      const p = products.find(prod => prod.id === productId);
+      const optIndex = selectedOptions[productId] || 0;
+      const selectedOption = p.options[optIndex];
+
+      const itemKey = `${p.id}_${optIndex}`;
+      const existing = cart.find(item => item.key === itemKey);
+      const cartThumb = p.images ? p.images[0] : p.image;
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          key: itemKey,
+          id: p.id,
+          title: p.title,
+          image: cartThumb,
+          optionLabel: selectedOption.label,
+          price: selectedOption.price,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      updateCartUI();
+      triggerConfetti(event);
+      showToast(p.title);
+    };
+
+    function triggerConfetti(e) {
+      if (window.confetti) {
+        const x = e ? e.clientX / window.innerWidth : 0.8;
+        const y = e ? e.clientY / window.innerHeight : 0.8;
+        confetti({
+          particleCount: 25,
+          spread: 50,
+          origin: { x, y },
+          colors: ['#D4AF37', '#FFFFFF', '#F3D27A']
+        });
+      }
+    }
+
+    function showToast(title) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-title').textContent = `✓ ¡${title} agregado!`;
+      toast.classList.remove('translate-y-32', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.add('translate-y-32', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2000);
+    }
+
+    function saveCart() {
+      localStorage.setItem('bear_cart', JSON.stringify(cart));
+    }
+
+    function updateCartUI() {
+      const counter = document.getElementById('cart-counter');
+      const drawerCount = document.getElementById('drawer-count');
+      const itemsContainer = document.getElementById('cart-items');
+      const subtotalEl = document.getElementById('cart-subtotal');
+
+      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+      counter.textContent = totalItems;
+      drawerCount.textContent = totalItems;
+
+      if (cart.length === 0) {
+        itemsContainer.innerHTML = `
+          <div class="text-center py-16 text-gray-400">
+            <p class="font-bold text-gray-800 text-sm">Tu carrito está vacío</p>
+            <p class="text-xs mt-1 text-gray-500">Agrega un decant o gorra para iniciar tu pedido.</p>
+          </div>
+        `;
+        subtotalEl.textContent = '$0.00';
+        return;
+      }
+
+      let subtotal = 0;
+      itemsContainer.innerHTML = '';
+
+      cart.forEach(item => {
+        subtotal += item.price * item.qty;
+        const div = document.createElement('div');
+        div.className = "p-3 bg-gray-50 border border-gray-200 rounded-xl flex gap-3 items-center";
+        div.innerHTML = `
+          <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover bg-white border border-gray-200 flex-shrink-0">
+          <div class="flex-1 min-w-0">
+            <h4 class="font-bold text-gray-900 text-xs truncate">${item.title}</h4>
+            <p class="text-[11px] text-gold-600 truncate">${item.optionLabel}</p>
+            <p class="text-xs text-gray-500 font-bold mt-0.5">$${item.price.toFixed(2)} c/u</p>
+          </div>
+          <div class="flex flex-col items-end gap-1.5">
+            <button onclick="window.removeFromCart('${item.key}')" class="text-gray-400 hover:text-red-500 text-xs cursor-pointer">✕</button>
+            <div class="flex items-center gap-1.5 border border-gray-300 rounded-lg bg-white px-1.5 py-0.5">
+              <button onclick="window.changeQty('${item.key}', -1)" class="text-gray-600 hover:text-black text-xs px-1 font-bold cursor-pointer">-</button>
+              <span class="text-xs font-bold text-gray-900 w-3 text-center">${item.qty}</span>
+              <button onclick="window.changeQty('${item.key}', 1)" class="text-gray-600 hover:text-black text-xs px-1 font-bold cursor-pointer">+</button>
+            </div>
+          </div>
+        `;
+        itemsContainer.appendChild(div);
+      });
+
+      subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+    }
+
+    window.changeQty = function(key, delta) {
+      const item = cart.find(i => i.key === key);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.key !== key);
+      saveCart();
+      updateCartUI();
+    };
+
+    window.removeFromCart = function(key) {
+      cart = cart.filter(i => i.key !== key);
+      saveCart();
+      updateCartUI();
+    };
+
+    // Drawer Controls
+    const drawer = document.getElementById('cart-drawer');
+    const panel = document.getElementById('cart-panel');
+
+    function openCart() {
+      drawer.classList.remove('hidden');
+      setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+    }
+    function closeCart() {
+      panel.classList.add('translate-x-full');
+      setTimeout(() => drawer.classList.add('hidden'), 300);
+    }
+
+    document.getElementById('open-cart-btn').addEventListener('click', openCart);
+    document.getElementById('close-cart-btn').addEventListener('click', closeCart);
+    document.getElementById('cart-backdrop').addEventListener('click', closeCart);
+
+    // Filter Buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer";
+        });
+        e.currentTarget.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer";
+        renderProducts(e.currentTarget.dataset.category);
+      });
+    });
+
+    // Checkout WhatsApp
+    document.getElementById('whatsapp-checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Agrega al menos un producto a tu carrito primero.');
+        return;
+      }
+
+      let message = "👋 ¡Hola Bear Essential! Quiero realizar el siguiente pedido:\n\n";
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        subtotal += itemTotal;
+        message += `${index + 1}. *${item.title}*\n`;
+        message += `   - Opción: ${item.optionLabel}\n`;
+        message += `   - Cantidad: ${item.qty}\n`;
+        message += `   - Subtotal: $${itemTotal.toFixed(2)}\n\n`;
+      });
+
+      message += `💰 *Total a coordinar:* $${subtotal.toFixed(2)}\n\n`;
+      message += "Quedo a la espera de sus datos para el pago y la entrega. ¡Muchas gracias!";
+
+      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    });
+
+    
+    // MODAL STATE
+    let currentModalProductId = null;
+    let currentModalImageIndex = 0;
+
+    window.openProductModal = function(productId, imageIndex = 0) {
+      const p = products.find(prod => prod.id === productId);
+      if (!p) return;
+
+      currentModalProductId = productId;
+      currentModalImageIndex = imageIndex;
+
+      const modal = document.getElementById('product-modal');
+      const card = document.getElementById('modal-card');
+      const titleEl = document.getElementById('modal-title');
+      const descEl = document.getElementById('modal-desc');
+      const badgeEl = document.getElementById('modal-badge');
+      const categoryEl = document.getElementById('modal-category');
+      const optionsContainer = document.getElementById('modal-options-container');
+
+      titleEl.textContent = p.title;
+      descEl.textContent = p.description;
+      badgeEl.textContent = p.badge || (p.category === 'caps' ? 'Gorra Exclusiva' : 'Decant Original');
+      categoryEl.textContent = p.category === 'caps' ? 'Streetwear Headwear • Colección Exclusiva' : 'Perfumería Original • Decant Seleccionado';
+
+      // Setup Options
+      if (selectedOptions[p.id] === undefined) selectedOptions[p.id] = 0;
+      const currentOptIdx = selectedOptions[p.id];
+
+      optionsContainer.innerHTML = p.options.map((opt, i) => `
+        <button 
+          type="button" 
+          onclick="window.selectModalOption('${p.id}', ${i})"
+          class="option-pill flex-1 py-2 px-3 rounded-xl text-center text-xs font-semibold ${i === currentOptIdx ? 'active' : ''}">
+          <span class="block font-bold text-xs">${opt.label}</span>
+          <span class="block text-[10px] opacity-75">${opt.sub}</span>
+        </button>
+      `).join('');
+
+      updateModalPrice(p);
+      updateModalGallery(p);
+
+      // Open Animation
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    };
+
+    window.closeProductModal = function() {
+      const modal = document.getElementById('product-modal');
+      const card = document.getElementById('modal-card');
+      card.classList.remove('scale-100', 'opacity-100');
+      card.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 250);
+    };
+
+    window.selectModalOption = function(productId, index) {
+      window.selectProductOption(productId, index);
+      const p = products.find(prod => prod.id === productId);
+      if (p) {
+        const container = document.getElementById('modal-options-container');
+        const btns = container.querySelectorAll('.option-pill');
+        btns.forEach((btn, i) => {
+          if (i === index) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+        updateModalPrice(p);
+      }
+    };
+
+    function updateModalPrice(product) {
+      const optIdx = selectedOptions[product.id] || 0;
+      const opt = product.options[optIdx];
+      const priceEl = document.getElementById('modal-price');
+      priceEl.textContent = `$${opt.price.toFixed(2)}`;
+      priceEl.classList.remove('animate-pricePop');
+      void priceEl.offsetWidth;
+      priceEl.classList.add('animate-pricePop');
+    }
+
+    function updateModalGallery(product) {
+      const mainImg = document.getElementById('modal-main-img');
+      const thumbsContainer = document.getElementById('modal-thumbs');
+      const prevBtn = document.getElementById('modal-prev-btn');
+      const nextBtn = document.getElementById('modal-next-btn');
+
+      const imgs = product.images || [product.image];
+
+      if (currentModalImageIndex >= imgs.length) currentModalImageIndex = 0;
+      if (currentModalImageIndex < 0) currentModalImageIndex = imgs.length - 1;
+
+      mainImg.style.opacity = '0.3';
+      setTimeout(() => {
+        mainImg.src = imgs[currentModalImageIndex];
+        mainImg.style.opacity = '1';
+      }, 80);
+
+      if (imgs.length > 1) {
+        prevBtn.classList.remove('hidden');
+        nextBtn.classList.remove('hidden');
+        thumbsContainer.classList.remove('hidden');
+
+        thumbsContainer.innerHTML = imgs.map((imgSrc, idx) => `
+          <button 
+            type="button" 
+            onclick="window.setModalImage(${idx})"
+            class="w-14 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer bg-white flex-shrink-0 ${idx === currentModalImageIndex ? 'border-gold-500 shadow-md scale-105' : 'border-gray-200 opacity-60 hover:opacity-100'}">
+            <img src="${imgSrc}" class="w-full h-full object-cover">
+          </button>
+        `).join('');
+      } else {
+        prevBtn.classList.add('hidden');
+        nextBtn.classList.add('hidden');
+        thumbsContainer.classList.add('hidden');
+      }
+    }
+
+    window.setModalImage = function(index) {
+      const p = products.find(prod => prod.id === currentModalProductId);
+      if (p) {
+        currentModalImageIndex = index;
+        updateModalGallery(p);
+      }
+    };
+
+    window.modalNextImage = function() {
+      const p = products.find(prod => prod.id === currentModalProductId);
+      if (p) {
+        const imgs = p.images || [p.image];
+        currentModalImageIndex = (currentModalImageIndex + 1) % imgs.length;
+        updateModalGallery(p);
+      }
+    };
+
+    window.modalPrevImage = function() {
+      const p = products.find(prod => prod.id === currentModalProductId);
+      if (p) {
+        const imgs = p.images || [p.image];
+        currentModalImageIndex = (currentModalImageIndex - 1 + imgs.length) % imgs.length;
+        updateModalGallery(p);
+      }
+    };
+
+    // Modal Events Setup
+    document.getElementById('modal-close-btn').addEventListener('click', window.closeProductModal);
+    document.getElementById('modal-backdrop').addEventListener('click', window.closeProductModal);
+    document.getElementById('modal-next-btn').addEventListener('click', window.modalNextImage);
+    document.getElementById('modal-prev-btn').addEventListener('click', window.modalPrevImage);
+
+    document.getElementById('modal-add-btn').addEventListener('click', (e) => {
+      if (currentModalProductId) {
+        window.addToCart(currentModalProductId, e);
+      }
+    });
+
+    document.getElementById('modal-direct-whatsapp').addEventListener('click', () => {
+      if (!currentModalProductId) return;
+      const p = products.find(prod => prod.id === currentModalProductId);
+      const optIdx = selectedOptions[p.id] || 0;
+      const opt = p.options[optIdx];
+      const message = `👋 ¡Hola Bear Essential! Me interesa comprar directamente:\n\n*${p.title}*\n- Opción: ${opt.label} (${opt.sub})\n- Precio: $${opt.price.toFixed(2)}\n\n¿Tienen disponibilidad para coordinar el envío? ¡Muchas gracias!`;
+      const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        window.closeProductModal();
+        closeCart();
+      }
+    });
+
+    renderProducts();
+    updateCartUI();
+  </script>
 </body>
 </html>
