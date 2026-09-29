@@ -17,8 +17,8 @@
         extend: {
           colors: {
             gold: {
-              300: '#E6C657',
-              400: '#D4AF37',
+              300: '#D4AF37',
+              400: '#C5A028',
               500: '#B8860B',
               600: '#9A7007',
             }
@@ -45,28 +45,21 @@
       border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
-    /* Efecto tipográfico 3D metálico / brillante para el título principal */
+    /* Efecto 3D Metálico / Cromo inspirado en la referencia */
     .text-3d-metallic {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 900;
       letter-spacing: -0.02em;
-      color: #FFFFFF;
+      color: #F0F0F0;
       text-shadow: 
         0 1px 0 #cccccc,
         0 2px 0 #b0b0b0,
         0 3px 0 #999999,
         0 4px 0 #777777,
         0 5px 0 #555555,
-        0 6px 1px rgba(0,0,0,0.1),
-        0 0 20px rgba(255,255,255,0.4),
-        0 0 40px rgba(212,175,55,0.3);
-    }
-
-    .text-gold-metallic {
-      background: linear-gradient(135deg, #FFF6D1 0%, #D4AF37 40%, #AA771C 80%, #68450A 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 10px rgba(212,175,55,0.5));
+        0 6px 1px rgba(0,0,0,0.3),
+        0 0 25px rgba(255,255,255,0.6),
+        0 0 50px rgba(212,175,55,0.4);
     }
 
     /* Animación de entrada */
@@ -242,23 +235,32 @@
     </div>
   </div>
 
-  <!-- HERO CINEMATOGRÁFICO CON VIDEO EN BUCLE (ESTILO 3D METÁLICO) -->
+  <!-- HERO CINEMATOGRÁFICO CON VIDEO MÁS VISIBLE Y LETRAS 3D CROMADAS -->
   <header class="relative h-screen min-h-[650px] flex items-center justify-center overflow-hidden text-center">
+    <!-- Video de fondo con brillo optimizado para que se vea más tu estudio -->
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <video autoplay muted loop playsinline class="w-full h-full object-cover filter brightness-[0.4] contrast-[1.15]">
+      <video autoplay muted loop playsinline class="w-full h-full object-cover filter brightness-[0.7] contrast-[1.1]">
         <source src="studio-bg.mp4" type="video/mp4">
         Tu navegador no soporta video.
       </video>
-      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-black/50 to-black/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-black/30 to-black/40"></div>
     </div>
 
-    <!-- Contenido 3D Estilo Referencia (Limpio y Cinematográfico) -->
-    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 animate-hero-content pt-16">
+    <!-- Contenido 3D Metálico Central + Botón Explorar Drop -->
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 animate-hero-content pt-16 flex flex-col items-center justify-center">
       
-      <!-- Título Gigante con Estilo 3D Metálico / Dorado -->
+      <!-- Título Gigante con Estilo 3D Metálico/Cromo -->
       <h1 class="text-6xl sm:text-8xl md:text-9xl font-black uppercase tracking-wider text-3d-metallic leading-none">
-        BE A <span class="text-gold-metallic">BEAR</span>
+        BE A <span style="background: linear-gradient(180deg, #FFFFFF 0%, #D4AF37 50%, #8A6508 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">BEAR</span>
       </h1>
+
+      <!-- Botón de Explorar Drop -->
+      <div class="mt-10">
+        <a href="#catalogo" class="btn-gold px-8 py-4 rounded-2xl text-xs uppercase tracking-[0.2em] font-black inline-flex items-center gap-3">
+          <span>Explorar Drop</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </a>
+      </div>
 
     </div>
   </header>
