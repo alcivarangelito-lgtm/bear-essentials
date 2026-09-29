@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -21,15 +22,7 @@
               400: '#C5A028',
               500: '#B8860B',
               600: '#9A7007',
-              glow: 'rgba(212, 175, 55, 0.35)'
-            },
-            luxury: {
-              bg: '#FFFFFF',
-              card: '#FFFFFF',
-              text: '#111111',
-              muted: '#666666',
-              border: '#E5E5E5',
-              goldBorder: '#D4AF37'
+              glow: 'rgba(212, 175, 55, 0.4)'
             }
           },
           fontFamily: {
@@ -43,32 +36,29 @@
   </script>
   <style>
     body {
-      background-color: #FFFFFF;
-      color: #111111;
-    }
-
-    /* Barra de navegación en negro con dorado minimalista */
-    .glass-nav-dark {
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      background-color: #0A0A0A;
       color: #FFFFFF;
     }
 
-    @keyframes floatAnimation {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
+    /* Navbar transparente flotante sobre el Hero cinematográfico */
+    .glass-nav-overlay {
+      background: rgba(10, 10, 10, 0.4);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
-    .floating-card {
-      animation: floatAnimation 5s ease-in-out infinite;
+    /* Animación de entrada de los textos */
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .floating-card:hover {
-      animation-play-state: paused;
+    .animate-hero-content {
+      animation: fadeInSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .minimal-card {
       background: #FFFFFF;
+      color: #111111;
       border: 1px solid #E5E5E5;
       border-radius: 1rem;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -76,7 +66,7 @@
     }
     .minimal-card:hover {
       border-color: #D4AF37;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 10px 30px rgba(212,175,55,0.15);
     }
 
     /* Efecto Hover Flip para cambiar la imagen al pasar el cursor */
@@ -114,25 +104,23 @@
 
     .btn-gold {
       background: linear-gradient(135deg, #F3D27A 0%, #D4AF37 50%, #B8860B 100%);
-      color: #FFFFFF;
+      color: #0A0A0A;
       font-weight: 800;
-      box-shadow: 0 4px 18px rgba(212, 175, 55, 0.25);
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
       cursor: pointer;
       position: relative;
       overflow: hidden;
       transition: all 0.25s ease;
     }
     .btn-gold:hover {
-      box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
+      box-shadow: 0 6px 28px rgba(212, 175, 55, 0.7);
       transform: translateY(-2px);
     }
 
-    /* Transiciones suaves de filtros (Fade) */
     #product-grid {
       transition: opacity 0.3s ease-in-out;
     }
 
-    /* Línea de tiempo interactiva en modo oscuro */
     .timeline-line {
       position: absolute;
       left: 50%;
@@ -156,7 +144,7 @@
     }
 
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #FFFFFF; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
     ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 9999px; }
   </style>
 </head>
@@ -168,49 +156,46 @@
     <span class="text-xs font-black tracking-wider uppercase">EN VIVO ✦ TIKTOK</span>
   </a>
 
-  <!-- NAVBAR NEGRO CON DORADO -->
-  <nav class="sticky top-0 z-40 glass-nav-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+  <!-- NAVBAR FLOTANTE TRANSPARENTE -->
+  <nav class="fixed top-0 left-0 right-0 z-40 glass-nav-overlay">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
       
-      <!-- Botón Menú Móvil (Hamburguesa) -->
+      <!-- Botón Menú Móvil -->
       <button id="mobile-menu-btn" class="lg:hidden p-2 text-white hover:text-gold-400 focus:outline-none cursor-pointer">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
 
-      <!-- Links Izquierda (Escritorio) -->
-      <div class="hidden lg:flex flex-col gap-1 text-[11px] font-bold tracking-widest uppercase text-gray-300">
+      <!-- Links Izquierda -->
+      <div class="hidden lg:flex flex-col gap-1 text-[11px] font-bold tracking-widest uppercase text-gray-200">
         <div class="flex gap-6">
           <a href="#" class="hover:text-gold-400 transition-colors">FAMILIA</a>
           <a href="#" class="hover:text-gold-400 transition-colors">EXCLUSIVIDAD</a>
           <a href="#" class="hover:text-gold-400 transition-colors">CONTACTO</a>
-          <a href="#" class="hover:text-gold-400 transition-colors">INFO</a>
           <a href="#catalogo" class="hover:text-gold-400 transition-colors">TODOS LOS PRODUCTOS</a>
         </div>
-        <div class="flex gap-6 text-[10px] text-gray-400 font-semibold items-center">
+        <div class="flex gap-6 text-[10px] text-gold-400 font-semibold items-center">
           <a href="#historia" class="hover:text-gold-400 transition-colors">NUESTRA HISTORIA</a>
-          <a href="#" class="text-gold-400 hover:underline flex items-center gap-1">PRENDAS GRATIS ✦</a>
+          <span>✦ MANTA & ECUADOR</span>
         </div>
       </div>
 
       <!-- Logo Central -->
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-black border border-gold-500/60 flex items-center justify-center overflow-hidden shadow-md">
+        <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-xl bg-black border border-gold-500/60 flex items-center justify-center overflow-hidden shadow-lg">
           <img src="logo bear.jpeg" alt="Logo Bear Essential" class="w-full h-full object-cover">
         </div>
       </a>
 
       <!-- Controles Derecha -->
-      <div class="flex items-center gap-2 sm:gap-5 text-xs font-semibold text-gray-300">
-        <!-- Selector País y Envíos -->
+      <div class="flex items-center gap-2 sm:gap-5 text-xs font-semibold text-gray-200">
         <div class="hidden md:flex items-center gap-1.5 cursor-pointer text-gold-400 font-bold">
           <span>🇪🇨</span>
-          <span class="tracking-wider">Manta Gratis | Envíos Nacionales</span>
+          <span class="tracking-wider">Manta Gratis</span>
         </div>
 
-        <!-- Carrito Trigger -->
-        <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-neutral-900 hover:bg-neutral-800 border border-gold-500/40 text-gold-400 transition-all active:scale-95 cursor-pointer">
+        <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 border border-gold-500/40 text-gold-400 transition-all active:scale-95 cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
@@ -222,7 +207,7 @@
   </nav>
 
   <!-- MENÚ MÓVIL DESPLEGABLE -->
-  <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex flex-col p-6 text-white lg:hidden">
+  <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md hidden flex flex-col p-6 text-white lg:hidden">
     <div class="flex justify-between items-center mb-8 border-b border-gold-500/30 pb-4">
       <span class="font-display font-black text-lg tracking-wider text-gold-400">BEAR ESSENTIAL</span>
       <button id="close-mobile-menu" class="text-2xl text-gray-300 hover:text-white cursor-pointer">✕</button>
@@ -233,7 +218,6 @@
       <a href="#catalogo" onclick="closeMobileMenu()" class="hover:text-gold-400 transition-colors">Todos los Productos</a>
       <a href="#historia" onclick="closeMobileMenu()" class="hover:text-gold-400 transition-colors">Nuestra Historia</a>
       <a href="#" onclick="closeMobileMenu()" class="text-gold-400">Prendas Gratis ✦</a>
-      <a href="#" onclick="closeMobileMenu()" class="hover:text-gold-400 transition-colors">Contacto</a>
     </div>
     <div class="mt-auto pt-6 border-t border-gold-500/30 text-xs text-gray-400 flex flex-col gap-2">
       <span class="text-gold-400 font-bold">🚚 Manta: Entregas Gratis</span>
@@ -241,82 +225,65 @@
     </div>
   </div>
 
-  <!-- HERO SECTION CON 3 COLUMNAS DE VIDEOS FLOTANTES -->
-  <header class="relative py-12 md:py-20 border-b border-gray-200 overflow-hidden text-center bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <span class="inline-block py-1.5 px-4 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-600 text-xs font-bold uppercase tracking-widest mb-3">
-        Edición Limitada & Aromas Selectos ✦ Manta & Ecuador
+  <!-- HERO CINEMATOGRÁFICO CON VIDEO EN BUCLE -->
+  <header class="relative h-screen min-h-[650px] flex items-center justify-center overflow-hidden text-center">
+    <!-- Video de fondo en bucle continuo -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <video autoplay muted loop playsinline class="w-full h-full object-cover filter brightness-[0.45] contrast-[1.1]">
+        <source src="studio-bg.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+      </video>
+      <!-- Velo negro degradado elegante -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-black/40 to-black/60"></div>
+    </div>
+
+    <!-- Contenido Animado con Letras Doradas -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 animate-hero-content pt-16">
+      <span class="inline-block py-1.5 px-5 rounded-full bg-black/60 border border-gold-500/40 text-gold-400 text-xs font-extrabold uppercase tracking-[0.25em] mb-4 backdrop-blur-md">
+        ✦ High-End Streetwear & Luxury Decants ✦
       </span>
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-black tracking-wider text-gray-900 uppercase leading-none drop-shadow-sm">
-        BE A BEAR
+      
+      <!-- Título Gigante -->
+      <h1 class="text-5xl sm:text-7xl md:text-8xl font-display font-black tracking-widest text-white uppercase leading-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">
+        BE A <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 via-gold-400 to-amber-600">BEAR</span>
       </h1>
-      <p class="mt-3 text-gold-600 text-lg sm:text-xl font-medium tracking-wide font-luxury">
-        Tu estilo , tu esencia
+      
+      <p class="mt-4 text-gray-300 text-base sm:text-xl font-medium tracking-wide font-luxury max-w-2xl mx-auto">
+        Tu estilo, tu esencia. Diseñado en Manta, envíos a todo el Ecuador.
       </p>
 
-      <!-- 3 VIDEO SPLIT COLUMNS CON ANIMACIÓN FLOTANTE -->
-      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-0 max-w-6xl mx-auto border-2 border-gold-500/40 rounded-3xl overflow-hidden shadow-2xl bg-white floating-card">
-        <!-- Columna 1: West -->
-        <div onclick="window.openProductModal('p_west_drop1')" class="relative aspect-[3/4] bg-gray-100 group cursor-pointer border-r-0 md:border-r border-gold-500/30 overflow-hidden">
-          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-            <source src="w-video.mp4" type="video/mp4">
-            Tu navegador no soporta videos.
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
-            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Drop 1 • Desde $28.00</span>
-            <h3 class="text-white font-display font-bold text-xl leading-snug">Gorra Westcol – Black Edition</h3>
-            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
-              COMPRAR ➔
-            </span>
-          </div>
-        </div>
-
-        <!-- Columna 2: Japón / Dodgers -->
-        <div onclick="window.openProductModal('p_dodgers_jp')" class="relative aspect-[3/4] bg-gray-100 group cursor-pointer border-r-0 md:border-r border-gold-500/30 overflow-hidden">
-          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-            <source src="japon-video.mp4" type="video/mp4">
-            Tu navegador no soporta videos.
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
-            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Japanese Drop • Desde $22.00</span>
-            <h3 class="text-white font-display font-bold text-xl leading-snug">Dodgers Japanese Edition</h3>
-            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
-              COMPRAR ➔
-            </span>
-          </div>
-        </div>
-
-        <!-- Columna 3: California -->
-        <div onclick="window.openProductModal('p_california')" class="relative aspect-[3/4] bg-gray-100 group cursor-pointer overflow-hidden">
-          <video autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-            <source src="california-video.mp4" type="video/mp4">
-            Tu navegador no soporta videos.
-          </video>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 text-left">
-            <span class="text-gold-300 text-xs font-black uppercase tracking-widest mb-1">Special Edition • Desde $22.00</span>
-            <h3 class="text-white font-display font-bold text-xl leading-snug">California Black Denim</h3>
-            <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-extrabold text-black bg-gold-400 px-5 py-2.5 rounded-xl self-start shadow-lg group-hover:bg-gold-300 transition-colors">
-              COMPRAR ➔
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- FILTERS -->
-      <div class="mt-12 flex flex-wrap justify-center gap-2.5" id="filter-buttons">
-        <button data-category="all" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer">Todos</button>
-        <button data-category="caps" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Gorras Exclusivas</button>
-        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Perfume Decants</button>
+      <!-- Botón de Llamada a la Acción -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#catalogo" class="btn-gold px-8 py-4 rounded-2xl text-xs uppercase tracking-[0.2em] font-black inline-flex items-center gap-3">
+          <span>Explorar Drop</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- CATALOG GRID ESTILO LUJO MINIMALISTA -->
-  <main id="catalogo" class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full bg-white">
-    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12"></div>
-  </main>
+  <!-- SECCIÓN DE FILTROS Y CATÁLOGO -->
+  <section class="bg-white text-black py-12 border-b border-gray-200" id="catalogo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="text-xs font-bold text-gold-600 uppercase tracking-widest">Colección Exclusiva</span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl mt-1 uppercase text-gray-900">Catálogo Disponible</h2>
+        <div class="h-0.5 w-16 bg-gold-500 mx-auto mt-3"></div>
+      </div>
 
-  <!-- SECCIÓN: NUESTRA HISTORIA (LÍNEA DE TIEMPO INTERACTIVA EN NEGRO Y DORADO) -->
+      <!-- FILTERS -->
+      <div class="flex flex-wrap justify-center gap-2.5 mb-12" id="filter-buttons">
+        <button data-category="all" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer">Todos</button>
+        <button data-category="caps" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Gorras Exclusivas</button>
+        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Perfume Decants</button>
+      </div>
+
+      <!-- CATALOG GRID -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12"></div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN: NUESTRA HISTORIA -->
   <section id="historia" class="py-24 bg-black border-t border-gold-500/30 text-white">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
@@ -326,10 +293,8 @@
       </div>
 
       <div class="relative">
-        <!-- Línea central de tiempo dorada -->
         <div class="timeline-line"></div>
 
-        <!-- Hito 1 (1/10/2026) -->
         <div class="relative mb-14 md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
             <span class="text-xs font-bold text-black uppercase tracking-widest bg-gold-400 px-3.5 py-1 rounded-full">1/10/2026</span>
@@ -340,7 +305,6 @@
           <div class="md:w-1/2 md:pl-12"></div>
         </div>
 
-        <!-- Hito 2 (Coming Soon) -->
         <div class="relative mb-14 md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12"></div>
           <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-400 border-4 border-black shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
@@ -351,7 +315,6 @@
           </div>
         </div>
 
-        <!-- Hito 3 (Coming Soon) -->
         <div class="relative md:flex items-center w-full">
           <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
             <span class="text-xs font-bold text-gray-400 uppercase tracking-widest bg-neutral-900 border border-gold-500/30 px-3.5 py-1 rounded-full">Próximamente</span>
@@ -365,92 +328,46 @@
       </div>
     </div>
   </section>
-
   
   <!-- PRODUCT DETAIL MODAL -->
   <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
-    <!-- Backdrop -->
     <div id="modal-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity"></div>
-
-    <!-- Modal Dialog Center Container -->
     <div class="min-h-full flex items-center justify-center p-3 sm:p-6 relative z-10">
-      <div id="modal-card" class="relative w-full max-w-4xl bg-white border border-gold-500/40 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0">
-        
-        <!-- Close Button -->
-        <button id="modal-close-btn" type="button" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-gray-100 border border-gold-500/40 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center text-lg transition-all cursor-pointer shadow-lg">
-          ✕
-        </button>
-
+      <div id="modal-card" class="relative w-full max-w-4xl bg-white text-black border border-gold-500/40 rounded-3xl shadow-2xl overflow-hidden transform transition-all duration-300 scale-95 opacity-0">
+        <button id="modal-close-btn" type="button" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-gray-100 border border-gold-500/40 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center text-lg transition-all cursor-pointer shadow-lg">✕</button>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-          <!-- Gallery Left Side -->
           <div class="p-5 sm:p-7 flex flex-col justify-between bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200">
-            <!-- Main Large Image Container -->
             <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-white border border-gold-500/30 flex items-center justify-center group shadow-sm">
               <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-              
-              <span id="modal-badge" class="absolute top-3 left-3 bg-white/90 border border-gold-500/40 text-[10px] px-3 py-1 rounded-full text-gold-600 uppercase font-black tracking-wider shadow-sm">
-                EDICIÓN ESPECIAL
-              </span>
-
-              <!-- Prev / Next arrows -->
-              <button id="modal-prev-btn" type="button" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">
-                &#10094;
-              </button>
-              <button id="modal-next-btn" type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">
-                &#10095;
-              </button>
+              <span id="modal-badge" class="absolute top-3 left-3 bg-white/90 border border-gold-500/40 text-[10px] px-3 py-1 rounded-full text-gold-600 uppercase font-black tracking-wider shadow-sm">EDICIÓN ESPECIAL</span>
+              <button id="modal-prev-btn" type="button" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">&#10094;</button>
+              <button id="modal-next-btn" type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">&#10095;</button>
             </div>
-
-            <!-- Thumbnails Row -->
-            <div id="modal-thumbs" class="flex items-center justify-center gap-3 mt-4 overflow-x-auto py-1">
-              <!-- Dynamically populated -->
-            </div>
+            <div id="modal-thumbs" class="flex items-center justify-center gap-3 mt-4 overflow-x-auto py-1"></div>
           </div>
-
-          <!-- Product Details Right Side -->
           <div class="p-6 sm:p-8 flex flex-col justify-between bg-white">
             <div>
               <div class="flex items-center gap-2 mb-2">
-                <span id="modal-category" class="text-[11px] font-bold uppercase tracking-widest text-gold-600">
-                  COLECCIÓN EXCLUSIVA
-                </span>
+                <span id="modal-category" class="text-[11px] font-bold uppercase tracking-widest text-gold-600">COLECCIÓN EXCLUSIVA</span>
               </div>
-              <h2 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-gray-900 leading-tight">
-                Título del Producto
-              </h2>
+              <h2 id="modal-title" class="font-display font-extrabold text-2xl sm:text-3xl text-gray-900 leading-tight">Título del Producto</h2>
               <div class="h-0.5 w-16 bg-gradient-to-r from-gold-400 to-transparent my-3.5"></div>
-              <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed font-normal">
-                Descripción detallada del producto.
-              </p>
+              <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed font-normal">Descripción detallada del producto.</p>
             </div>
-
             <div class="mt-6 pt-5 border-t border-gray-200 space-y-5">
-              <!-- Options Selector -->
               <div>
-                <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
-                  Selecciona tu opción / tamaño:
-                </label>
-                <div id="modal-options-container" class="flex gap-2.5">
-                  <!-- Dynamically populated options -->
-                </div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Selecciona tu opción / tamaño:</label>
+                <div id="modal-options-container" class="flex gap-2.5"></div>
               </div>
-
-              <!-- Price & CTA -->
               <div class="flex items-baseline justify-between pt-1">
                 <div>
                   <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider block">Precio Final:</span>
                   <span id="modal-price" class="font-display font-black text-3xl text-gold-600">$0.00</span>
                 </div>
               </div>
-
               <div id="modal-action-wrapper" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                  Agregar al Carrito
-                </button>
-                <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-gray-100 border border-gold-500/40 text-gold-700 hover:bg-gold-500 hover:text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">
-                  Pedir por WhatsApp
-                </button>
+                <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">Agregar al Carrito</button>
+                <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-gray-100 border border-gold-500/40 text-gold-700 hover:bg-gold-500 hover:text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">Pedir por WhatsApp</button>
               </div>
             </div>
           </div>
@@ -461,7 +378,7 @@
 
   <!-- TOAST NOTIFICATION -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 pointer-events-none transition-all duration-300">
-    <div class="bg-white border border-gold-500/60 rounded-xl p-4 shadow-2xl flex items-center gap-3 backdrop-blur-xl">
+    <div class="bg-white text-black border border-gold-500/60 rounded-xl p-4 shadow-2xl flex items-center gap-3 backdrop-blur-xl">
       <div class="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-600 flex items-center justify-center font-bold">✓</div>
       <div>
         <p id="toast-title" class="text-sm font-bold text-gray-900 leading-tight">Producto agregado</p>
@@ -470,27 +387,19 @@
     </div>
   </div>
 
-  <!-- CART SLIDE-OVER DRAWER CON SUBIDA DE COMPROBANTE Y COPIAR CUENTA -->
+  <!-- CART DRAWER -->
   <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-opacity duration-300">
     <div id="cart-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-
     <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-      <div id="cart-panel" class="w-screen max-w-md bg-white border-l border-gray-200 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl z-10">
-        <!-- Drawer Header -->
+      <div id="cart-panel" class="w-screen max-w-md bg-white text-black border-l border-gray-200 flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl z-10">
         <div class="p-6 border-b border-gray-200 flex items-center justify-between">
           <div class="flex items-center gap-2.5">
             <h2 class="font-display font-bold text-lg text-gray-900 uppercase tracking-wider">Tu Carrito</h2>
             <span id="drawer-count" class="text-xs font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gold-600 border border-gold-500/30">0</span>
           </div>
-          <button id="close-cart-btn" class="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 cursor-pointer">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
+          <button id="close-cart-btn" class="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 cursor-pointer">✕</button>
         </div>
-
-        <!-- Cart Items -->
         <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-3.5"></div>
-
-        <!-- Drawer Footer with Bank info & Receipt Upload -->
         <div class="p-6 border-t border-gray-200 bg-gray-50 space-y-4">
           <div class="bg-amber-50 border border-gold-500/30 rounded-xl p-3 text-xs space-y-1.5">
             <p class="font-bold text-gray-900 flex justify-between items-center">
@@ -499,13 +408,10 @@
             </p>
             <p class="text-gray-600 text-[11px]" id="bank-info-text">Banco Pichincha | Cta Ahr: 220XXXXXXX | CI: 130XXXXXXXXX</p>
           </div>
-
-          <!-- Comprobante Upload -->
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-gray-600 mb-1">Subir Comprobante de Pago:</label>
             <input type="file" id="receipt-file" accept="image/*" class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500/10 file:text-gold-700 hover:file:bg-gold-500/20 cursor-pointer border border-gray-200 rounded-lg bg-white p-1">
           </div>
-
           <div class="space-y-1 text-xs pt-1">
             <div class="flex justify-between text-gray-600">
               <span>Entregas en Manta:</span>
@@ -520,11 +426,7 @@
               <span id="cart-subtotal" class="font-display font-extrabold text-2xl text-gold-600">$0.00</span>
             </div>
           </div>
-          
           <button id="whatsapp-checkout-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-white font-extrabold flex items-center justify-center gap-2.5 transition-transform active:scale-[0.98] shadow-lg shadow-gold-500/20 uppercase tracking-wider text-xs cursor-pointer">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-            </svg>
             Enviar Pedido y Comprobante por WhatsApp
           </button>
         </div>
@@ -532,9 +434,9 @@
     </div>
   </div>
 
-  <!-- PANTALLA DE ÉXITO DE PEDIDO -->
+  <!-- PANTALLA DE ÉXITO -->
   <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
-    <div class="bg-white border border-gold-500/50 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl animate-fade">
+    <div class="bg-white text-black border border-gold-500/50 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
       <div class="w-16 h-16 bg-gold-500/20 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">✓</div>
       <h3 class="font-display font-black text-2xl text-gray-900 uppercase">¡Pedido Exitoso!</h3>
       <p class="text-xs text-gray-600 leading-relaxed">Tu comprobante ha sido registrado y el pedido se ha enviado a nuestro sistema. Estamos validando tu pago para darte el visto bueno de autorización en breve.</p>
@@ -542,7 +444,6 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT TIENDA DEFINITIVA -->
   <script>
     const WHATSAPP_PHONE = '593999999999';
 
@@ -552,12 +453,9 @@
         title: "Gorra California – Principal Edition",
         category: 'caps',
         badge: 'PRINCIPAL',
-        stockStatus: 'available', // Cambiar a 'soldout' para marcar como agotado
+        stockStatus: 'available',
         description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
-        images: [
-          'california -principal.jpg',
-          'california-1.jpg.jpg'
-        ],
+        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
         options: [
           { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
           { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 25.00 }
@@ -570,10 +468,7 @@
         badge: 'PRINCIPAL',
         stockStatus: 'available',
         description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable.',
-        images: [
-          'dodgers-principal.jpg',
-          'dodgers-1.jpg.jpeg'
-        ],
+        images: ['dodgers-principal.jpg', 'dodgers-1.jpg.jpeg'],
         options: [
           { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
           { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 25.00 }
@@ -586,10 +481,7 @@
         badge: 'DROP 1',
         stockStatus: 'available',
         description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
-        images: [
-          'west-1.jpg.jpg',
-          'west-2.jpg.jpeg'
-        ],
+        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
         options: [
           { label: 'Solo Gorra', sub: 'En solitario', price: 28.00 },
           { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 30.00 }
@@ -652,7 +544,6 @@
     let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
     const grid = document.getElementById('product-grid');
 
-    // Transición suave de filtros (Fade)
     function renderProducts(filter = 'all') {
       grid.style.opacity = '0';
       setTimeout(() => {
@@ -676,7 +567,6 @@
             <div class="img-container relative w-full aspect-[4/5] bg-[#F4F4F4] overflow-hidden mb-4 rounded-xl shadow-sm">
               <img src="${primaryImg}" alt="${p.title}" class="img-primary absolute inset-0 w-full h-full object-cover">
               <img src="${secondaryImg}" alt="${p.title} detalle" class="img-secondary absolute inset-0 w-full h-full object-cover">
-              
               ${isSoldOut ? '<span class="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded shadow">AGOTADO</span>' : ''}
               ${p.badge && !isSoldOut ? `<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">${p.badge}</span>` : ''}
             </div>
@@ -698,7 +588,6 @@
       }, 150);
     }
 
-    // Mobile Menu Controls
     const mobileMenu = document.getElementById('mobile-menu');
     document.getElementById('mobile-menu-btn').addEventListener('click', () => mobileMenu.classList.remove('hidden'));
     document.getElementById('close-mobile-menu').addEventListener('click', () => mobileMenu.classList.add('hidden'));
@@ -826,7 +715,6 @@
       updateCartUI();
     };
 
-    // Copiar cuenta bancaria
     window.copyBankAccount = function() {
       const bankText = document.getElementById('bank-info-text').textContent;
       navigator.clipboard.writeText(bankText).then(() => {
@@ -834,7 +722,6 @@
       });
     };
 
-    // Drawer Controls
     const drawer = document.getElementById('cart-drawer');
     const panel = document.getElementById('cart-panel');
 
@@ -851,7 +738,6 @@
     document.getElementById('close-cart-btn').addEventListener('click', closeCart);
     document.getElementById('cart-backdrop').addEventListener('click', closeCart);
 
-    // Filter Buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.filter-btn').forEach(b => {
@@ -862,7 +748,6 @@
       });
     });
 
-    // Checkout WhatsApp con Comprobante
     document.getElementById('whatsapp-checkout-btn').addEventListener('click', () => {
       if (cart.length === 0) {
         alert('Agrega al menos un producto a tu carrito primero.');
@@ -894,7 +779,6 @@
       const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
 
-      // Mostrar modal de éxito
       closeCart();
       document.getElementById('success-modal').classList.remove('hidden');
       cart = [];
@@ -907,7 +791,6 @@
       document.getElementById('success-modal').classList.add('hidden');
     };
 
-    // MODAL STATE
     let currentModalProductId = null;
     let currentModalImageIndex = 0;
 
@@ -940,13 +823,8 @@
         `;
       } else {
         actionWrapper.innerHTML = `
-          <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-            Agregar al Carrito
-          </button>
-          <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-gray-100 border border-gold-500/40 text-gold-700 hover:bg-gold-500 hover:text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">
-            Pedir por WhatsApp
-          </button>
+          <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">Agregar al Carrito</button>
+          <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-gray-100 border border-gold-500/40 text-gold-700 hover:bg-gold-500 hover:text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">Pedir por WhatsApp</button>
         `;
         document.getElementById('modal-add-btn').onclick = (e) => window.addToCart(p.id, e);
         document.getElementById('modal-direct-whatsapp').onclick = () => {
