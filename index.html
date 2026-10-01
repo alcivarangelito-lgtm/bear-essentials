@@ -464,16 +464,26 @@
   <script>
     const WHATSAPP_PHONE = '593999999999';
 
-    // Lista de productos con precios y nombres exactos pedidos
+    // Lista de productos con las gorras originales intactas + las nuevas incorporaciones pedidas
     const products = [
-      // ⚡ APARTADO DEPORTIVO ($25)
+      // ⚡ APARTADO DEPORTIVO
+      {
+        id: 'p_california',
+        title: "Gorra California – Principal Edition",
+        category: 'sport',
+        badge: 'PRINCIPAL',
+        stockStatus: 'available',
+        description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
+        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
+      },
       {
         id: 'p_dodgers_jp',
-        title: "Gorra Dodgers",
+        title: "Gorra Dodgers – Principal Edition",
         category: 'sport',
-        badge: '⚡ $25 + DECANT ÁRABE',
+        badge: 'PRINCIPAL',
         stockStatus: 'available',
-        description: 'Gorra deportiva de Dodgers con bordado de alta definición. Incluye decant de perfume árabe gratis.',
+        description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable.',
         images: ['dodgers-principal.jpg', 'dodgers-1.jpg.jpeg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
@@ -489,7 +499,7 @@
       },
       {
         id: 'p_california_bw',
-        title: "Gorra California Black and White",
+        title: "Gorra California BLACK AND WHITE",
         category: 'sport',
         badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
@@ -501,11 +511,11 @@
       // 🛡️ APARTADO BÉLICO ($30)
       {
         id: 'p_west_drop1',
-        title: "Gorra Westcol",
+        title: "Gorra Westcol – Black Edition",
         category: 'military',
-        badge: '🛡️ $30 + DECANT ÁRABE',
+        badge: 'DROP 1',
         stockStatus: 'available',
-        description: 'Gorra estructurada en color negro con detalles oscuros de alto impacto visual. Incluye decant de perfume árabe gratis.',
+        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
         images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
