@@ -38,14 +38,13 @@
       color: #FFFFFF;
     }
 
-    /* Navbar transparente flotante sobre el Hero cinematográfico */
     .glass-nav-overlay {
       background: rgba(10, 10, 10, 0.4);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
-    /* Efecto 3D Metálico / Cromo inspirado en la referencia */
+    /* Efecto 3D Metálico / Cromo */
     .text-3d-metallic {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 900;
@@ -62,7 +61,6 @@
         0 0 50px rgba(212,175,55,0.4);
     }
 
-    /* Animación de entrada */
     @keyframes fadeInSlide {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -202,7 +200,7 @@
       <div class="flex items-center gap-2 sm:gap-5 text-xs font-semibold text-gray-200">
         <div class="hidden md:flex items-center gap-1.5 cursor-pointer text-gold-400 font-bold">
           <span>🇪🇨</span>
-          <span class="tracking-wider">Manta Gratis</span>
+          <span class="tracking-wider">Envíos Ecuador</span>
         </div>
 
         <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-neutral-900/80 hover:bg-neutral-800 border border-gold-500/40 text-gold-400 transition-all active:scale-95 cursor-pointer">
@@ -227,58 +225,53 @@
       <a href="#" onclick="closeMobileMenu()" class="hover:text-gold-400 transition-colors">Exclusividad</a>
       <a href="#catalogo" onclick="closeMobileMenu()" class="hover:text-gold-400 transition-colors">Todos los Productos</a>
       <a href="#historia" onclick="closeMobileMenu()" class="hover:text-gold-400 transition-colors">Nuestra Historia</a>
-      <a href="#" onclick="closeMobileMenu()" class="text-gold-400">Prendas Gratis ✦</a>
-    </div>
-    <div class="mt-auto pt-6 border-t border-gold-500/30 text-xs text-gray-400 flex flex-col gap-2">
-      <span class="text-gold-400 font-bold">🚚 Manta: Entregas Gratis</span>
-      <span>📦 Nacional: Envío con costo adicional</span>
     </div>
   </div>
 
-  <!-- HERO CINEMATOGRÁFICO CON VIDEO MÁS VISIBLE Y LETRAS 3D CROMADAS -->
+  <!-- HERO CINEMATOGRÁFICO CON AMBIENTE DINÁMICO -->
   <header class="relative h-screen min-h-[650px] flex items-center justify-center overflow-hidden text-center">
-    <!-- Video de fondo con brillo optimizado para que se vea más tu estudio -->
     <div class="absolute inset-0 z-0 overflow-hidden">
-      <video autoplay muted loop playsinline class="w-full h-full object-cover filter brightness-[0.7] contrast-[1.1]">
+      <video id="hero-video" autoplay muted loop playsinline class="w-full h-full object-cover filter brightness-[0.7] contrast-[1.1] transition-opacity duration-700">
         <source src="studio-bg.mp4" type="video/mp4">
         Tu navegador no soporta video.
       </video>
       <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/90 via-black/30 to-black/40"></div>
     </div>
 
-    <!-- Contenido 3D Metálico Central + Botón Explorar Drop -->
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 animate-hero-content pt-16 flex flex-col items-center justify-center">
-      
-      <!-- Título Gigante con Estilo 3D Metálico/Cromo -->
+      <span id="hero-subtitle-badge" class="inline-block py-1.5 px-5 rounded-full bg-black/60 border border-gold-500/40 text-gold-400 text-xs font-extrabold uppercase tracking-[0.25em] mb-4 backdrop-blur-md">
+        ✦ Ambiente: Estudio Deportivo ✦
+      </span>
+
       <h1 class="text-6xl sm:text-8xl md:text-9xl font-black uppercase tracking-wider text-3d-metallic leading-none">
         BE A <span style="background: linear-gradient(180deg, #FFFFFF 0%, #D4AF37 50%, #8A6508 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">BEAR</span>
       </h1>
 
-      <!-- Botón de Explorar Drop -->
       <div class="mt-10">
         <a href="#catalogo" class="btn-gold px-8 py-4 rounded-2xl text-xs uppercase tracking-[0.2em] font-black inline-flex items-center gap-3">
           <span>Explorar Drop</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         </a>
       </div>
-
     </div>
   </header>
 
-  <!-- SECCIÓN DE FILTROS Y CATÁLOGO -->
+  <!-- SECCIÓN DE FILTROS POR AMBIENTES Y CATÁLOGO -->
   <section class="bg-white text-black py-12 border-b border-gray-200" id="catalogo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
-        <span class="text-xs font-bold text-gold-600 uppercase tracking-widest">Colección Exclusiva</span>
-        <h2 class="font-display font-black text-3xl sm:text-4xl mt-1 uppercase text-gray-900">Catálogo Disponible</h2>
+        <span class="text-xs font-bold text-gold-600 uppercase tracking-widest">Selecciona tu Estilo & Ambiente</span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl mt-1 uppercase text-gray-900">Catálogo Exclusivo</h2>
         <div class="h-0.5 w-16 bg-gold-500 mx-auto mt-3"></div>
       </div>
 
-      <!-- FILTERS -->
+      <!-- BOTONES DE FILTRO DE AMBIENTES -->
       <div class="flex flex-wrap justify-center gap-2.5 mb-12" id="filter-buttons">
         <button data-category="all" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer">Todos</button>
-        <button data-category="caps" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Gorras Exclusivas</button>
-        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">Perfume Decants</button>
+        <button data-category="sport" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">⚡ Deportivas</button>
+        <button data-category="rancho" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🤠 Gorras de Rancho</button>
+        <button data-category="military" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🛡️ Gorras Bélicas</button>
+        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes Versace</button>
       </div>
 
       <!-- CATALOG GRID -->
@@ -307,31 +300,10 @@
           <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-400 border-4 border-black shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
           <div class="md:w-1/2 md:pl-12"></div>
         </div>
-
-        <div class="relative mb-14 md:flex items-center w-full">
-          <div class="md:w-1/2 md:pr-12"></div>
-          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-400 border-4 border-black shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
-          <div class="md:w-1/2 md:pl-12 mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest bg-neutral-900 border border-gold-500/30 px-3.5 py-1 rounded-full">Próximamente</span>
-            <h3 class="font-display font-bold text-xl text-white mt-2">Coming Soon</h3>
-            <p class="text-sm text-gray-400 mt-1 leading-relaxed">Nuevos lanzamientos y colecciones exclusivas en camino.</p>
-          </div>
-        </div>
-
-        <div class="relative md:flex items-center w-full">
-          <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest bg-neutral-900 border border-gold-500/30 px-3.5 py-1 rounded-full">Próximamente</span>
-            <h3 class="font-display font-bold text-xl text-white mt-2">Coming Soon</h3>
-            <p class="text-sm text-gray-400 mt-1 leading-relaxed">Expansión internacional y alianzas de alta gama.</p>
-          </div>
-          <div class="absolute left-5 md:left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-gold-400 border-4 border-black shadow-[0_0_12px_rgba(212,175,55,0.8)]"></div>
-          <div class="md:w-1/2 md:pl-12"></div>
-        </div>
-
       </div>
     </div>
   </section>
-  
+
   <!-- PRODUCT DETAIL MODAL -->
   <div id="product-modal" class="fixed inset-0 z-50 overflow-y-auto hidden">
     <div id="modal-backdrop" class="fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity"></div>
@@ -342,7 +314,7 @@
           <div class="p-5 sm:p-7 flex flex-col justify-between bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200">
             <div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-white border border-gold-500/30 flex items-center justify-center group shadow-sm">
               <img id="modal-main-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-              <span id="modal-badge" class="absolute top-3 left-3 bg-white/90 border border-gold-500/40 text-[10px] px-3 py-1 rounded-full text-gold-600 uppercase font-black tracking-wider shadow-sm">EDICIÓN ESPECIAL</span>
+              <span id="modal-badge" class="absolute top-3 left-3 bg-white/90 border border-gold-500/40 text-[10px] px-3 py-1 rounded-full text-gold-600 uppercase font-black tracking-wider shadow-sm">⚡ ÚLTIMA PIEZA</span>
               <button id="modal-prev-btn" type="button" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">&#10094;</button>
               <button id="modal-next-btn" type="button" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/90 border border-gold-500/30 text-gold-600 hover:bg-gold-500 hover:text-white flex items-center justify-center transition-all cursor-pointer shadow-md">&#10095;</button>
             </div>
@@ -402,8 +374,25 @@
           </div>
           <button id="close-cart-btn" class="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 cursor-pointer">✕</button>
         </div>
+        
         <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-3.5"></div>
+
         <div class="p-6 border-t border-gray-200 bg-gray-50 space-y-4">
+          
+          <!-- SECCIÓN DE SELECCIÓN DE UBICACIÓN (MANTA VS OTRA CIUDAD) -->
+          <div class="bg-white border border-gold-500/30 rounded-xl p-3.5 space-y-2">
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-800">📍 Selecciona tu ubicación de entrega:</label>
+            <div class="grid grid-cols-2 gap-2">
+              <button type="button" onclick="setLocation('manta')" id="loc-manta-btn" class="py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gold-500 bg-gold-500/10 text-gold-700">
+                Manta <span class="block text-[10px] font-normal">Gratis en Mall / Delivery</span>
+              </button>
+              <button type="button" onclick="setLocation('nacional')" id="loc-nacional-btn" class="py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gray-200 bg-white text-gray-600">
+                Otra Ciudad <span class="block text-[10px] font-normal">Nacional ($3.50)</span>
+              </button>
+            </div>
+            <p id="shipping-note" class="text-[11px] text-gray-500 mt-1 italic">Entrega gratis en el Mall de Manta. Si es a domicilio en Manta, asumes el costo de delivery.</p>
+          </div>
+
           <div class="bg-amber-50 border border-gold-500/30 rounded-xl p-3 text-xs space-y-1.5">
             <p class="font-bold text-gray-900 flex justify-between items-center">
               <span>🏦 Datos de Transferencia (Ecuador):</span>
@@ -415,14 +404,14 @@
             <label class="block text-[11px] font-bold uppercase tracking-wider text-gray-600 mb-1">Subir Comprobante de Pago:</label>
             <input type="file" id="receipt-file" accept="image/*" class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500/10 file:text-gold-700 hover:file:bg-gold-500/20 cursor-pointer border border-gray-200 rounded-lg bg-white p-1">
           </div>
-          <div class="space-y-1 text-xs pt-1">
+          <div class="space-y-1.5 text-xs pt-1 border-t border-gray-200">
             <div class="flex justify-between text-gray-600">
-              <span>Entregas en Manta:</span>
-              <span class="font-bold text-green-600">GRATIS ($0.00)</span>
+              <span>Subproductos:</span>
+              <span id="cart-products-subtotal" class="font-bold">$0.00</span>
             </div>
             <div class="flex justify-between text-gray-600">
-              <span>Envíos Nacionales:</span>
-              <span class="font-bold">Costo Adicional a Coordinar</span>
+              <span>Costo de Envío:</span>
+              <span id="shipping-cost-label" class="font-bold text-gold-600">$0.00</span>
             </div>
             <div class="flex justify-between items-center text-sm pt-2 border-t border-gray-200">
               <span class="text-gray-900 uppercase tracking-wider text-xs font-bold">Total Final:</span>
@@ -442,7 +431,7 @@
     <div class="bg-white text-black border border-gold-500/50 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
       <div class="w-16 h-16 bg-gold-500/20 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">✓</div>
       <h3 class="font-display font-black text-2xl text-gray-900 uppercase">¡Pedido Exitoso!</h3>
-      <p class="text-xs text-gray-600 leading-relaxed">Tu comprobante ha sido registrado y el pedido se ha enviado a nuestro sistema. Estamos validando tu pago para darte el visto bueno de autorización en breve.</p>
+      <p class="text-xs text-gray-600 leading-relaxed">Tu comprobante ha sido registrado y el pedido se ha enviado a nuestro sistema. Estamos validando tu pago para darte el visto bueno en breve.</p>
       <button onclick="closeSuccessModal()" class="w-full btn-gold py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider">Aceptar</button>
     </div>
   </div>
@@ -450,102 +439,128 @@
   <script>
     const WHATSAPP_PHONE = '593999999999';
 
+    // Lista de productos con precios actualizados y regalo de decant árabe
     const products = [
       {
         id: 'p_california',
         title: "Gorra California – Principal Edition",
-        category: 'caps',
-        badge: 'PRINCIPAL',
+        category: 'sport',
+        badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
+        description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium. Incluye decant de perfume árabe gratis.',
         images: ['california -principal.jpg', 'california-1.jpg.jpg'],
         options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
-          { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 25.00 }
+          { label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }
         ]
       },
       {
         id: 'p_dodgers_jp',
         title: "Gorra Dodgers – Principal Edition",
-        category: 'caps',
-        badge: 'PRINCIPAL',
+        category: 'sport',
+        badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable.',
+        description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano. Incluye decant de perfume árabe gratis.',
         images: ['dodgers-principal.jpg', 'dodgers-1.jpg.jpeg'],
         options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 22.00 },
-          { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 25.00 }
+          { label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }
         ]
       },
       {
         id: 'p_west_drop1',
         title: "Gorra Westcol – Black Edition",
-        category: 'caps',
-        badge: 'DROP 1',
+        category: 'sport',
+        badge: '⚡ $30 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
+        description: 'Gorra estructurada en color negro con acabado de tacto suave y detalles oscuros. Incluye decant de perfume árabe gratis.',
         images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
         options: [
-          { label: 'Solo Gorra', sub: 'En solitario', price: 28.00 },
-          { label: '+ Decant 5ml', sub: 'Sujeto a elección', price: 30.00 }
+          { label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }
         ]
       },
+      // Gorras de Rancho ($25 con Decant Árabe)
       {
-        id: 'p1',
-        title: 'JPG Le Male Le Parfum',
-        category: 'decants',
-        badge: 'ORIGINAL',
+        id: 'p_rancho_1',
+        title: "Gorra Rancho – Edición Rústica 01",
+        category: 'rancho',
+        badge: '🤠 $25 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Decants de diseñador y nicho originales. Vainilla negra, cardamomo y lavanda seductora.',
+        description: 'Diseño rústico de alta gama inspirado en el campo. Incluye decant de perfume árabe gratis.',
+        images: ['https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
+      },
+      {
+        id: 'p_rancho_2',
+        title: "Gorra Rancho – Edición Rústica 02",
+        category: 'rancho',
+        badge: '🤠 $25 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Estilo clásico de campo reinterpretado con detalles prémium y decant árabe de regalo.',
+        images: ['https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
+      },
+      // Gorras Bélicas ($30 con Decant Árabe)
+      {
+        id: 'p_military_1',
+        title: "Gorra Táctica – Tactical Black 01",
+        category: 'military',
+        badge: '🛡️ $30 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Diseño táctico militar en tono oscuro con alta resistencia. Incluye decant de perfume árabe gratis.',
+        images: ['https://images.unsplash.com/photo-1534215754734-18e55d131346?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=700&q=80'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
+      },
+      {
+        id: 'p_military_2',
+        title: "Gorra Táctica – Tactical Black 02",
+        category: 'military',
+        badge: '🛡️ $30 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Línea bélica y robusta diseñada para destacar. Incluye decant de perfume árabe gratis.',
+        images: ['https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1534215754734-18e55d131346?auto=format&fit=crop&w=700&q=80'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
+      },
+      // Perfumes Versace (Con Envío Nacional Gratis)
+      {
+        id: 'p_versace_eros',
+        title: 'Versace Eros Flame / Pour Homme (Decant)',
+        category: 'decants',
+        badge: '🔥 ENVÍO NACIONAL GRATIS',
+        stockStatus: 'available',
+        description: 'Decants de Versace originales. Incluye ENVÍO NACIONAL GRATIS a cualquier ciudad del Ecuador.',
         image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
         images: [
           'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
           'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80'
         ],
         options: [
-          { label: '5 ml', sub: '~70 atomizaciones', price: 9.00 },
-          { label: '10 ml', sub: '~140 atomizaciones', price: 16.50 }
-        ]
-      },
-      {
-        id: 'p2',
-        title: 'Rasasi Hawas Ice',
-        category: 'decants',
-        badge: 'ORIGINAL',
-        stockStatus: 'available',
-        description: 'Decants de diseñador y nicho originales. Manzana helada, bergamota y ciruela marina.',
-        image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80',
-        images: [
-          'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=700&q=80',
-          'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80'
-        ],
-        options: [
-          { label: '5 ml', sub: 'Prueba esencial', price: 7.50 },
-          { label: '10 ml', sub: 'Máxima duración', price: 13.00 }
-        ]
-      },
-      {
-        id: 'p3',
-        title: 'Armaf Odyssey Mandarin Sky',
-        category: 'decants',
-        badge: 'ORIGINAL',
-        stockStatus: 'available',
-        description: 'Decants de diseñador y nicho originales. Mandarina acaramelada y haba tonka dulce.',
-        image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80',
-        images: [
-          'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80',
-          'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80'
-        ],
-        options: [
-          { label: '5 ml', sub: 'Decant vidrio', price: 6.50 },
-          { label: '10 ml', sub: 'Atomizador pro', price: 11.50 }
+          { label: '5 ml (Envío Nacional Gratis)', sub: '~70 atomizaciones', price: 9.50 },
+          { label: '10 ml (Envío Nacional Gratis)', sub: '~140 atomizaciones', price: 17.00 }
         ]
       }
     ];
 
     let selectedOptions = {};
     let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
+    let deliveryLocation = 'manta'; // 'manta' o 'nacional'
     const grid = document.getElementById('product-grid');
+
+    window.setLocation = function(loc) {
+      deliveryLocation = loc;
+      const mantaBtn = document.getElementById('loc-manta-btn');
+      const nacionalBtn = document.getElementById('loc-nacional-btn');
+      const note = document.getElementById('shipping-note');
+
+      if (loc === 'manta') {
+        mantaBtn.className = "py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gold-500 bg-gold-500/10 text-gold-700";
+        nacionalBtn.className = "py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gray-200 bg-white text-gray-600";
+        note.textContent = "Entrega gratis en el Mall de Manta. Si es a domicilio en Manta, asumes el costo de delivery.";
+      } else {
+        nacionalBtn.className = "py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gold-500 bg-gold-500/10 text-gold-700";
+        mantaBtn.className = "py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gray-200 bg-white text-gray-600";
+        note.textContent = "Envío nacional estándar a otra ciudad por un valor fijo de $3.50 (Excepto si llevas Versace que incluye envío gratis).";
+      }
+      updateCartUI();
+    };
 
     function renderProducts(filter = 'all') {
       grid.style.opacity = '0';
@@ -577,6 +592,7 @@
               <div>
                 <h3 class="font-display font-bold text-sm tracking-wide text-gray-900 uppercase">${p.title}</h3>
                 <p class="text-xs text-gray-500 font-medium mt-1">$${currentOpt.price.toFixed(2)} USD</p>
+                <p class="text-[10px] text-red-600 font-extrabold mt-1 uppercase tracking-wider">⚡ 1 sola unidad disponible</p>
               </div>
               <div class="mt-3">
                 <span class="text-[11px] font-bold tracking-widest text-gold-600 underline uppercase group-hover:text-black transition-colors">
@@ -616,6 +632,7 @@
         cart.push({
           key: itemKey,
           id: p.id,
+          category: p.category,
           title: p.title,
           image: cartThumb,
           optionLabel: selectedOption.label,
@@ -657,7 +674,9 @@
       const counter = document.getElementById('cart-counter');
       const drawerCount = document.getElementById('drawer-count');
       const itemsContainer = document.getElementById('cart-items');
-      const subtotalEl = document.getElementById('cart-subtotal');
+      const productsSubtotalEl = document.getElementById('cart-products-subtotal');
+      const shippingCostEl = document.getElementById('shipping-cost-label');
+      const totalEl = document.getElementById('cart-subtotal');
 
       const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
       counter.textContent = totalItems;
@@ -667,14 +686,17 @@
         itemsContainer.innerHTML = `
           <div class="text-center py-16 text-gray-400">
             <p class="font-bold text-gray-800 text-sm">Tu carrito está vacío</p>
-            <p class="text-xs mt-1 text-gray-500">Agrega un decant o gorra para iniciar tu pedido.</p>
+            <p class="text-xs mt-1 text-gray-500">Agrega una gorra o perfume para iniciar tu pedido.</p>
           </div>
         `;
-        subtotalEl.textContent = '$0.00';
+        productsSubtotalEl.textContent = '$0.00';
+        shippingCostEl.textContent = '$0.00';
+        totalEl.textContent = '$0.00';
         return;
       }
 
       let subtotal = 0;
+      let hasVersace = cart.some(item => item.category === 'decants');
       itemsContainer.innerHTML = '';
 
       cart.forEach(item => {
@@ -700,7 +722,25 @@
         itemsContainer.appendChild(div);
       });
 
-      subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+      productsSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+
+      // Lógica de cálculo de envío
+      let shippingCost = 0;
+      if (deliveryLocation === 'nacional') {
+        if (hasVersace) {
+          shippingCost = 0;
+          shippingCostEl.innerHTML = '<span class="text-green-600 font-bold">GRATIS (Promo Versace)</span>';
+        } else {
+          shippingCost = 3.50;
+          shippingCostEl.textContent = '$3.50';
+        }
+      } else {
+        shippingCost = 0;
+        shippingCostEl.innerHTML = '<span class="text-green-600 font-bold">GRATIS en Mall / Delivery por cobrar</span>';
+      }
+
+      const finalTotal = subtotal + shippingCost;
+      totalEl.textContent = `$${finalTotal.toFixed(2)}`;
     }
 
     window.changeQty = function(key, delta) {
@@ -741,13 +781,29 @@
     document.getElementById('close-cart-btn').addEventListener('click', closeCart);
     document.getElementById('cart-backdrop').addEventListener('click', closeCart);
 
+    // SISTEMA DINÁMICO DE CAMBIO DE AMBIENTES
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.filter-btn').forEach(b => {
           b.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer";
         });
         e.currentTarget.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer";
-        renderProducts(e.currentTarget.dataset.category);
+        
+        const cat = e.currentTarget.dataset.category;
+        renderProducts(cat);
+
+        const badge = document.getElementById('hero-subtitle-badge');
+        if (cat === 'rancho') {
+          badge.textContent = "✦ Ambiente: Rancho Rústico ✦";
+        } else if (cat === 'military') {
+          badge.textContent = "✦ Ambiente: Zona Táctica / Bélica ✦";
+        } else if (cat === 'sport') {
+          badge.textContent = "✦ Ambiente: Estudio Deportivo ✦";
+        } else if (cat === 'decants') {
+          badge.textContent = "✦ Perfumería Exclusiva Versace ✦";
+        } else {
+          badge.textContent = "✦ Colección General Bear Essential ✦";
+        }
       });
     });
 
@@ -763,8 +819,10 @@
         return;
       }
 
-      let message = "👋 ¡Hola Bear Essential! Acabo de realizar un pedido y mi transferencia:\n\n";
+      let locationText = deliveryLocation === 'manta' ? '📍 Manta (Gratis en Mall / Delivery adicional)' : '📦 Otra Ciudad (Envío Nacional $3.50)';
+      let message = `👋 ¡Hola Bear Essential! Acabo de realizar un pedido:\n\n*Ubicación:* ${locationText}\n\n`;
       let subtotal = 0;
+      let hasVersace = cart.some(item => item.category === 'decants');
 
       cart.forEach((item, index) => {
         const itemTotal = item.price * item.qty;
@@ -775,9 +833,16 @@
         message += `   - Subtotal: $${itemTotal.toFixed(2)}\n\n`;
       });
 
-      message += `💰 *Total Pagado:* $${subtotal.toFixed(2)}\n`;
-      message += `🚚 *Entrega:* Manta (Gratis) / Envío Nacional a coordinar.\n\n`;
-      message += "Adjunto mi comprobante de pago para su respectiva verificación. ¡Muchas gracias!";
+      let shippingFee = 0;
+      if (deliveryLocation === 'nacional') {
+        shippingFee = hasVersace ? 0 : 3.50;
+      }
+
+      let finalTotal = subtotal + shippingFee;
+      message += `💰 *Subtotal Productos:* $${subtotal.toFixed(2)}\n`;
+      message += `🚚 *Envío:* ${shippingFee === 0 ? 'Gratis' : '$3.50'}\n`;
+      message += `💳 *Total Final Pagado:* $${finalTotal.toFixed(2)}\n\n`;
+      message += "Adjunto mi comprobante de pago. ¡Quedo a la espera de la confirmación!";
 
       const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
@@ -815,13 +880,13 @@
 
       titleEl.textContent = p.title;
       descEl.textContent = p.description;
-      badgeEl.textContent = p.stockStatus === 'soldout' ? 'AGOTADO' : (p.badge || 'EXCLUSIVO');
-      categoryEl.textContent = p.category === 'caps' ? 'Streetwear Headwear • Colección Exclusiva' : 'Perfumería Original • Decant Seleccionado';
+      badgeEl.textContent = p.stockStatus === 'soldout' ? 'AGOTADO' : (p.badge || '⚡ ÚLTIMA PIEZA');
+      categoryEl.textContent = p.category === 'rancho' ? 'Gorras de Rancho • Edición Limitada' : p.category === 'military' ? 'Gorras Bélicas • Tactical Drop' : p.category === 'decants' ? 'Perfumería Original • Envío Gratis Nacional' : 'Gorras Deportivas • Exclusivas Manta';
 
       if (p.stockStatus === 'soldout') {
         actionWrapper.innerHTML = `
           <div class="col-span-2 py-3 bg-red-50 border border-red-200 text-red-600 rounded-xl text-center text-xs font-bold uppercase tracking-wider">
-            Producto Agotado Temporalmente
+            Pieza Única Agotada
           </div>
         `;
       } else {
@@ -833,7 +898,7 @@
         document.getElementById('modal-direct-whatsapp').onclick = () => {
           const optIdx = selectedOptions[p.id] || 0;
           const opt = p.options[optIdx];
-          const msg = `👋 ¡Hola Bear Essential! Me interesa comprar directamente:\n\n*${p.title}*\n- Opción: ${opt.label} (${opt.sub})\n- Precio: $${opt.price.toFixed(2)}\n\n¿Tienen disponibilidad para coordinar el pago y envío?`;
+          const msg = `👋 ¡Hola Bear Essential! Me interesa comprar directamente:\n\n*${p.title}*\n- Opción: ${opt.label}\n- Precio: $${opt.price.toFixed(2)}\n\n¿Tienen disponibilidad para coordinar el pago y envío?`;
           window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
         };
       }
