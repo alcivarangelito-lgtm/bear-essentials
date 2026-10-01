@@ -393,13 +393,38 @@
             <p id="shipping-note" class="text-[11px] text-gray-500 mt-1 italic">Entrega gratis en el Mall de Manta. Si es a domicilio en Manta, asumes el costo de delivery.</p>
           </div>
 
-          <div class="bg-amber-50 border border-gold-500/30 rounded-xl p-3 text-xs space-y-1.5">
-            <p class="font-bold text-gray-900 flex justify-between items-center">
-              <span>🏦 Datos de Transferencia (Ecuador):</span>
-              <button onclick="copyBankAccount()" class="text-gold-600 hover:underline font-extrabold cursor-pointer">Copiar Cuenta</button>
+          <!-- DATOS BANCARIOS Y CÓDIGO QR DEUNA! -->
+          <div class="bg-amber-50 border border-gold-500/30 rounded-xl p-4 text-xs space-y-3">
+            <p class="font-extrabold text-gray-900 uppercase tracking-wider text-center border-b border-gold-500/20 pb-2">
+              🏦 Métodos de Pago Oficiales
             </p>
-            <p class="text-gray-600 text-[11px]" id="bank-info-text">Banco Pichincha | Cta Ahr: 220XXXXXXX | CI: 130XXXXXXXXX</p>
+            
+            <div class="space-y-2">
+              <div class="bg-white/80 p-2.5 rounded-lg border border-gold-500/20">
+                <p class="font-bold text-gray-900">Banco Pichincha (Ahorro Transaccional)</p>
+                <p class="text-gray-600">N°: <span id="bp-num" class="font-mono font-bold text-black">2210252967</span></p>
+                <p class="text-[11px] text-gray-500">Titular: Angel Adolfo Alcivar Alvia</p>
+                <button onclick="copyText('2210252967')" class="text-gold-600 hover:underline font-bold text-[10px] mt-1 block cursor-pointer">Copiar N° de Cuenta</button>
+              </div>
+
+              <div class="bg-white/80 p-2.5 rounded-lg border border-gold-500/20">
+                <p class="font-bold text-gray-900">Banco Guayaquil (Ahorros)</p>
+                <p class="text-gray-600">N°: <span id="bg-num" class="font-mono font-bold text-black">0032658568</span></p>
+                <p class="text-[11px] text-gray-500">Titular: Angel Adolfo Alcivar Alvia | C.I: 1312846981</p>
+                <button onclick="copyText('0032658568')" class="text-gold-600 hover:underline font-bold text-[10px] mt-1 block cursor-pointer">Copiar N° de Cuenta</button>
+              </div>
+            </div>
+
+            <!-- CÓDIGO QR DEUNA! -->
+            <div class="bg-white p-3 rounded-xl border border-gold-500/30 text-center space-y-2">
+              <p class="font-bold text-gray-900 text-[11px] uppercase">🟣 Paga Rápido con Deuna! (QR)</p>
+              <div class="w-36 h-36 mx-auto bg-gray-100 rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center">
+                <img src="qr-deuna.png" alt="Código QR Deuna Angel Alcivar" class="w-full h-full object-contain">
+              </div>
+              <p class="text-[10px] text-gray-500">Escanea desde tu app Deuna / Banco Pichincha</p>
+            </div>
           </div>
+
           <div>
             <label class="block text-[11px] font-bold uppercase tracking-wider text-gray-600 mb-1">Subir Comprobante de Pago:</label>
             <input type="file" id="receipt-file" accept="image/*" class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500/10 file:text-gold-700 hover:file:bg-gold-500/20 cursor-pointer border border-gray-200 rounded-lg bg-white p-1">
@@ -439,109 +464,97 @@
   <script>
     const WHATSAPP_PHONE = '593999999999';
 
-    // Lista de productos con precios actualizados y regalo de decant árabe
+    // Lista de productos con precios y nombres exactos pedidos
     const products = [
-      {
-        id: 'p_california',
-        title: "Gorra California – Principal Edition",
-        category: 'sport',
-        badge: '⚡ $25 + DECANT ÁRABE',
-        stockStatus: 'available',
-        description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium. Incluye decant de perfume árabe gratis.',
-        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
-        options: [
-          { label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }
-        ]
-      },
+      // ⚡ APARTADO DEPORTIVO ($25)
       {
         id: 'p_dodgers_jp',
-        title: "Gorra Dodgers – Principal Edition",
+        title: "Gorra Dodgers",
         category: 'sport',
         badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano. Incluye decant de perfume árabe gratis.',
+        description: 'Gorra deportiva de Dodgers con bordado de alta definición. Incluye decant de perfume árabe gratis.',
         images: ['dodgers-principal.jpg', 'dodgers-1.jpg.jpeg'],
-        options: [
-          { label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }
-        ]
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
+      {
+        id: 'p_ny',
+        title: "Gorra NY",
+        category: 'sport',
+        badge: '⚡ $25 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Edición exclusiva NY estilo urbano deportivo. Incluye decant de perfume árabe gratis.',
+        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
+      },
+      {
+        id: 'p_california_bw',
+        title: "Gorra California Black and White",
+        category: 'sport',
+        badge: '⚡ $25 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Gorra California en combinación blanco y negro. Incluye decant de perfume árabe gratis.',
+        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
+      },
+
+      // 🛡️ APARTADO BÉLICO ($30)
       {
         id: 'p_west_drop1',
-        title: "Gorra Westcol – Black Edition",
-        category: 'sport',
-        badge: '⚡ $30 + DECANT ÁRABE',
-        stockStatus: 'available',
-        description: 'Gorra estructurada en color negro con acabado de tacto suave y detalles oscuros. Incluye decant de perfume árabe gratis.',
-        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
-        options: [
-          { label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }
-        ]
-      },
-      // Gorras de Rancho ($25 con Decant Árabe)
-      {
-        id: 'p_rancho_1',
-        title: "Gorra Rancho – Edición Rústica 01",
-        category: 'rancho',
-        badge: '🤠 $25 + DECANT ÁRABE',
-        stockStatus: 'available',
-        description: 'Diseño rústico de alta gama inspirado en el campo. Incluye decant de perfume árabe gratis.',
-        images: ['https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80'],
-        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
-      },
-      {
-        id: 'p_rancho_2',
-        title: "Gorra Rancho – Edición Rústica 02",
-        category: 'rancho',
-        badge: '🤠 $25 + DECANT ÁRABE',
-        stockStatus: 'available',
-        description: 'Estilo clásico de campo reinterpretado con detalles prémium y decant árabe de regalo.',
-        images: ['https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80'],
-        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
-      },
-      // Gorras Bélicas ($30 con Decant Árabe)
-      {
-        id: 'p_military_1',
-        title: "Gorra Táctica – Tactical Black 01",
+        title: "Gorra Westcol",
         category: 'military',
         badge: '🛡️ $30 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Diseño táctico militar en tono oscuro con alta resistencia. Incluye decant de perfume árabe gratis.',
+        description: 'Gorra estructurada en color negro con detalles oscuros de alto impacto visual. Incluye decant de perfume árabe gratis.',
+        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
+      },
+      {
+        id: 'p_belica_cruces',
+        title: "Gorra Bélica Cruces",
+        category: 'military',
+        badge: '🛡️ $30 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Diseño bélico y táctico con detalle de cruces. Incluye decant de perfume árabe gratis.',
         images: ['https://images.unsplash.com/photo-1534215754734-18e55d131346?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=700&q=80'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
+
+      // 🤠 APARTADO RANCHO ($30)
       {
-        id: 'p_military_2',
-        title: "Gorra Táctica – Tactical Black 02",
-        category: 'military',
-        badge: '🛡️ $30 + DECANT ÁRABE',
+        id: 'p_adler_original',
+        title: "Gorra Adler Original",
+        category: 'rancho',
+        badge: '🤠 $30 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Línea bélica y robusta diseñada para destacar. Incluye decant de perfume árabe gratis.',
-        images: ['https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1534215754734-18e55d131346?auto=format&fit=crop&w=700&q=80'],
+        description: 'Gorra Adler original de diseño rústico de alta gama. Incluye decant de perfume árabe gratis.',
+        images: ['https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
-      // Perfumes Versace (Con Envío Nacional Gratis)
+
+      // 💎 PERFUMES / DECANTS ($5 valor individual o gratis por combo)
       {
         id: 'p_versace_eros',
-        title: 'Versace Eros Flame / Pour Homme (Decant)',
+        title: 'Versace Eros / Flame (Decant)',
         category: 'decants',
-        badge: '🔥 ENVÍO NACIONAL GRATIS',
+        badge: '🔥 $5 (GRATIS POR COMPRA) + ENVÍO NACIONAL',
         stockStatus: 'available',
-        description: 'Decants de Versace originales. Incluye ENVÍO NACIONAL GRATIS a cualquier ciudad del Ecuador.',
+        description: 'Decant original de Versace. Valor de $5 (Gratis por tu compra en tienda). Incluye ENVÍO NACIONAL GRATIS.',
         image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
         images: [
           'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
           'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80'
         ],
         options: [
-          { label: '5 ml (Envío Nacional Gratis)', sub: '~70 atomizaciones', price: 9.50 },
-          { label: '10 ml (Envío Nacional Gratis)', sub: '~140 atomizaciones', price: 17.00 }
+          { label: '5 ml (Valor $5 - Gratis por compra)', sub: 'Envío nacional gratis', price: 5.00 },
+          { label: '10 ml (Valor $9 - Pro)', sub: 'Envío nacional gratis', price: 9.00 }
         ]
       }
     ];
 
     let selectedOptions = {};
     let cart = JSON.parse(localStorage.getItem('bear_cart')) || [];
-    let deliveryLocation = 'manta'; // 'manta' o 'nacional'
+    let deliveryLocation = 'manta';
     const grid = document.getElementById('product-grid');
 
     window.setLocation = function(loc) {
@@ -560,6 +573,12 @@
         note.textContent = "Envío nacional estándar a otra ciudad por un valor fijo de $3.50 (Excepto si llevas Versace que incluye envío gratis).";
       }
       updateCartUI();
+    };
+
+    window.copyText = function(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('¡Número de cuenta copiado al portapapeles: ' + text + '!');
+      });
     };
 
     function renderProducts(filter = 'all') {
@@ -724,7 +743,6 @@
 
       productsSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
 
-      // Lógica de cálculo de envío
       let shippingCost = 0;
       if (deliveryLocation === 'nacional') {
         if (hasVersace) {
@@ -758,13 +776,6 @@
       updateCartUI();
     };
 
-    window.copyBankAccount = function() {
-      const bankText = document.getElementById('bank-info-text').textContent;
-      navigator.clipboard.writeText(bankText).then(() => {
-        alert('¡Número de cuenta copiado al portapapeles!');
-      });
-    };
-
     const drawer = document.getElementById('cart-drawer');
     const panel = document.getElementById('cart-panel');
 
@@ -781,7 +792,6 @@
     document.getElementById('close-cart-btn').addEventListener('click', closeCart);
     document.getElementById('cart-backdrop').addEventListener('click', closeCart);
 
-    // SISTEMA DINÁMICO DE CAMBIO DE AMBIENTES
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.filter-btn').forEach(b => {
