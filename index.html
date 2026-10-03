@@ -242,7 +242,7 @@
     </div>
   </header>
 
-  <!-- SECCIÓN DE FILTROS POR AMBIENTES Y CATÁLOGO -->
+  <!-- SECCIÓN DE FILTROS POR AMBIENTES Y CATÁLOGO (EN FILA DE 3) -->
   <section class="bg-white text-black py-12 border-b border-gray-200" id="catalogo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
@@ -260,8 +260,8 @@
         <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes Versace</button>
       </div>
 
-      <!-- CATALOG GRID -->
-      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12"></div>
+      <!-- CATALOG GRID EN FILA DE 3 (grid-cols-1 md:grid-cols-3) -->
+      <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12"></div>
     </div>
   </section>
 
@@ -450,7 +450,6 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
-    // Lista de productos con los nombres exactos de tus videos MP4 en GitHub
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
@@ -597,7 +596,6 @@
           card.className = `minimal-card flex flex-col group floating-card relative ${isSoldOut ? 'opacity-75 grayscale-[30%]' : ''}`;
           card.onclick = () => window.openProductModal(p.id);
 
-          // Renderizado de video MP4 directo si existe la propiedad media
           let mediaHTML = '';
           if (p.media) {
             mediaHTML = `
