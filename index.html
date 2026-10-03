@@ -93,7 +93,7 @@
       box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
     }
 
-    /* Tarjetas normales del Catálogo */
+    /* Tarjetas normales del Catálogo con transición de fotos */
     .minimal-card {
       background: #FFFFFF;
       color: #111111;
@@ -105,6 +105,20 @@
     .minimal-card:hover {
       border-color: #D4AF37;
       box-shadow: 0 10px 30px rgba(212,175,55,0.15);
+    }
+
+    .img-container .img-secondary {
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+    .minimal-card:hover .img-container .img-secondary {
+      opacity: 1;
+    }
+    .minimal-card:hover .img-container .img-primary {
+      opacity: 0;
+    }
+    .img-container .img-primary {
+      transition: opacity 0.4s ease-in-out;
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -369,7 +383,7 @@
     </div>
   </div>
 
-  <!-- CART DRAWER -->
+  <!-- CART DRAWER (SIN NÚMEROS DE CUENTA, SOLO ENLACE DIRECTO A WHATSAPP) -->
   <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-opacity duration-300">
     <div id="cart-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
@@ -400,42 +414,12 @@
             <p id="shipping-note" class="text-[11px] text-gray-500 mt-1 italic">Entrega gratis en el Mall de Manta. Si es a domicilio en Manta, asumes el costo de delivery.</p>
           </div>
 
-          <!-- DATOS BANCARIOS Y CÓDIGO QR DEUNA! -->
-          <div class="bg-amber-50 border border-gold-500/30 rounded-xl p-4 text-xs space-y-3">
-            <p class="font-extrabold text-gray-900 uppercase tracking-wider text-center border-b border-gold-500/20 pb-2">
-              🏦 Métodos de Pago Oficiales
-            </p>
-            
-            <div class="space-y-2">
-              <div class="bg-white/80 p-2.5 rounded-lg border border-gold-500/20">
-                <p class="font-bold text-gray-900">Banco Pichincha (Ahorro Transaccional)</p>
-                <p class="text-gray-600">N°: <span id="bp-num" class="font-mono font-bold text-black">2210252967</span></p>
-                <p class="text-[11px] text-gray-500">Titular: Angel Adolfo Alcivar Alvia</p>
-                <button onclick="copyText('2210252967')" class="text-gold-600 hover:underline font-bold text-[10px] mt-1 block cursor-pointer">Copiar N° de Cuenta</button>
-              </div>
-
-              <div class="bg-white/80 p-2.5 rounded-lg border border-gold-500/20">
-                <p class="font-bold text-gray-900">Banco Guayaquil (Ahorros)</p>
-                <p class="text-gray-600">N°: <span id="bg-num" class="font-mono font-bold text-black">0032658568</span></p>
-                <p class="text-[11px] text-gray-500">Titular: Angel Adolfo Alcivar Alvia | C.I: 1312846981</p>
-                <button onclick="copyText('0032658568')" class="text-gold-600 hover:underline font-bold text-[10px] mt-1 block cursor-pointer">Copiar N° de Cuenta</button>
-              </div>
-            </div>
-
-            <!-- CÓDIGO QR DEUNA! -->
-            <div class="bg-white p-3 rounded-xl border border-gold-500/30 text-center space-y-2">
-              <p class="font-bold text-gray-900 text-[11px] uppercase">🟣 Paga Rápido con Deuna! (QR)</p>
-              <div class="w-36 h-36 mx-auto bg-gray-100 rounded-lg overflow-hidden border border-gray-200 flex items-center justify-center">
-                <img src="qr-deuna.png" alt="Código QR Deuna Angel Alcivar" class="w-full h-full object-contain">
-              </div>
-              <p class="text-[10px] text-gray-500">Escanea desde tu app Deuna / Banco Pichincha</p>
-            </div>
+          <!-- AVISO DE WHATSAPP DIRECTO -->
+          <div class="bg-amber-50 border border-gold-500/30 rounded-xl p-3.5 text-center space-y-1.5">
+            <p class="font-extrabold text-gray-900 text-xs uppercase">💬 Coordinación por WhatsApp</p>
+            <p class="text-[11px] text-gray-600">Al hacer clic en el botón inferior, tu pedido se enviará directamente a nuestro WhatsApp para coordinar el pago y envío de forma personalizada.</p>
           </div>
 
-          <div>
-            <label class="block text-[11px] font-bold uppercase tracking-wider text-gray-600 mb-1">Subir Comprobante de Pago:</label>
-            <input type="file" id="receipt-file" accept="image/*" class="w-full text-xs text-gray-500 file:mr-3 file:py-2 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500/10 file:text-gold-700 hover:file:bg-gold-500/20 cursor-pointer border border-gray-200 rounded-lg bg-white p-1">
-          </div>
           <div class="space-y-1.5 text-xs pt-1 border-t border-gray-200">
             <div class="flex justify-between text-gray-600">
               <span>Subproductos:</span>
@@ -451,7 +435,7 @@
             </div>
           </div>
           <button id="whatsapp-checkout-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-white font-extrabold flex items-center justify-center gap-2.5 transition-transform active:scale-[0.98] shadow-lg shadow-gold-500/20 uppercase tracking-wider text-xs cursor-pointer">
-            Enviar Pedido y Comprobante por WhatsApp
+            Enviar Pedido Directo por WhatsApp 🚀
           </button>
         </div>
       </div>
@@ -462,8 +446,8 @@
   <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden">
     <div class="bg-white text-black border border-gold-500/50 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
       <div class="w-16 h-16 bg-gold-500/20 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">✓</div>
-      <h3 class="font-display font-black text-2xl text-gray-900 uppercase">¡Pedido Exitoso!</h3>
-      <p class="text-xs text-gray-600 leading-relaxed">Tu comprobante ha sido registrado y el pedido se ha enviado a nuestro sistema. Estamos validando tu pago para darte el visto bueno en breve.</p>
+      <h3 class="font-display font-black text-2xl text-gray-900 uppercase">¡Pedido Generado!</h3>
+      <p class="text-xs text-gray-600 leading-relaxed">Tu pedido se ha abierto en WhatsApp con todos los detalles. ¡Establece contacto con nosotros para ultimar los detalles de tu compra!</p>
       <button onclick="closeSuccessModal()" class="w-full btn-gold py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider">Aceptar</button>
     </div>
   </div>
@@ -471,7 +455,7 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
-    // Lista de productos actualizada con ambas versiones de California y sus galerías correctas (.jpg)
+    // Lista de productos con la primera foto limpia con fondo blanco (fotos 1) como principal
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
@@ -519,7 +503,7 @@
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
 
-      // 🛡️ APARTADO BÉLICO ($30)
+      // 🛡️️ APARTADO BÉLICO ($30)
       {
         id: 'p_belica_cruces',
         title: "Gorra Edición Especial con Cruces e Incrustaciones",
@@ -596,12 +580,6 @@
         note.textContent = "Envío nacional estándar a otra ciudad por un valor fijo de $3.50 (Excepto si llevas Versace que incluye envío gratis).";
       }
       updateCartUI();
-    };
-
-    window.copyText = function(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert('¡Número de cuenta copiado al portapapeles: ' + text + '!');
-      });
     };
 
     function renderVideoRow() {
@@ -883,20 +861,15 @@
       });
     });
 
+    // BOTÓN DE WHATSAPP DIRECTO CON EL MENSAJE ESTRUCTURADO
     document.getElementById('whatsapp-checkout-btn').addEventListener('click', () => {
       if (cart.length === 0) {
         alert('Agrega al menos un producto a tu carrito primero.');
         return;
       }
 
-      const fileInput = document.getElementById('receipt-file');
-      if (fileInput.files.length === 0) {
-        alert('Por favor adjunta la captura o foto de tu comprobante de transferencia para continuar.');
-        return;
-      }
-
       let locationText = deliveryLocation === 'manta' ? '📍 Manta (Gratis en Mall / Delivery adicional)' : '📦 Otra Ciudad (Envío Nacional $3.50)';
-      let message = `👋 ¡Hola Bear Essential! Acabo de realizar un pedido:\n\n*Ubicación de Entrega:* ${locationText}\n\n`;
+      let message = `👋 ¡Hola Bear Essential! Deseo realizar el siguiente pedido:\n\n*Ubicación de Entrega:* ${locationText}\n\n`;
       let subtotal = 0;
       let hasVersace = cart.some(item => item.category === 'decants');
 
@@ -917,8 +890,8 @@
       let finalTotal = subtotal + shippingFee;
       message += `💰 *Subtotal Productos:* $${subtotal.toFixed(2)}\n`;
       message += `🚚 *Costo de Envío:* ${shippingFee === 0 ? 'Gratis' : '$3.50'}\n`;
-      message += `💳 *Total Final Pagado:* $${finalTotal.toFixed(2)}\n\n`;
-      message += "Adjunto mi comprobante de pago para validar la orden. ¡Quedo a la espera de la confirmación!";
+      message += `💳 *Total Final:* $${finalTotal.toFixed(2)}\n\n`;
+      message += "Quedo a la espera de las instrucciones para coordinar el pago y la entrega. ¡Gracias!";
 
       const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
@@ -928,7 +901,6 @@
       cart = [];
       saveCart();
       updateCartUI();
-      fileInput.value = '';
     });
 
     window.closeSuccessModal = function() {
