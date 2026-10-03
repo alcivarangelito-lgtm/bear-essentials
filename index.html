@@ -450,7 +450,7 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
-    // Lista de productos con soporte para archivos de video en bucle o imágenes
+    // Lista de productos con los nombres exactos de tus videos MP4 en GitHub
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
@@ -460,7 +460,7 @@
         badge: 'PRINCIPAL',
         stockStatus: 'available',
         description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
-        media: 'california.mp4', // <--- Aquí pones tu archivo de video de la gorra en GitHub
+        media: 'california-video.mp4',
         image: 'california -principal.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
@@ -471,7 +471,7 @@
         badge: 'PRINCIPAL',
         stockStatus: 'available',
         description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable.',
-        media: 'dodgers.mp4', // <--- Video de la gorra Dodgers
+        media: 'japon-video.mp4',
         image: 'dodgers-principal.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
@@ -482,7 +482,7 @@
         badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
         description: 'Edición exclusiva NY estilo urbano deportivo. Incluye decant de perfume árabe gratis.',
-        media: '', 
+        media: '',
         image: 'california -principal.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
@@ -493,12 +493,12 @@
         badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
         description: 'Gorra California en combinación blanco y negro. Incluye decant de perfume árabe gratis.',
-        media: '', 
+        media: '',
         image: 'west-1.jpg.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
 
-      // 🛡️️ APARTADO BÉLICO ($30)
+      // 🛡️ APARTADO BÉLICO ($30)
       {
         id: 'p_west_drop1',
         title: "Gorra Westcol – Black Edition",
@@ -506,7 +506,7 @@
         badge: 'DROP 1',
         stockStatus: 'available',
         description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
-        media: 'westcol.mp4', // <--- Video de la gorra Westcol
+        media: 'w-video.mp4',
         image: 'west-1.jpg.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
@@ -597,7 +597,7 @@
           card.className = `minimal-card flex flex-col group floating-card relative ${isSoldOut ? 'opacity-75 grayscale-[30%]' : ''}`;
           card.onclick = () => window.openProductModal(p.id);
 
-          // Si el producto tiene un video asignado en `media`, se renderiza como video en bucle
+          // Renderizado de video MP4 directo si existe la propiedad media
           let mediaHTML = '';
           if (p.media) {
             mediaHTML = `
