@@ -462,11 +462,10 @@
   </div>
 
   <script>
-    const WHATSAPP_PHONE = '593999999999';
+    const WHATSAPP_PHONE = '593999165409';
 
-    // Lista de productos con las gorras originales intactas + las nuevas incorporaciones pedidas
     const products = [
-      // ⚡ APARTADO DEPORTIVO
+      // ⚡ APARTADO DEPORTIVO ($25)
       {
         id: 'p_california',
         title: "Gorra California – Principal Edition",
@@ -550,7 +549,6 @@
         badge: '🔥 $5 (GRATIS POR COMPRA) + ENVÍO NACIONAL',
         stockStatus: 'available',
         description: 'Decant original de Versace. Valor de $5 (Gratis por tu compra en tienda). Incluye ENVÍO NACIONAL GRATIS.',
-        image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
         images: [
           'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
           'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80'
@@ -607,7 +605,7 @@
           card.className = `minimal-card flex flex-col group floating-card relative ${isSoldOut ? 'opacity-75 grayscale-[30%]' : ''}`;
           card.onclick = () => window.openProductModal(p.id);
 
-          let primaryImg = p.images ? p.images[0] : p.image;
+          let primaryImg = p.images ? p.images[0] : '';
           let secondaryImg = p.images && p.images[1] ? p.images[1] : primaryImg;
 
           card.innerHTML = `
@@ -653,7 +651,7 @@
       const selectedOption = p.options[optIndex];
       const itemKey = `${p.id}_${optIndex}`;
       const existing = cart.find(item => item.key === itemKey);
-      const cartThumb = p.images ? p.images[0] : p.image;
+      const cartThumb = p.images ? p.images[0] : '';
 
       if (existing) {
         existing.qty += 1;
