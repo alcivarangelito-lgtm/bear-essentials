@@ -82,20 +82,6 @@
       box-shadow: 0 10px 30px rgba(212,175,55,0.15);
     }
 
-    .img-container .img-secondary {
-      opacity: 0;
-      transition: opacity 0.4s ease-in-out;
-    }
-    .minimal-card:hover .img-container .img-secondary {
-      opacity: 1;
-    }
-    .minimal-card:hover .img-container .img-primary {
-      opacity: 0;
-    }
-    .img-container .img-primary {
-      transition: opacity 0.4s ease-in-out;
-    }
-
     .option-pill {
       transition: all 0.25s ease;
       border: 1px solid #E5E5E5;
@@ -464,6 +450,7 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
+    // Lista de productos con soporte para archivos de video en bucle o imágenes
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
@@ -473,7 +460,8 @@
         badge: 'PRINCIPAL',
         stockStatus: 'available',
         description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
-        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
+        media: 'california.mp4', // <--- Aquí pones tu archivo de video de la gorra en GitHub
+        image: 'california -principal.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
       {
@@ -483,7 +471,8 @@
         badge: 'PRINCIPAL',
         stockStatus: 'available',
         description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable.',
-        images: ['dodgers-principal.jpg', 'dodgers-1.jpg.jpeg'],
+        media: 'dodgers.mp4', // <--- Video de la gorra Dodgers
+        image: 'dodgers-principal.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
       {
@@ -493,7 +482,8 @@
         badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
         description: 'Edición exclusiva NY estilo urbano deportivo. Incluye decant de perfume árabe gratis.',
-        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
+        media: '', 
+        image: 'california -principal.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
       {
@@ -503,11 +493,12 @@
         badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
         description: 'Gorra California en combinación blanco y negro. Incluye decant de perfume árabe gratis.',
-        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
+        media: '', 
+        image: 'west-1.jpg.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
 
-      // 🛡️ APARTADO BÉLICO ($30)
+      // 🛡️️ APARTADO BÉLICO ($30)
       {
         id: 'p_west_drop1',
         title: "Gorra Westcol – Black Edition",
@@ -515,7 +506,8 @@
         badge: 'DROP 1',
         stockStatus: 'available',
         description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
-        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
+        media: 'westcol.mp4', // <--- Video de la gorra Westcol
+        image: 'west-1.jpg.jpg',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
       {
@@ -525,7 +517,8 @@
         badge: '🛡️ $30 + DECANT ÁRABE',
         stockStatus: 'available',
         description: 'Diseño bélico y táctico con detalle de cruces. Incluye decant de perfume árabe gratis.',
-        images: ['https://images.unsplash.com/photo-1534215754734-18e55d131346?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=700&q=80'],
+        media: '',
+        image: 'https://images.unsplash.com/photo-1534215754734-18e55d131346?auto=format&fit=crop&w=700&q=80',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
 
@@ -537,11 +530,12 @@
         badge: '🤠 $30 + DECANT ÁRABE',
         stockStatus: 'available',
         description: 'Gorra Adler original de diseño rústico de alta gama. Incluye decant de perfume árabe gratis.',
-        images: ['https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80'],
+        media: '',
+        image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80',
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
 
-      // 💎 PERFUMES / DECANTS ($5 valor individual o gratis por combo)
+      // 💎 PERFUMES / DECANTS
       {
         id: 'p_versace_eros',
         title: 'Versace Eros / Flame (Decant)',
@@ -549,10 +543,8 @@
         badge: '🔥 $5 (GRATIS POR COMPRA) + ENVÍO NACIONAL',
         stockStatus: 'available',
         description: 'Decant original de Versace. Valor de $5 (Gratis por tu compra en tienda). Incluye ENVÍO NACIONAL GRATIS.',
-        images: [
-          'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
-          'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80'
-        ],
+        media: '',
+        image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
         options: [
           { label: '5 ml (Valor $5 - Gratis por compra)', sub: 'Envío nacional gratis', price: 5.00 },
           { label: '10 ml (Valor $9 - Pro)', sub: 'Envío nacional gratis', price: 9.00 }
@@ -605,15 +597,25 @@
           card.className = `minimal-card flex flex-col group floating-card relative ${isSoldOut ? 'opacity-75 grayscale-[30%]' : ''}`;
           card.onclick = () => window.openProductModal(p.id);
 
-          let primaryImg = p.images ? p.images[0] : '';
-          let secondaryImg = p.images && p.images[1] ? p.images[1] : primaryImg;
+          // Si el producto tiene un video asignado en `media`, se renderiza como video en bucle
+          let mediaHTML = '';
+          if (p.media) {
+            mediaHTML = `
+              <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+                <source src="${p.media}" type="video/mp4">
+              </video>
+            `;
+          } else {
+            mediaHTML = `
+              <img src="${p.image}" alt="${p.title}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+            `;
+          }
 
           card.innerHTML = `
             <div class="img-container relative w-full aspect-[4/5] bg-[#F4F4F4] overflow-hidden mb-4 rounded-xl shadow-sm">
-              <img src="${primaryImg}" alt="${p.title}" class="img-primary absolute inset-0 w-full h-full object-cover">
-              <img src="${secondaryImg}" alt="${p.title} detalle" class="img-secondary absolute inset-0 w-full h-full object-cover">
-              ${isSoldOut ? '<span class="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded shadow">AGOTADO</span>' : ''}
-              ${p.badge && !isSoldOut ? `<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">${p.badge}</span>` : ''}
+              ${mediaHTML}
+              ${isSoldOut ? '<span class="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded shadow z-10">AGOTADO</span>' : ''}
+              ${p.badge && !isSoldOut ? `<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded z-10">${p.badge}</span>` : ''}
             </div>
             <div class="flex flex-col flex-1 justify-between text-center pb-4 px-3">
               <div>
@@ -651,7 +653,7 @@
       const selectedOption = p.options[optIndex];
       const itemKey = `${p.id}_${optIndex}`;
       const existing = cart.find(item => item.key === itemKey);
-      const cartThumb = p.images ? p.images[0] : '';
+      const cartThumb = p.image || '';
 
       if (existing) {
         existing.qty += 1;
@@ -866,7 +868,7 @@
       window.open(url, '_blank');
 
       closeCart();
-      document.getElementById('success-modal').classList.remove('hidden');
+      document.getElementById('success-modal').classList.add('hidden');
       cart = [];
       saveCart();
       updateCartUI();
@@ -878,15 +880,12 @@
     };
 
     let currentModalProductId = null;
-    let currentModalImageIndex = 0;
 
-    window.openProductModal = function(productId, imageIndex = 0) {
+    window.openProductModal = function(productId) {
       const p = products.find(prod => prod.id === productId);
       if (!p) return;
 
       currentModalProductId = productId;
-      currentModalImageIndex = imageIndex;
-
       const modal = document.getElementById('product-modal');
       const card = document.getElementById('modal-card');
       const titleEl = document.getElementById('modal-title');
@@ -895,11 +894,17 @@
       const categoryEl = document.getElementById('modal-category');
       const optionsContainer = document.getElementById('modal-options-container');
       const actionWrapper = document.getElementById('modal-action-wrapper');
+      const mainImg = document.getElementById('modal-main-img');
+      const thumbsContainer = document.getElementById('modal-thumbs');
+      document.getElementById('modal-prev-btn').style.display = 'none';
+      document.getElementById('modal-next-btn').style.display = 'none';
 
       titleEl.textContent = p.title;
       descEl.textContent = p.description;
       badgeEl.textContent = p.stockStatus === 'soldout' ? 'AGOTADO' : (p.badge || '⚡ ÚLTIMA PIEZA');
       categoryEl.textContent = p.category === 'rancho' ? 'Gorras de Rancho • Edición Limitada' : p.category === 'military' ? 'Gorras Bélicas • Tactical Drop' : p.category === 'decants' ? 'Perfumería Original • Envío Gratis Nacional' : 'Gorras Deportivas • Exclusivas Manta';
+      mainImg.src = p.image;
+      thumbsContainer.innerHTML = '';
 
       if (p.stockStatus === 'soldout') {
         actionWrapper.innerHTML = `
@@ -935,7 +940,6 @@
       `).join('');
 
       updateModalPrice(p);
-      updateModalGallery(p);
 
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
@@ -977,45 +981,8 @@
       priceEl.textContent = `$${opt.price.toFixed(2)}`;
     }
 
-    function updateModalGallery(product) {
-      const mainImg = document.getElementById('modal-main-img');
-      const thumbsContainer = document.getElementById('modal-thumbs');
-      const prevBtn = document.getElementById('modal-prev-btn');
-      const nextBtn = document.getElementById('modal-next-btn');
-      const imgs = product.images || [product.image];
-
-      if (currentModalImageIndex >= imgs.length) currentModalImageIndex = 0;
-      if (currentModalImageIndex < 0) currentModalImageIndex = imgs.length - 1;
-
-      mainImg.src = imgs[currentModalImageIndex];
-
-      if (imgs.length > 1) {
-        prevBtn.classList.remove('hidden');
-        nextBtn.classList.remove('hidden');
-        thumbsContainer.classList.remove('hidden');
-        thumbsContainer.innerHTML = imgs.map((imgSrc, idx) => `
-          <button 
-            type="button" 
-            onclick="window.setModalImage(${idx})"
-            class="w-14 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer bg-white flex-shrink-0 ${idx === currentModalImageIndex ? 'border-gold-500 shadow-md scale-105' : 'border-gray-200 opacity-60 hover:opacity-100'}">
-            <img src="${imgSrc}" class="w-full h-full object-cover">
-          </button>
-        `).join('');
-      } else {
-        prevBtn.classList.add('hidden');
-        nextBtn.classList.add('hidden');
-        thumbsContainer.classList.add('hidden');
-      }
-    }
-
-    window.setModalImage = (idx) => { currentModalImageIndex = idx; updateModalGallery(products.find(p => p.id === currentModalProductId)); };
-    window.modalNextImage = () => { const p = products.find(p => p.id === currentModalProductId); currentModalImageIndex = (currentModalImageIndex + 1) % (p.images || [p.image]).length; updateModalGallery(p); };
-    window.modalPrevImage = () => { const p = products.find(p => p.id === currentModalProductId); const imgs = p.images || [p.image]; currentModalImageIndex = (currentModalImageIndex - 1 + imgs.length) % imgs.length; updateModalGallery(p); };
-
     document.getElementById('modal-close-btn').addEventListener('click', window.closeProductModal);
     document.getElementById('modal-backdrop').addEventListener('click', window.closeProductModal);
-    document.getElementById('modal-next-btn').addEventListener('click', window.modalNextImage);
-    document.getElementById('modal-prev-btn').addEventListener('click', window.modalPrevImage);
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') { window.closeProductModal(); closeCart(); closeSuccessModal(); }
