@@ -69,17 +69,37 @@
       animation: fadeInSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .minimal-card {
-      background: #FFFFFF;
-      color: #111111;
-      border: 1px solid #E5E5E5;
-      border-radius: 1rem;
+    /* Estilo de Tarjeta en Fila Horizontal (Tipo Reels / Captura) */
+    .video-row-card {
+      position: relative;
+      background: #111111;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
+      flex: 0 0 320px;
+      height: 420px;
     }
-    .minimal-card:hover {
+    @media (min-width: 768px) {
+      .video-row-card {
+        flex: 0 0 380px;
+        height: 480px;
+      }
+    }
+    .video-row-card:hover {
       border-color: #D4AF37;
-      box-shadow: 0 10px 30px rgba(212,175,55,0.15);
+      transform: translateY(-5.9px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+    }
+
+    /* Ocultar barra de desplazamiento manteniendo el scroll fluido horizontal */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
 
     .option-pill {
@@ -113,23 +133,6 @@
     .btn-gold:hover {
       box-shadow: 0 6px 28px rgba(212, 175, 55, 0.7);
       transform: translateY(-2px);
-    }
-
-    #product-grid {
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    .timeline-line {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, #D4AF37, #333333);
-      transform: translateX(-50%);
-    }
-    @media (max-width: 768px) {
-      .timeline-line { left: 20px; }
     }
 
     @keyframes pulseLive {
@@ -242,26 +245,26 @@
     </div>
   </header>
 
-  <!-- SECCIÓN DE FILTROS POR AMBIENTES Y CATÁLOGO (EN FILA DE 3) -->
-  <section class="bg-white text-black py-12 border-b border-gray-200" id="catalogo">
+  <!-- SECCIÓN DE FILTROS Y FILA DE VIDEOS HORIZONTAL (ESTILO REELS / CAPTURA) -->
+  <section class="bg-black text-white py-16 border-t border-b border-gold-500/30" id="catalogo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
-        <span class="text-xs font-bold text-gold-600 uppercase tracking-widest">Selecciona tu Estilo & Ambiente</span>
-        <h2 class="font-display font-black text-3xl sm:text-4xl mt-1 uppercase text-gray-900">Catálogo Exclusivo</h2>
+        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Selecciona tu Estilo & Ambiente</span>
+        <h2 class="font-display font-black text-3xl sm:text-4xl mt-1 uppercase text-white">Catálogo Exclusivo</h2>
         <div class="h-0.5 w-16 bg-gold-500 mx-auto mt-3"></div>
       </div>
 
       <!-- BOTONES DE FILTRO DE AMBIENTES -->
       <div class="flex flex-wrap justify-center gap-2.5 mb-12" id="filter-buttons">
-        <button data-category="all" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer">Todos</button>
-        <button data-category="sport" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">⚡ Deportivas</button>
-        <button data-category="rancho" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🤠 Gorras de Rancho</button>
-        <button data-category="military" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🛡️ Gorras Bélicas</button>
-        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes Versace</button>
+        <button data-category="all" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-black font-extrabold shadow-md transition-all cursor-pointer">Todos</button>
+        <button data-category="sport" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 text-gray-300 hover:text-gold-400 border border-gold-500/40 transition-all cursor-pointer">⚡ Deportivas</button>
+        <button data-category="rancho" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 text-gray-300 hover:text-gold-400 border border-gold-500/40 transition-all cursor-pointer">🤠 Gorras de Rancho</button>
+        <button data-category="military" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 text-gray-300 hover:text-gold-400 border border-gold-500/40 transition-all cursor-pointer">🛡️ Gorras Bélicas</button>
+        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 text-gray-300 hover:text-gold-400 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes Versace</button>
       </div>
 
-      <!-- CATALOG GRID EN FILA DE 3 (grid-cols-1 md:grid-cols-3) -->
-      <div id="product-grid" class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12"></div>
+      <!-- FILA HORIZONTAL DE VIDEOS / PRODUCTOS (CINTA FLUIDA) -->
+      <div id="product-grid" class="flex overflow-x-auto no-scrollbar gap-6 pb-6 pt-2 px-2 scroll-smooth"></div>
     </div>
   </section>
 
@@ -593,7 +596,7 @@
           const isSoldOut = p.stockStatus === 'soldout';
 
           const card = document.createElement('div');
-          card.className = `minimal-card flex flex-col group floating-card relative ${isSoldOut ? 'opacity-75 grayscale-[30%]' : ''}`;
+          card.className = `video-row-card flex flex-col group relative ${isSoldOut ? 'opacity-75 grayscale-[30%]' : ''}`;
           card.onclick = () => window.openProductModal(p.id);
 
           let mediaHTML = '';
@@ -610,20 +613,25 @@
           }
 
           card.innerHTML = `
-            <div class="img-container relative w-full aspect-[4/5] bg-[#F4F4F4] overflow-hidden mb-4 rounded-xl shadow-sm">
+            <div class="relative w-full h-full overflow-hidden">
               ${mediaHTML}
-              ${isSoldOut ? '<span class="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded shadow z-10">AGOTADO</span>' : ''}
-              ${p.badge && !isSoldOut ? `<span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded z-10">${p.badge}</span>` : ''}
-            </div>
-            <div class="flex flex-col flex-1 justify-between text-center pb-4 px-3">
-              <div>
-                <h3 class="font-display font-bold text-sm tracking-wide text-gray-900 uppercase">${p.title}</h3>
-                <p class="text-xs text-gray-500 font-medium mt-1">$${currentOpt.price.toFixed(2)} USD</p>
-                <p class="text-[10px] text-red-600 font-extrabold mt-1 uppercase tracking-wider">⚡ 1 sola unidad disponible</p>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+              
+              ${isSoldOut ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded shadow z-10">AGOTADO</span>' : ''}
+              
+              <!-- TÍTULO FLOTANTE MINIMALISTA ESTILO CINTA DE REELS -->
+              <div class="absolute top-4 left-4 right-4 bg-white text-black py-2 px-3.5 rounded-lg shadow-xl font-display font-black text-xs uppercase tracking-wider">
+                ${p.title}
               </div>
-              <div class="mt-3">
-                <span class="text-[11px] font-bold tracking-widest text-gold-600 underline uppercase group-hover:text-black transition-colors">
-                  ${isSoldOut ? 'Ver Producto' : 'Ver Detalles'}
+
+              <!-- INFORMACIÓN INFERIOR DE PRECIO Y ACCIÓN -->
+              <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end z-10">
+                <div>
+                  <p class="text-xs text-gold-400 font-bold">$${currentOpt.price.toFixed(2)} USD</p>
+                  <p class="text-[10px] text-red-400 font-extrabold uppercase tracking-wider">⚡ 1 sola unidad</p>
+                </div>
+                <span class="text-[11px] font-bold text-white uppercase tracking-widest bg-gold-500/20 border border-gold-500/50 px-3 py-1.5 rounded-lg backdrop-blur-md group-hover:bg-gold-500 group-hover:text-black transition-colors">
+                  Ver Detalles
                 </span>
               </div>
             </div>
@@ -803,9 +811,9 @@
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         document.querySelectorAll('.filter-btn').forEach(b => {
-          b.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer";
+          b.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-neutral-900 text-gray-300 hover:text-gold-400 border border-gold-500/40 transition-all cursor-pointer";
         });
-        e.currentTarget.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-white shadow-md transition-all cursor-pointer";
+        e.currentTarget.className = "filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500 text-black font-extrabold shadow-md transition-all cursor-pointer";
         
         const cat = e.currentTarget.dataset.category;
         renderProducts(cat);
