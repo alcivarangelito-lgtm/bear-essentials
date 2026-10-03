@@ -292,7 +292,7 @@
         <button data-category="sport" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">⚡ Deportivas</button>
         <button data-category="rancho" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🤠 Gorras de Rancho</button>
         <button data-category="military" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🛡️ Gorras Bélicas</button>
-        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes Versace</button>
+        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes Decants</button>
       </div>
 
       <!-- CATALOG GRID -->
@@ -353,7 +353,7 @@
             <div class="mt-6 pt-5 border-t border-gray-200 space-y-5">
               <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Selecciona tu opción / tamaño:</label>
-                <div id="modal-options-container" class="flex gap-2.5"></div>
+                <div id="modal-options-container" class="flex flex-wrap gap-2.5"></div>
               </div>
               <div class="flex items-baseline justify-between pt-1">
                 <div>
@@ -383,7 +383,7 @@
     </div>
   </div>
 
-  <!-- CART DRAWER (SIN NÚMEROS DE CUENTA, SOLO ENLACE DIRECTO A WHATSAPP) -->
+  <!-- CART DRAWER (SIN NÚMEROS DE CUENTA, SOLO WHATSAPP) -->
   <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-opacity duration-300">
     <div id="cart-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
@@ -455,7 +455,7 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
-    // Lista de productos con la primera foto limpia con fondo blanco (fotos 1) como principal
+    // Lista de productos actualizada con todas las gorras y los decants configurados con opción múltiple (1, 2 o más)
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
@@ -503,7 +503,7 @@
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
 
-      // 🛡️️ APARTADO BÉLICO ($30)
+      // 🛡️ APARTADO BÉLICO ($30)
       {
         id: 'p_belica_cruces',
         title: "Gorra Edición Especial con Cruces e Incrustaciones",
@@ -540,22 +540,65 @@
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
 
-      // 💎 PERFUMES / DECANTS
+      // 💎 PERFUMES / DECANTS (CON OPCIÓN DE MÁS DE 2 ML / UNIDADES)
       {
         id: 'p_versace_eros',
-        title: 'Versace Eros / Flame (Decant)',
+        title: 'Versace Eros (Decant 5ml)',
         category: 'decants',
-        badge: '🔥 $5 (GRATIS POR COMPRA) + ENVÍO NACIONAL',
+        badge: '🔥 $7.50 + ENVÍO NACIONAL',
         stockStatus: 'available',
-        description: 'Decant original de Versace. Valor de $5 (Gratis por tu compra en tienda). Incluye ENVÍO NACIONAL GRATIS.',
+        description: 'Estilo: Un perfume sumamente versátil, enérgico, juvenil y seductor. Clásico moderno de la perfumería masculina. Notas de menta fresca, manzana verde, haba tonka y vainilla de Madagascar.',
         media: '',
-        images: [
-          'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=700&q=80',
-          'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80'
-        ],
+        images: ['versace 1.jpg', 'versace 2.jpg'],
         options: [
-          { label: '5 ml (Valor $5 - Gratis por compra)', sub: 'Envío nacional gratis', price: 5.00 },
-          { label: '10 ml (Valor $9 - Pro)', sub: 'Envío nacional gratis', price: 9.00 }
+          { label: '5 ml (1 Unidad)', sub: 'Ideal para probar', price: 7.50 },
+          { label: '5 ml (2 Unidades)', sub: 'Doble porción', price: 15.00 },
+          { label: '5 ml (3 Unidades o más)', sub: 'Pack especial', price: 22.50 }
+        ]
+      },
+      {
+        id: 'p_vulcan',
+        title: 'Paris Corner Emir - VULCAN (Decant 5ml)',
+        category: 'decants',
+        badge: '💎 $5.50 + ENVÍO NACIONAL',
+        stockStatus: 'available',
+        description: 'Estilo: Fragancia oriental especiada, inspiración de alto nivel con notas cálidas, ámbar, maderas finas y fondo avainillado ahumado.',
+        media: '',
+        images: ['vulcan 1.jpg', 'vulcan 2.jpg'],
+        options: [
+          { label: '5 ml (1 Unidad)', sub: 'Ideal para probar', price: 5.50 },
+          { label: '5 ml (2 Unidades)', sub: 'Doble porción', price: 11.00 },
+          { label: '5 ml (3 Unidades o más)', sub: 'Pack especial', price: 16.50 }
+        ]
+      },
+      {
+        id: 'p_mandarin_sky',
+        title: 'Armaf Club de Nuit - Mandarin Sky (Decant 5ml)',
+        category: 'decants',
+        badge: '💎 $5.50 + ENVÍO NACIONAL',
+        stockStatus: 'available',
+        description: 'Estilo: Dulce, afrutado y fresco con salida de mandarina jugosa, corazón de notas dulces y caramelo con fondo de almizcle.',
+        media: '',
+        images: ['mandarin sky 1.jpg', 'mandarin sky 2.jpg'],
+        options: [
+          { label: '5 ml (1 Unidad)', sub: 'Ideal para probar', price: 5.50 },
+          { label: '5 ml (2 Unidades)', sub: 'Doble porción', price: 11.00 },
+          { label: '5 ml (3 Unidades o más)', sub: 'Pack especial', price: 16.50 }
+        ]
+      },
+      {
+        id: 'p_odyssey_white',
+        title: 'Armaf Odyssey Homme White Edition (Decant 5ml)',
+        category: 'decants',
+        badge: '💎 $5.50 + ENVÍO NACIONAL',
+        stockStatus: 'available',
+        description: 'Estilo: Fragancia oriental ambarina y avainillada. Notas de pimienta rosa, lirio, cedro, vainilla cremosa y ámbar.',
+        media: '',
+        images: ['odyssey 1.jpg', 'odyssey 2.jpg'],
+        options: [
+          { label: '5 ml (1 Unidad)', sub: 'Ideal para probar', price: 5.50 },
+          { label: '5 ml (2 Unidades)', sub: 'Doble porción', price: 11.00 },
+          { label: '5 ml (3 Unidades o más)', sub: 'Pack especial', price: 16.50 }
         ]
       }
     ];
@@ -655,7 +698,7 @@
               <div>
                 <h3 class="font-display font-bold text-sm tracking-wide text-gray-900 uppercase">${p.title}</h3>
                 <p class="text-xs text-gray-500 font-medium mt-1">$${currentOpt.price.toFixed(2)} USD</p>
-                <p class="text-[10px] text-red-600 font-extrabold mt-1 uppercase tracking-wider">⚡ 1 sola unidad disponible</p>
+                <p class="text-[10px] text-red-600 font-extrabold mt-1 uppercase tracking-wider">⚡ Alta disponibilidad</p>
               </div>
               <div class="mt-3">
                 <span class="text-[11px] font-bold tracking-widest text-gold-600 underline uppercase group-hover:text-black transition-colors">
@@ -759,7 +802,7 @@
       }
 
       let subtotal = 0;
-      let hasVersace = cart.some(item => item.category === 'decants');
+      let hasVersace = cart.some(item => item.category === 'decants' && item.title.includes('Versace'));
       itemsContainer.innerHTML = '';
 
       cart.forEach(item => {
@@ -854,14 +897,13 @@
         } else if (cat === 'sport') {
           badge.textContent = "✦ Ambiente: Estudio Deportivo ✦";
         } else if (cat === 'decants') {
-          badge.textContent = "✦ Perfumería Exclusiva Versace ✦";
+          badge.textContent = "✦ Perfumería Exclusiva Decants ✦";
         } else {
           badge.textContent = "✦ Colección General Bear Essential ✦";
         }
       });
     });
 
-    // BOTÓN DE WHATSAPP DIRECTO CON EL MENSAJE ESTRUCTURADO
     document.getElementById('whatsapp-checkout-btn').addEventListener('click', () => {
       if (cart.length === 0) {
         alert('Agrega al menos un producto a tu carrito primero.');
@@ -871,7 +913,7 @@
       let locationText = deliveryLocation === 'manta' ? '📍 Manta (Gratis en Mall / Delivery adicional)' : '📦 Otra Ciudad (Envío Nacional $3.50)';
       let message = `👋 ¡Hola Bear Essential! Deseo realizar el siguiente pedido:\n\n*Ubicación de Entrega:* ${locationText}\n\n`;
       let subtotal = 0;
-      let hasVersace = cart.some(item => item.category === 'decants');
+      let hasVersace = cart.some(item => item.category === 'decants' && item.title.includes('Versace'));
 
       cart.forEach((item, index) => {
         const itemTotal = item.price * item.qty;
@@ -928,8 +970,8 @@
 
       titleEl.textContent = p.title;
       descEl.textContent = p.description;
-      badgeEl.textContent = p.stockStatus === 'soldout' ? 'AGOTADO' : (p.badge || '⚡ ÚLTIMA PIEZA');
-      categoryEl.textContent = p.category === 'rancho' ? 'Gorras de Rancho • Edición Limitada' : p.category === 'military' ? 'Gorras Bélicas • Tactical Drop' : p.category === 'decants' ? 'Perfumería Original • Envío Gratis Nacional' : 'Gorras Deportivas • Exclusivas Manta';
+      badgeEl.textContent = p.stockStatus === 'soldout' ? 'AGOTADO' : (p.badge || '⚡ DISPONIBLE');
+      categoryEl.textContent = p.category === 'rancho' ? 'Gorras de Rancho • Edición Limitada' : p.category === 'military' ? 'Gorras Bélicas • Tactical Drop' : p.category === 'decants' ? 'Perfumería Original • 5 ml' : 'Gorras Deportivas • Exclusivas Manta';
 
       if (p.stockStatus === 'soldout') {
         actionWrapper.innerHTML = `
@@ -960,7 +1002,7 @@
           onclick="window.selectModalOption('${p.id}', ${i})"
           class="option-pill flex-1 py-2 px-3 rounded-xl text-center text-xs font-semibold ${i === currentOptIdx ? 'active' : ''}">
           <span class="block font-bold text-xs">${opt.label}</span>
-          <span class="block text-[10px] opacity-75">${opt.sub}</span>
+          <span class="block text-[10px] opacity-75">$${opt.price.toFixed(2)}</span>
         </button>
       `).join('');
 
