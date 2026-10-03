@@ -471,18 +471,29 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
-    // Lista de productos con los nombres exactos de tus fotos (.jpg) en GitHub
+    // Lista de productos actualizada con ambas versiones de California y sus galerías correctas (.jpg)
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
-        id: 'p_california',
+        id: 'p_california_gri',
         title: "Gorra California 1985",
         category: 'sport',
         badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
         description: 'Gorra en color gris sólido con un parche frontal circular de cuero sintético en color negro que presenta un diseño icónico con lentes. Incluye decant de perfume árabe gratis.',
-        media: 'california-video.mp4',
+        media: '',
         images: ['california gri 1.jpg', 'california gri 2.jpg', 'california gri 3.jpg'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
+      },
+      {
+        id: 'p_california_classic',
+        title: "Gorra California – Principal Edition",
+        category: 'sport',
+        badge: 'PRINCIPAL',
+        stockStatus: 'available',
+        description: 'Gorra principal clásica de alta gama con detalles exclusivos y acabados prémium diseñados para destacar. Incluye decant de perfume árabe gratis.',
+        media: 'california-video.mp4',
+        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
       {
@@ -885,7 +896,7 @@
       }
 
       let locationText = deliveryLocation === 'manta' ? '📍 Manta (Gratis en Mall / Delivery adicional)' : '📦 Otra Ciudad (Envío Nacional $3.50)';
-      let message = `👋 ¡Hola Bear Essential! Acabo de realizar un pedido:\n\n*Ubicación:* ${locationText}\n\n`;
+      let message = `👋 ¡Hola Bear Essential! Acabo de realizar un pedido:\n\n*Ubicación de Entrega:* ${locationText}\n\n`;
       let subtotal = 0;
       let hasVersace = cart.some(item => item.category === 'decants');
 
@@ -905,15 +916,15 @@
 
       let finalTotal = subtotal + shippingFee;
       message += `💰 *Subtotal Productos:* $${subtotal.toFixed(2)}\n`;
-      message += `🚚 *Envío:* ${shippingFee === 0 ? 'Gratis' : '$3.50'}\n`;
+      message += `🚚 *Costo de Envío:* ${shippingFee === 0 ? 'Gratis' : '$3.50'}\n`;
       message += `💳 *Total Final Pagado:* $${finalTotal.toFixed(2)}\n\n`;
-      message += "Adjunto mi comprobante de pago. ¡Quedo a la espera de la confirmación!";
+      message += "Adjunto mi comprobante de pago para validar la orden. ¡Quedo a la espera de la confirmación!";
 
       const url = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
       window.open(url, '_blank');
 
       closeCart();
-      document.getElementById('success-modal').classList.add('hidden');
+      document.getElementById('success-modal').classList.remove('hidden');
       cart = [];
       saveCart();
       updateCartUI();
