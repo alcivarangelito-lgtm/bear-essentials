@@ -69,7 +69,7 @@
       animation: fadeInSlide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Estilo de Tarjetas para la Fila Horizontal de Videos (Estilo Captura) */
+    /* Estilo de Tarjetas para la Fila Horizontal de Videos */
     .video-row-card {
       position: relative;
       background: #111111;
@@ -253,7 +253,7 @@
     </div>
   </header>
 
-  <!-- SECCIÓN DE VIDEOS EN FILA HORIZONTAL (ABAJO DEL VIDEO PRINCIPAL - ESTILO CAPTURA) -->
+  <!-- SECCIÓN DE VIDEOS EN FILA HORIZONTAL (ABAJO DEL VIDEO PRINCIPAL) -->
   <section class="bg-black py-16 border-t border-b border-gold-500/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
       <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Destacados en Movimiento</span>
@@ -471,17 +471,29 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
+    // Lista de productos con sus descripciones completas, fotos y precios oficiales
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
         id: 'p_california',
-        title: "Gorra California – Principal Edition",
+        title: "Gorra California 1985",
         category: 'sport',
-        badge: 'PRINCIPAL',
+        badge: '⚡ $25 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Gorra principal de alta gama con detalles exclusivos y acabados prémium diseñados para destacar en cualquier ocasión.',
+        description: 'Gorra en color gris sólido con un parche frontal circular de cuero sintético en color negro que presenta un diseño icónico con lentes. Incluye decant de perfume árabe gratis.',
         media: 'california-video.mp4',
-        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
+        images: ['california gri 1.png', 'california gri 2.png', 'california gri 3.png'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
+      },
+      {
+        id: 'p_ny',
+        title: "Gorra New York Yankees – Edición Especial Snapback",
+        category: 'sport',
+        badge: '⚡ $25 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Cuenta con el clásico logotipo bordado de los Yankees en el frente en relieve y tonos dorados/arena. Visera plana de color marrón con textura suave tipo gamuza. Incluye decant de perfume árabe gratis.',
+        media: '',
+        images: ['NY 1.png'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
       {
@@ -490,68 +502,46 @@
         category: 'sport',
         badge: 'PRINCIPAL',
         stockStatus: 'available',
-        description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable.',
+        description: 'Edición principal de Dodgers con bordado de alta definición y estilo urbano impecable. Incluye decant de perfume árabe gratis.',
         media: 'japon-video.mp4',
-        images: ['dodgers-principal.jpg', 'dodgers-1.jpg.jpeg'],
-        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
-      },
-      {
-        id: 'p_ny',
-        title: "Gorra NY",
-        category: 'sport',
-        badge: '⚡ $25 + DECANT ÁRABE',
-        stockStatus: 'available',
-        description: 'Edición exclusiva NY estilo urbano deportivo. Incluye decant de perfume árabe gratis.',
-        media: '',
-        images: ['california -principal.jpg', 'california-1.jpg.jpg'],
-        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
-      },
-      {
-        id: 'p_california_bw',
-        title: "Gorra California BLACK AND WHITE",
-        category: 'sport',
-        badge: '⚡ $25 + DECANT ÁRABE',
-        stockStatus: 'available',
-        description: 'Gorra California en combinación blanco y negro. Incluye decant de perfume árabe gratis.',
-        media: '',
-        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
+        images: ['dodgers-principal.jpg', 'dodgers-1.jpg.jpeg', 'dodgers-2.jpg.jpeg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
 
       // 🛡️ APARTADO BÉLICO ($30)
+      {
+        id: 'p_belica_cruces',
+        title: "Gorra Edición Especial con Cruces e Incrustaciones",
+        category: 'military',
+        badge: '🛡️ $30 + DECANT ÁRABE',
+        stockStatus: 'available',
+        description: 'Gorra de color negro profundo con detalles sutiles de cruces grabadas y tachuelas metálicas. Llamativa cruz principal en relieve con diseño de clavos, decorada con incrustaciones tipo pedrería brillante. Incluye decant árabe gratis.',
+        media: '',
+        images: ['CRUCES 1.png', 'CRUCES 2.png', 'CRUCES 3.png'],
+        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
+      },
       {
         id: 'p_west_drop1',
         title: "Gorra Westcol – Black Edition",
         category: 'military',
         badge: 'DROP 1',
         stockStatus: 'available',
-        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual.',
+        description: 'Gorra estructurada en color negro con acabado de tacto suave tipo gamuza/nobuk y detalles oscuros de alto impacto visual. Incluye decant de perfume árabe gratis.',
         media: 'w-video.mp4',
-        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg'],
-        options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
-      },
-      {
-        id: 'p_belica_cruces',
-        title: "Gorra Bélica Cruces",
-        category: 'military',
-        badge: '🛡️ $30 + DECANT ÁRABE',
-        stockStatus: 'available',
-        description: 'Diseño bélico y táctico con detalle de cruces. Incluye decant de perfume árabe gratis.',
-        media: '',
-        images: ['https://images.unsplash.com/photo-1534215754734-18e55d131346?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1575428652377-a2d80e2277fc?auto=format&fit=crop&w=700&q=80'],
+        images: ['west-1.jpg.jpg', 'west-2.jpg.jpeg', 'west-3.jpg.jpg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
 
       // 🤠 APARTADO RANCHO ($30)
       {
         id: 'p_adler_original',
-        title: "Gorra Adler Original",
+        title: "Gorra Trucker Adler Industry",
         category: 'rancho',
         badge: '🤠 $30 + DECANT ÁRABE',
         stockStatus: 'available',
-        description: 'Gorra Adler original de diseño rústico de alta gama. Incluye decant de perfume árabe gratis.',
+        description: 'Estilo rústico y audaz con tono camel de textura granulada. Insignia frontal hexagonal con silueta de toro en relieve sobre gamuza sintética y malla marrón transpirable. Incluye decant de perfume árabe gratis.',
         media: '',
-        images: ['https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=700&q=80', 'https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=700&q=80'],
+        images: ['ADLER 1.png', 'ADLER 2.png', 'ADLER 3.png'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
 
@@ -608,7 +598,6 @@
       const videoRowContainer = document.getElementById('video-row-container');
       videoRowContainer.innerHTML = '';
 
-      // Filtramos solo los productos que tienen videos asignados
       const videoProducts = products.filter(p => p.media && p.media.trim() !== '');
 
       videoProducts.forEach(p => {
@@ -629,12 +618,10 @@
             
             ${isSoldOut ? '<span class="absolute top-4 right-4 bg-red-600 text-white text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded shadow z-10">AGOTADO</span>' : ''}
             
-            <!-- TÍTULO FLOTANTE SUPERIOR ESTILO CAPTURA -->
             <div class="absolute top-4 left-4 right-4 bg-white text-black py-2 px-3.5 rounded-lg shadow-xl font-display font-black text-xs uppercase tracking-wider">
               ${p.title}
             </div>
 
-            <!-- PRECIO E INFORMACIÓN INFERIOR -->
             <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end z-10">
               <div>
                 <p class="text-xs text-gold-400 font-bold">$${currentOpt.price.toFixed(2)} USD</p>
