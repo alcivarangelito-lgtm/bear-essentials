@@ -471,7 +471,7 @@
   <script>
     const WHATSAPP_PHONE = '593999165409';
 
-    // Lista de productos con sus descripciones completas, fotos y precios oficiales
+    // Lista de productos con los nombres exactos de tus fotos (.jpg) en GitHub
     const products = [
       // ⚡ APARTADO DEPORTIVO ($25)
       {
@@ -482,7 +482,7 @@
         stockStatus: 'available',
         description: 'Gorra en color gris sólido con un parche frontal circular de cuero sintético en color negro que presenta un diseño icónico con lentes. Incluye decant de perfume árabe gratis.',
         media: 'california-video.mp4',
-        images: ['california gri 1.png', 'california gri 2.png', 'california gri 3.png'],
+        images: ['california gri 1.jpg', 'california gri 2.jpg', 'california gri 3.jpg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
       {
@@ -493,7 +493,7 @@
         stockStatus: 'available',
         description: 'Cuenta con el clásico logotipo bordado de los Yankees en el frente en relieve y tonos dorados/arena. Visera plana de color marrón con textura suave tipo gamuza. Incluye decant de perfume árabe gratis.',
         media: '',
-        images: ['NY 1.png'],
+        images: ['NY 1.jpg', 'NY 2.jpg', 'NY 3.jpg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 25.00 }]
       },
       {
@@ -517,7 +517,7 @@
         stockStatus: 'available',
         description: 'Gorra de color negro profundo con detalles sutiles de cruces grabadas y tachuelas metálicas. Llamativa cruz principal en relieve con diseño de clavos, decorada con incrustaciones tipo pedrería brillante. Incluye decant árabe gratis.',
         media: '',
-        images: ['CRUCES 1.png', 'CRUCES 2.png', 'CRUCES 3.png'],
+        images: ['CRUCES 1.jpg', 'CRUCES 2.jpg', 'CRUCES 3.jpg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
       {
@@ -541,7 +541,7 @@
         stockStatus: 'available',
         description: 'Estilo rústico y audaz con tono camel de textura granulada. Insignia frontal hexagonal con silueta de toro en relieve sobre gamuza sintética y malla marrón transpirable. Incluye decant de perfume árabe gratis.',
         media: '',
-        images: ['ADLER 1.png', 'ADLER 2.png', 'ADLER 3.png'],
+        images: ['ADLER 1.jpg', 'ADLER 2.jpg', 'ADLER 3.jpg'],
         options: [{ label: 'Gorra + Decant Árabe Gratis', sub: 'Única unidad', price: 30.00 }]
       },
 
@@ -593,7 +593,6 @@
       });
     };
 
-    // Renderizar la fila horizontal superior de videos destacados
     function renderVideoRow() {
       const videoRowContainer = document.getElementById('video-row-container');
       videoRowContainer.innerHTML = '';
@@ -637,7 +636,6 @@
       });
     }
 
-    // Renderizar el catálogo general de productos
     function renderProducts(filter = 'all') {
       const grid = document.getElementById('product-grid');
       grid.style.opacity = '0';
