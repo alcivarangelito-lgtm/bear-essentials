@@ -531,7 +531,7 @@
         category: 'sport',
         badge: '⚡ 1 EN STOCK',
         stockStatus: 'available',
-        description: 'Logotipo bordado de los Yankees en relieve y tonos dorados/arena. Visera plana de gamuza.',
+        description: 'Logotipo bordado de los Yankees en el frente en relieve y tonos dorados/arena. Visera plana de gamuza.',
         media: '',
         images: ['NY 1.jpg', 'NY 2.jpg', 'NY 3.jpg'],
         options: [{ label: 'Única Unidad Disponible', sub: 'Stock 1/1' }]
@@ -548,7 +548,7 @@
         options: [{ label: 'Única Unidad Disponible', sub: 'Stock 1/1' }]
       },
 
-      // 👕 CAMISAS DE FÚTBOL
+      // 👕 CAMISAS DE FÚTBOL (CON 3 FOTOS CADA UNA)
       {
         id: 'p_camisa_barca',
         title: "Camisa de Barcelona FC",
@@ -1099,8 +1099,8 @@
 
     document.getElementById('modal-close-btn').addEventListener('click', window.closeProductModal);
     document.getElementById('modal-backdrop').addEventListener('click', window.closeProductModal);
-    document.getElementById('modal-next-btn', window.modalNextImage);
-    document.getElementById('modal-prev-btn', window.modalPrevImage);
+    document.getElementById('modal-next-btn').addEventListener('click', window.modalNextImage);
+    document.getElementById('modal-prev-btn').addEventListener('click', window.modalPrevImage);
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') { window.closeProductModal(); closeCart(); closeSuccessModal(); }
