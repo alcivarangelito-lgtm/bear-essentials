@@ -293,7 +293,7 @@
     <div id="video-row-container" class="flex overflow-x-auto no-scrollbar gap-6 pb-6 px-4 sm:px-8 scroll-smooth max-w-7xl mx-auto"></div>
   </section>
 
-  <!-- APARTADO DE ENTREGAS REALIZADAS (CARRUSEL QUE GIRA / DESLIZA INFINITO) -->
+  <!-- APARTADO DE ENTREGAS REALIZADAS (CON SUBTÍTULOS SOLICITADOS) -->
   <section id="entregas" class="py-20 bg-[#070707] text-white overflow-hidden border-b border-gold-500/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
       <span class="text-xs font-bold text-gold-400 uppercase tracking-[0.3em]">Confianza Real ✦ Clientes Satisfechos</span>
@@ -305,37 +305,38 @@
     <!-- CONTENEDOR DEL CARRUSEL ROTATIVO INFINITO -->
     <div class="relative w-full overflow-hidden py-4">
       <div class="animate-marquee flex gap-6 px-4">
-        <!-- Bloque 1 de Imágenes de Entregas -->
+        <!-- Entrega 1: Envío nacional -->
         <div class="w-[300px] sm:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden border border-gold-500/40 bg-neutral-900 shadow-2xl flex-shrink-0 relative group">
-          <img src="entrega 1.jpg" alt="Entrega 1 Bear Essential" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <img src="entrega 1.jpeg" alt="Entrega 1 Envío Nacional" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
           <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
             <span class="bg-gold-500 text-black text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">Entrega 01</span>
-            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Manta & Ecuador ✦ 100% Seguro</p>
+            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Envío nacional</p>
           </div>
         </div>
 
+        <!-- Entrega 2: Entrega dentro de ciudad -->
         <div class="w-[300px] sm:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden border border-gold-500/40 bg-neutral-900 shadow-2xl flex-shrink-0 relative group">
-          <img src="entrega 2.jpg" alt="Entrega 2 Bear Essential" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <img src="entrega 2.jpeg" alt="Entrega 2 Entrega dentro de ciudad" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
           <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
             <span class="bg-gold-500 text-black text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">Entrega 02</span>
-            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Cliente Satisfecho ✦ Exclusividad</p>
+            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Entrega dentro de ciudad</p>
           </div>
         </div>
 
         <!-- Duplicado exacto para hacer el efecto de bucle infinito continuo -->
         <div class="w-[300px] sm:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden border border-gold-500/40 bg-neutral-900 shadow-2xl flex-shrink-0 relative group">
-          <img src="entrega 1.jpg" alt="Entrega 1 Bear Essential" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <img src="entrega 1.jpeg" alt="Entrega 1 Envío Nacional" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
           <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
             <span class="bg-gold-500 text-black text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">Entrega 01</span>
-            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Manta & Ecuador ✦ 100% Seguro</p>
+            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Envío nacional</p>
           </div>
         </div>
 
         <div class="w-[300px] sm:w-[380px] aspect-[4/3] rounded-2xl overflow-hidden border border-gold-500/40 bg-neutral-900 shadow-2xl flex-shrink-0 relative group">
-          <img src="entrega 2.jpg" alt="Entrega 2 Bear Essential" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+          <img src="entrega 2.jpeg" alt="Entrega 2 Entrega dentro de ciudad" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
           <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-4">
             <span class="bg-gold-500 text-black text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">Entrega 02</span>
-            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Cliente Satisfecho ✦ Exclusividad</p>
+            <p class="text-xs font-bold text-white mt-2 uppercase tracking-wider">Entrega dentro de ciudad</p>
           </div>
         </div>
       </div>
@@ -421,9 +422,8 @@
                 <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Selecciona tu opción / tamaño:</label>
                 <div id="modal-options-container" class="flex flex-wrap gap-2.5"></div>
               </div>
-              <div id="modal-action-wrapper" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
-                <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">Agregar al Carrito</button>
-                <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-gray-100 border border-gold-500/40 text-gold-700 hover:bg-gold-500 hover:text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">Pedir por WhatsApp</button>
+              <div id="modal-action-wrapper" class="pt-4">
+                <button id="modal-add-btn" type="button" class="w-full btn-gold py-4 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg cursor-pointer">Agregar al Carrito 🛒</button>
               </div>
             </div>
           </div>
@@ -465,10 +465,10 @@
             <label class="block text-xs font-bold uppercase tracking-wider text-gray-800">📍 Selecciona tu ubicación de entrega:</label>
             <div class="grid grid-cols-2 gap-2">
               <button type="button" onclick="setLocation('manta')" id="loc-manta-btn" class="py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gold-500 bg-gold-500/10 text-gold-700">
-                Manta <span class="block text-[10px] font-normal">Gratis en Mall / Delivery</span>
+                Entrega en Manta <span class="block text-[10px] font-normal">Gratis en Mall / Delivery</span>
               </button>
               <button type="button" onclick="setLocation('nacional')" id="loc-nacional-btn" class="py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gray-200 bg-white text-gray-600">
-                Otra Ciudad <span class="block text-[10px] font-normal">Envío Nacional</span>
+                Entrega Nacional <span class="block text-[10px] font-normal">Envío a otra ciudad</span>
               </button>
             </div>
             <p id="shipping-note" class="text-[11px] text-gray-500 mt-1 italic">Entrega gratis en el Mall de Manta. Si es a domicilio en Manta, asumes el costo de delivery.</p>
@@ -477,11 +477,11 @@
           <!-- AVISO DE WHATSAPP DIRECTO -->
           <div class="bg-amber-50 border border-gold-500/30 rounded-xl p-3.5 text-center space-y-1.5">
             <p class="font-extrabold text-gray-900 text-xs uppercase">💬 Coordinación por WhatsApp</p>
-            <p class="text-[11px] text-gray-600">Al hacer clic en el botón inferior, tu pedido se enviará directamente a nuestro WhatsApp para coordinar la entrega de forma personalizada.</p>
+            <p class="text-[11px] text-gray-600">Al hacer clic en el botón inferior, tu pedido se enviará directamente a nuestro WhatsApp detallando tu opción de entrega elegida.</p>
           </div>
 
           <button id="whatsapp-checkout-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-white font-extrabold flex items-center justify-center gap-2.5 transition-transform active:scale-[0.98] shadow-lg shadow-gold-500/20 uppercase tracking-wider text-xs cursor-pointer">
-            Enviar Pedido Directo por WhatsApp 🚀
+            Enviar Pedido por WhatsApp 🚀
           </button>
         </div>
       </div>
@@ -493,7 +493,7 @@
     <div class="bg-white text-black border border-gold-500/50 rounded-3xl p-8 max-w-md w-full text-center space-y-4 shadow-2xl">
       <div class="w-16 h-16 bg-gold-500/20 text-gold-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold shadow-inner">✓</div>
       <h3 class="font-display font-black text-2xl text-gray-900 uppercase">¡Pedido Generado!</h3>
-      <p class="text-xs text-gray-600 leading-relaxed">Tu pedido se ha abierto en WhatsApp con todos los detalles. ¡Establece contacto con nosotros para ultimar los detalles de tu compra!</p>
+      <p class="text-xs text-gray-600 leading-relaxed">Tu pedido se ha abierto en WhatsApp con todos los detalles y el tipo de entrega seleccionado. ¡Establece contacto con nosotros para ultimar los detalles!</p>
       <button onclick="closeSuccessModal()" class="w-full btn-gold py-3 rounded-xl text-xs font-extrabold uppercase tracking-wider">Aceptar</button>
     </div>
   </div>
@@ -548,7 +548,7 @@
         options: [{ label: 'Única Unidad Disponible', sub: 'Stock 1/1' }]
       },
 
-      // 👕 CAMISAS DE FÚTBOL (CON 3 FOTOS CADA UNA)
+      // 👕 CAMISAS DE FÚTBOL (BARCA 1 Y MADRID 1 COMO PRINCIPALES .JPEG)
       {
         id: 'p_camisa_barca',
         title: "Camisa de Barcelona FC",
@@ -557,7 +557,7 @@
         stockStatus: 'available',
         description: 'Camisa oficial de temporada del Barcelona FC con acabados prémium. Elige tu talla y dorsal favorito.',
         media: '',
-        images: ['barca 1.jpg', 'barca 2.jpg', 'barca 3.jpg'],
+        images: ['barca 1.jpeg', 'barca 2.jpeg', 'barca 3.jpeg'],
         options: [
           { label: 'Talla M – #10 Lamine Yamal', sub: 'Dorsal estrella' },
           { label: 'Talla L – #10 Lamine Yamal', sub: 'Dorsal estrella' },
@@ -573,7 +573,7 @@
         stockStatus: 'available',
         description: 'Camisa oficial de temporada del Real Madrid con alta calidad de confección y escudo bordado.',
         media: '',
-        images: ['madrid 1.jpg', 'madrid 2.jpg', 'madrid 3.jpg'],
+        images: ['madrid 1.jpeg', 'madrid 2.jpeg', 'madrid 3.jpeg'],
         options: [
           { label: 'Talla M', sub: 'Estándar' },
           { label: 'Talla L', sub: 'Estándar' }
@@ -683,7 +683,6 @@
         mantaBtn.className = "py-2.5 px-3 rounded-lg border text-xs font-bold transition-all cursor-pointer border-gray-200 bg-white text-gray-600";
         note.textContent = "Envío nacional estándar a otra ciudad.";
       }
-      updateCartUI();
     };
 
     function renderVideoRow() {
@@ -932,6 +931,7 @@
       });
     });
 
+    // WHATSAPP CHECKOUT DETALLANDO LA OPCIÓN DE ENTREGA ELEGIDA
     document.getElementById('whatsapp-checkout-btn').addEventListener('click', () => {
       if (cart.length === 0) {
         alert('Agrega al menos un producto a tu carrito primero.');
@@ -946,8 +946,8 @@
         return;
       }
 
-      let locationText = deliveryLocation === 'manta' ? '📍 Manta (Gratis en Mall / Delivery adicional)' : '📦 Otra Ciudad (Envío Nacional)';
-      let message = `👋 ¡Hola Bear Essential! Deseo realizar el siguiente pedido:\n\n*Ubicación de Entrega:* ${locationText}\n\n`;
+      let locationText = deliveryLocation === 'manta' ? '📍 Entrega en Manta (Gratis en Mall / Delivery adicional)' : '📦 Entrega Nacional (Envío a otra ciudad)';
+      let message = `👋 ¡Hola Bear Essential! Deseo realizar el siguiente pedido:\n\n*Tipo de Entrega Elegida:* ${locationText}\n\n`;
 
       cart.forEach((item, index) => {
         message += `${index + 1}. *${item.title}*\n`;
@@ -1003,16 +1003,9 @@
         `;
       } else {
         actionWrapper.innerHTML = `
-          <button id="modal-add-btn" type="button" class="btn-gold py-3.5 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg">Agregar al Carrito</button>
-          <button id="modal-direct-whatsapp" type="button" class="py-3.5 px-4 rounded-xl bg-gray-100 border border-gold-500/40 text-gold-700 hover:bg-gold-500 hover:text-white font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 active:scale-95 transition-all cursor-pointer">Pedir por WhatsApp</button>
+          <button id="modal-add-btn" type="button" class="w-full btn-gold py-4 px-4 rounded-xl text-xs uppercase tracking-wider font-extrabold flex items-center justify-center gap-2 active:scale-95 shadow-lg cursor-pointer">Agregar al Carrito 🛒</button>
         `;
         document.getElementById('modal-add-btn').onclick = (e) => window.addToCart(p.id, e);
-        document.getElementById('modal-direct-whatsapp').onclick = () => {
-          const optIdx = selectedOptions[p.id] || 0;
-          const opt = p.options[optIdx];
-          const msg = `👋 ¡Hola Bear Essential! Me interesa comprar directamente:\n\n*${p.title}*\n- Opción: ${opt.label}\n\n¿Tienen disponibilidad para coordinar el pago y envío?`;
-          window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
-        };
       }
 
       if (selectedOptions[p.id] === undefined) selectedOptions[p.id] = 0;
@@ -1103,7 +1096,7 @@
     document.getElementById('modal-prev-btn').addEventListener('click', window.modalPrevImage);
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { window.closeProductModal(); closeCart(); closeSuccessModal(); }
+      if (e.key === 'Escape') { window.openProductModal(); closeCart(); closeSuccessModal(); }
     });
 
     renderVideoRow();
