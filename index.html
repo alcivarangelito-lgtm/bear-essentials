@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bear Essential | Luxury Streetwear & Decants</title>
+  <title>Bear Essential | Luxury Streetwear & Fragrances</title>
   <!-- Google Fonts & Tailwind CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -290,7 +290,7 @@
     <div id="video-row-container" class="flex overflow-x-auto no-scrollbar gap-6 pb-6 px-4 sm:px-8 scroll-smooth max-w-7xl mx-auto"></div>
   </section>
 
-  <!-- APARTADO DE ENTREGAS REALIZADAS (CLICABLES PARA ABRIR Y AMPLIAR) -->
+  <!-- APARTADO DE ENTREGAS REALIZADAS (CLICABLES Y GIRANDO SIN PAUSA) -->
   <section id="entregas" class="py-20 bg-[#070707] text-white overflow-hidden border-b border-gold-500/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-10">
       <span class="text-xs font-bold text-gold-400 uppercase tracking-[0.3em]">Confianza Real ✦ Clientes Satisfechos</span>
@@ -299,7 +299,7 @@
       <div class="h-0.5 w-20 bg-gold-500 mx-auto mt-3"></div>
     </div>
 
-    <!-- CONTENEDOR DEL CARRUSEL ROTATIVO INFINITO (SIN PAUSA EN HOVER) -->
+    <!-- CONTENEDOR DEL CARRUSEL ROTATIVO INFINITO -->
     <div class="relative w-full overflow-hidden py-4">
       <div class="animate-marquee flex gap-6 px-4">
         <!-- Entrega 1: Envío nacional -->
@@ -356,7 +356,7 @@
         <button data-category="camisas" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">👕 Camisas Fútbol</button>
         <button data-category="rancho" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🤠 Gorras de Rancho</button>
         <button data-category="military" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">🛡️ Gorras Bélicas</button>
-        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes Decants</button>
+        <button data-category="decants" class="filter-btn px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-gray-700 hover:text-gold-600 border border-gold-500/40 transition-all cursor-pointer">💎 Perfumes / Fragancias</button>
       </div>
 
       <!-- CATALOG GRID -->
@@ -545,7 +545,7 @@
         options: [{ label: 'Única Unidad Disponible', sub: 'Stock 1/1' }]
       },
 
-      // 👕 CAMISAS DE FÚTBOL (BARCA 1 Y MADRID 1 COMO PRINCIPALES .JPEG)
+      // 👕 CAMISAS DE FÚTBOL (BARCA 1.JPG Y MADRID 1.JPG COMO PRINCIPALES)
       {
         id: 'p_camisa_barca',
         title: "Camisa de Barcelona FC",
@@ -554,7 +554,7 @@
         stockStatus: 'available',
         description: 'Camisa oficial de temporada del Barcelona FC con acabados prémium. Elige tu talla y dorsal favorito.',
         media: '',
-        images: ['barca 1.jpeg', 'barca 2.jpeg', 'barca 3.jpeg'],
+        images: ['barca 1.jpg', 'barca 2.jpg', 'barca 3.jpg'],
         options: [
           { label: 'Talla M – #10 Lamine Yamal', sub: 'Dorsal estrella' },
           { label: 'Talla L – #10 Lamine Yamal', sub: 'Dorsal estrella' },
@@ -570,7 +570,7 @@
         stockStatus: 'available',
         description: 'Camisa oficial de temporada del Real Madrid con alta calidad de confección y escudo bordado.',
         media: '',
-        images: ['madrid 1.jpeg', 'madrid 2.jpeg', 'madrid 3.jpeg'],
+        images: ['madrid 1.jpg', 'madrid 2.jpg', 'madrid 3.jpg'],
         options: [
           { label: 'Talla M', sub: 'Estándar' },
           { label: 'Talla L', sub: 'Estándar' }
@@ -639,14 +639,14 @@
       },
       {
         id: 'p_mandarin_sky',
-        title: 'Armaf Club de Nuit - Mandarin Sky (Decant 5ml)',
+        title: 'Armaf Club de Nuit - Mandarin Sky (Frasco entero)',
         category: 'decants',
-        badge: '💎 MÍNIMO 2',
+        badge: '💎 DISPONIBLE',
         stockStatus: 'available',
-        description: 'Estilo: Un perfume dulce, afrutado y fresco con salida de mandarina jugosa y caramelo.',
+        description: 'Estilo: Un perfume dulce, afrutado y fresco con salida de mandarina jugosa y caramelo. (Se vende entero).',
         media: '',
         images: ['mandarin sky 1.jpg', 'mandarin sky 2.jpg'],
-        options: [{ label: '5 ml (Requiere otro decant)', sub: '⚠️ Debes elegir otro decant diferente' }]
+        options: [{ label: 'Frasco Entero', sub: 'Presentación completa' }]
       },
       {
         id: 'p_odyssey_white',
@@ -739,8 +739,8 @@
           let primaryImg = p.images && p.images[0] ? p.images[0] : '';
           let secondaryImg = p.images && p.images[1] ? p.images[1] : primaryImg;
 
-          let badgeText = isSoldOut ? 'AGOTADO' : (p.category === 'decants' ? '💎 MÍNIMO 2' : (p.category === 'camisas' ? '👕 TALLAS M/L' : '⚡ 1 EN STOCK'));
-          let stockSubText = isSoldOut ? '❌ Pieza Agotada' : (p.category === 'decants' ? '⚠️ Debes elegir otro decant' : (p.category === 'camisas' ? '✓ Tallas Disponibles M y L' : '⚡ ¡Stock: 1 sola unidad!'));
+          let badgeText = isSoldOut ? 'AGOTADO' : (p.category === 'decants' && !p.title.includes('Frasco') ? '💎 MÍNIMO 2' : (p.category === 'camisas' ? '👕 TALLAS M/L' : '⚡ 1 EN STOCK'));
+          let stockSubText = isSoldOut ? '❌ Pieza Agotada' : (p.category === 'decants' && !p.title.includes('Frasco') ? '⚠️ Debes elegir otro decant' : (p.category === 'camisas' ? '✓ Tallas Disponibles M y L' : '⚡ ¡Stock: 1 sola unidad!'));
 
           card.innerHTML = `
             <div class="img-container relative w-full aspect-[4/5] bg-[#F4F4F4] overflow-hidden mb-4 rounded-xl shadow-sm">
@@ -964,7 +964,7 @@
         return;
       }
 
-      const decantsInCart = cart.filter(item => item.category === 'decants');
+      const decantsInCart = cart.filter(item => item.category === 'decants' && !item.title.includes('Frasco'));
       const totalDecantQty = decantsInCart.reduce((acc, item) => acc + item.qty, 0);
 
       if (decantsInCart.length > 0 && totalDecantQty < 2) {
@@ -1018,8 +1018,8 @@
 
       titleEl.textContent = p.title;
       descEl.textContent = p.description;
-      badgeEl.textContent = p.stockStatus === 'soldout' ? 'AGOTADO' : (p.category === 'decants' ? '💎 MÍNIMO 2' : (p.category === 'camisas' ? '👕 TALLAS M/L' : '⚡ 1 EN STOCK'));
-      categoryEl.textContent = p.category === 'rancho' ? 'Gorras de Rancho • Edición Limitada' : p.category === 'military' ? 'Gorras Bélicas • Tactical Drop' : p.category === 'camisas' ? 'Camisas de Fútbol • Tallas M y L' : p.category === 'decants' ? 'Perfumería Original • 5 ml' : 'Gorras Deportivas • Exclusivas Manta';
+      badgeEl.textContent = p.stockStatus === 'soldout' ? 'AGOTADO' : (p.category === 'decants' && !p.title.includes('Frasco') ? '💎 MÍNIMO 2' : (p.category === 'camisas' ? '👕 TALLAS M/L' : '⚡ 1 EN STOCK'));
+      categoryEl.textContent = p.category === 'rancho' ? 'Gorras de Rancho • Edición Limitada' : p.category === 'military' ? 'Gorras Bélicas • Tactical Drop' : p.category === 'camisas' ? 'Camisas de Fútbol • Tallas M y L' : p.category === 'decants' ? 'Perfumería Original' : 'Gorras Deportivas • Exclusivas Manta';
 
       if (p.stockStatus === 'soldout') {
         actionWrapper.innerHTML = `
